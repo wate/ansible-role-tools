@@ -1,9 +1,13 @@
 ---
-# install_tools:
-#   - mailhog
-#   - pict
-#   - tbls
-#   - mecab
+install_tools:
+  - pict
+  - tbls
+  - mkdocs
+  - hugo
+  - direnv
+  - mailhog
+  - sassc
+  # - mecab
 
 tbls_version: "1.54.2"
 
