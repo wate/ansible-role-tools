@@ -4,7 +4,7 @@ install_tools:
   - tbls
   - direnv
   - mailhog
-  # - mkdocs
+  - mkdocs
   # - hugo
   # - sassc
   # - mecab
