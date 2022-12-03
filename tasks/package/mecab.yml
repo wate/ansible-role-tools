@@ -1,3 +1,4 @@
+---
 - name: install mecab packages
   ansible.builtin.apt:
     name: "{{ mecab_packages }}"
