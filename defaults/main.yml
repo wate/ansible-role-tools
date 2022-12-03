@@ -8,8 +8,6 @@ install_tools:
   - direnv
   - mailhog
   - mkdocs
-  # - hugo
-  # - sassc
   # - mecab
 
 ## --------------------------
