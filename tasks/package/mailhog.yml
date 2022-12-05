@@ -1,7 +1,10 @@
 ---
 - name: set variable
   ansible.builtin.set_fact:
-    download_bainary_suffix: "{{ ansible_facts.system | lower }}_{{ ansible_facts.kernel.split('-')[-1] }}"
+    download_bainary_suffix: "{{ ansible_facts.system | lower }}_{{ architecture_files[ansible_facts['architecture']] }}"
+  vars:
+    architecture_files:
+      x86_64: amd64
 - name: download MailHog binary
   ansible.builtin.get_url:
     url: https://github.com/mailhog/MailHog/releases/download/{{ mailhog_version }}/MailHog_{{ download_bainary_suffix }}

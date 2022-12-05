@@ -1,7 +1,10 @@
 ---
 - name: set variable
   ansible.builtin.set_fact:
-    package_file: tbls_{{ tbls_version[1:] }}-1_{{ ansible_facts.kernel.split('-')[-1] }}.deb
+    package_file: tbls_{{ tbls_version[1:] }}-1_{{ architecture_files[ansible_facts['architecture']] }}.deb
+  vars:
+    architecture_files:
+      x86_64: amd64
 - name: install tbls
   ansible.builtin.apt:
     deb: https://github.com/k1LoW/tbls/releases/download/{{ tbls_version }}/{{ package_file }}
