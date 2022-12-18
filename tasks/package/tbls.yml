@@ -1,17 +1,17 @@
 ---
-- name: get tbls latest version
+- name: Get tbls latest version
   when: tbls_version == 'latest'
   block:
-    - name: get latest release
+    - name: Get latest release
       ansible.builtin.uri:
         url: https://api.github.com/repos/k1LoW/tbls/releases/latest
         headers:
           Accept: application/vnd.github+json
       register: latest_releases
-    - name: set tbls_version variable
+    - name: Set tbls_version variable
       ansible.builtin.set_fact:
         tbls_version: "{{ latest_releases.json.tag_name }}"
-- name: find task file
+- name: Find task file
   ansible.builtin.set_fact:
     install_tbls_task_file: "{{ lookup('first_found', params, errors='ignore') }}"
   vars:
@@ -22,5 +22,5 @@
         - "{{ ansible_facts.os_family }}.yml"
       paths:
         - tasks/package/tbls
-- name: install tbls
+- name: Install tbls
   ansible.builtin.include_tasks: "{{ install_tbls_task_file }}"

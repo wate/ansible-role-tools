@@ -1,4 +1,4 @@
 ---
-- name: install mkdocs
+- name: Install mkdocs
   ansible.builtin.apt:
     name: mkdocs

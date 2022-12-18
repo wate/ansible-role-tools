@@ -1,4 +1,4 @@
 ---
-- name: install dependency packages
+- name: Install dependency packages
   ansible.builtin.yum:
     name: "{{ tools_dependency_packages }}"

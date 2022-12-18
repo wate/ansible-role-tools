@@ -3,11 +3,12 @@
 ## インストールするツール
 ## --------------------------
 install_tools:
-  - pict
-  - tbls
   - direnv
+  - tbls
   - mailhog
   - mkdocs
+  - pict
+  - wpcli
   # - mecab
 
 ## --------------------------

@@ -1,4 +1,4 @@
 ---
-- name: install direnv
+- name: Install direnv
   ansible.builtin.apt:
     name: direnv
