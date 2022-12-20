@@ -8,7 +8,7 @@ install_tools:
   - mailhog
   - mkdocs
   - pict
-  - wpcli
+  - wp-cli
   # - mecab
 
 ## --------------------------
