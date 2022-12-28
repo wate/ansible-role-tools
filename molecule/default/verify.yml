@@ -1,9 +1,87 @@
 ---
 - name: Verify
   hosts: all
-  gather_facts: false
-  # check_mode: true
+  gather_facts: true
+  check_mode: true
   tasks:
-    - name: Example assertion
+    - name: Gather the package facts
+      ansible.builtin.package_facts:
+        manager: auto
+    ## direnv
+    - name: Assert direnv
       ansible.builtin.assert:
-        that: true
+        that:
+          - ansible_facts.packages['direnv']
+    ## tbls
+    - name: Check installd tbls
+      ansible.builtin.stat:
+        path: /usr/local/bin/tbls
+      register: tbls_result
+    - name: Assert tbls
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['tbls']
+    - name: Assert mkdocs
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['mkdocs']
+    ## mailhog
+    - name: Check installd mailhog
+      ansible.builtin.stat:
+        path: /usr/local/bin/mailhog
+      register: mailhog_result
+    - name: Check installd mhsendmail
+      ansible.builtin.stat:
+        path: /usr/local/bin/mhsendmail
+      register: mhsendmail_result
+    - name: Assert mailhog
+      ansible.builtin.assert:
+        that:
+          - mailhog_result.stat.exists
+          - mailhog_result.stat.executable
+          - mhsendmail_result.stat.exists
+          - mhsendmail_result.stat.executable
+    - name: Assert mkdocs
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['mkdocs']
+    ## d2
+    - name: Check installd d2
+      ansible.builtin.stat:
+        path: /usr/local/bin/d2
+      register: d2_result
+    - name: Assert d2
+      ansible.builtin.assert:
+        that:
+          - d2_result.stat.exists
+          - d2_result.stat.executable
+    ## osv-scanner
+    - name: Check installd osv-scanner
+      ansible.builtin.stat:
+        path: /usr/local/bin/osv-scanner
+      register: osv_scanner_result
+    - name: Assert mkdocs
+      ansible.builtin.assert:
+        that:
+          - osv_scanner_result.stat.exists
+          - osv_scanner_result.stat.executable
+    ## wp-cli
+    - name: Check installd wp-cli
+      ansible.builtin.stat:
+        path: /usr/local/bin/wp
+      register: wp_result
+    - name: Assert wp-cli
+      ansible.builtin.assert:
+        that:
+          - wp_result.stat.exists
+          - wp_result.stat.executable
+    ## pict
+    - name: Check installd wp-cli
+      ansible.builtin.stat:
+        path: /usr/local/bin/pict
+      register: pict_result
+    - name: Assert pict
+      ansible.builtin.assert:
+        that:
+          - pict_result.stat.exists
+          - pict_result.stat.executable

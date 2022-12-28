@@ -1,0 +1,34 @@
+---
+- name: Get osv-scanner latest version
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/terrastruct/d2/releases/latest
+    headers:
+      Accept: application/vnd.github+json
+  register: latest_releases
+- name: Set d2_version variable
+  ansible.builtin.set_fact:
+    d2_version: "{{ latest_releases.json.tag_name }}"
+- name: set variable
+  ansible.builtin.set_fact:
+    d2_download_file: d2-{{ d2_version }}-{{ ansible_facts['system'] | lower }}-{{ architecture_types[ansible_facts['architecture']] }}.tar.gz
+  vars:
+    architecture_types:
+      x86_64: amd64
+- name: Create download directory
+  ansible.builtin.file:
+    path: /usr/local/src/d2
+    state: directory
+    mode: "0755"
+- name: Download d2
+  ansible.builtin.unarchive:
+    src: https://github.com/terrastruct/d2/releases/download/{{ d2_version }}/{{ d2_download_file }}
+    dest: /usr/local/src/d2
+    extra_opts:
+      - --strip-components=1
+    remote_src: true
+  register: d2_unarchive_result
+- name: Install/update d2
+  ansible.builtin.command:
+    cmd: /usr/local/src/d2/scripts/install.sh
+    chdir: /usr/local/src/d2
+  when: d2_unarchive_result is changed

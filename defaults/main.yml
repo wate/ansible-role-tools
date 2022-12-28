@@ -5,9 +5,10 @@
 install_tools:
   - direnv
   - tbls
-  - osv-scanner
   - mailhog
   - mkdocs
+  - d2
+  - osv-scanner
   - wp-cli
   - pict
   # - mecab
