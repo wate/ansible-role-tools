@@ -1,5 +1,5 @@
 ---
-- name: find dependency packages install task file
+- name: Find dependency packages install task file
   ansible.builtin.set_fact:
     repository_dependency_task_file: "{{ lookup('first_found', params, errors='ignore') }}"
   vars:
@@ -10,9 +10,9 @@
         - "{{ ansible_facts.os_family }}.yml"
       paths:
         - tasks/repository/dependency
-- name: install add repository dependency packages
+- name: Install add repository dependency packages
   ansible.builtin.include_tasks: "{{ repository_dependency_task_file }}"
-- name: add tool repository
+- name: Add tool repository
   ansible.builtin.include_tasks: "{{ item }}"
   when: install_tools is undefined or (item | basename)[0:-4] in install_tools
   loop: "{{ lookup('fileglob', 'tasks/repository/*.yml', wantlist=True) }}"
