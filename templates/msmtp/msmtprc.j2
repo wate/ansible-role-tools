@@ -1,0 +1,16 @@
+# Set default values for all following accounts.
+defaults
+{% for default_option_name, default_option_value in msmtp_default_cfg.items() %}
+{{ default_option_name }} {{ default_option_value }}
+{% endfor %}
+
+{% for acount in msmtp_acounts %}
+# {{ acount.name }} account setting
+account {{ acount.name }}
+{% for acount_option_name, acount_option_value in acount.items() if acount_option_name != 'name'  %}
+{{ acount_option_name }} {{ acount_option_value }}
+{% endfor %}
+{% endfor %}
+
+# Set a default account
+account default : {{ msmtp_account_default }}

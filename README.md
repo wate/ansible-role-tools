@@ -20,6 +20,22 @@ Role Variables
 
 インストールするツール
 
+### `msmtp_default_cfg`
+
+msmtpの設定(defaults)
+
+### `msmtp_acounts`
+
+msmtpの設定(acount)
+
+### `msmtp_account_default`
+
+msmtpの設定(デフォルトで理容するアカウント)
+
+### `msmtpd_cfg`
+
+msmtpdの設定(/etc/default/msmtpd)
+
 ### `mailhog_version`
 
 mailhog(本体)のバージョン

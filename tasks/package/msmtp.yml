@@ -1,0 +1,4 @@
+---
+- name: Install mecab packages
+  ansible.builtin.apt:
+    name: "{{ msmtp_packages }}"

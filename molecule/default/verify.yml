@@ -4,9 +4,11 @@
   gather_facts: true
   check_mode: true
   tasks:
-    - name: Gather the package facts
+    - name: Gather package facts
       ansible.builtin.package_facts:
         manager: auto
+    - name: Gather service facts
+      ansible.builtin.service_facts:
     ## direnv
     - name: Assert direnv
       ansible.builtin.assert:
@@ -41,10 +43,23 @@
           - mailhog_result.stat.executable
           - mhsendmail_result.stat.exists
           - mhsendmail_result.stat.executable
+          - ansible_facts.services['mailhog.service'] is defined
+          - ansible_facts.services['mailhog.service']['state'] == 'running'
+          - ansible_facts.services['mailhog.service']['status'] == 'enabled'
+    ## msmtp
+    - name: Assert msmtp
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['msmtp'] is defined
+          - ansible_facts.packages['msmtp-mta'] is defined
+          - ansible_facts.services['msmtpd.service'] is defined
+          - ansible_facts.services['msmtpd.service']['state'] == 'running'
+          - ansible_facts.services['msmtpd.service']['status'] == 'enabled'
+    ## mkdos
     - name: Assert mkdocs
       ansible.builtin.assert:
         that:
-          - ansible_facts.packages['mkdocs']
+          - ansible_facts.packages['mkdocs'] is defined
     ## d2
     - name: Check installd d2
       ansible.builtin.stat:

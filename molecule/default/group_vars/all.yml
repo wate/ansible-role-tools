@@ -1,1 +1,12 @@
 ---
+install_tools:
+  - direnv
+  - tbls
+  - mailhog
+  - mkdocs
+  - d2
+  - osv-scanner
+  - wp-cli
+  - pict
+  - msmtp
+  - mecab

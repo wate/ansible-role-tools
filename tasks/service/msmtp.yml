@@ -1,0 +1,6 @@
+---
+- name: Service msmtpd is active and enabled on system startup
+  ansible.builtin.systemd:
+    name: msmtpd
+    state: started
+    enabled: true
