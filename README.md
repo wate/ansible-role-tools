@@ -20,10 +20,6 @@ Role Variables
 
 インストールするツール
 
-### `tbls_version`
-
-tblsのバージョン
-
 ### `mailhog_version`
 
 mailhog(本体)のバージョン
