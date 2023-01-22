@@ -11,17 +11,46 @@ install_tools:
   - osv-scanner
   - wp-cli
   - pict
+  # - msmtp
   # - mecab
 
 ## --------------------------
-## tblsのバージョン
+## msmtpの設定(defaults)
 ## --------------------------
-tbls_version: latest
+msmtp_default_cfg:
+  auth: "off"
+  tls: "off"
+  tls_starttls: "off"
+  syslog: LOG_MAIL
+
+## --------------------------
+## msmtpの設定(acount)
+## --------------------------
+msmtp_acounts:
+  - name: mailhog
+    port: 1025
+    from: username@example.com
+# - name: mailtrap
+#   host: smtp.mailtrap.io
+#   port: 2525
+#   user: user_name
+#   password: user_password
+
+## --------------------------
+## msmtpの設定(デフォルトで理容するアカウント)
+## --------------------------
+msmtp_account_default: mailhog
+
+## --------------------------
+## msmtpdの設定(/etc/default/msmtpd)
+## --------------------------
+msmtpd_cfg: ""
 
 ## --------------------------
 ## mailhog(本体)のバージョン
 ## --------------------------
 mailhog_version: v1.0.1
+
 ## --------------------------
 ## mailhog(mhsendmail)のバージョン
 ## --------------------------

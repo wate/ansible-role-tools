@@ -1,0 +1,12 @@
+---
+- name: Create/update msmtp environment
+  ansible.builtin.template:
+    src: msmtp/etc/default/msmtpd.j2
+    dest: /etc/default/msmtpd
+    mode: "0644"
+- name: Create/update msmtp setting
+  ansible.builtin.template:
+    src: msmtp/msmtprc.j2
+    dest: /etc/msmtprc
+    group: msmtp
+    mode: "0644"
