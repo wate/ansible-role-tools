@@ -4,6 +4,11 @@
     name: mailhog
     state: restarted
     daemon_reload: true
+- name: restart mailpit
+  ansible.builtin.systemd:
+    name: mailpit
+    state: restarted
+    daemon_reload: true
 - name: restart msmtp
   ansible.builtin.systemd:
     name: msmtpd

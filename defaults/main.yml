@@ -5,14 +5,22 @@
 install_tools:
   - direnv
   - tbls
-  - mailhog
+  - mailpit
   - mkdocs
   - d2
   - osv-scanner
   - wp-cli
   - pict
+  # - mailhog
   # - msmtp
   # - mecab
+
+## --------------------------
+## mailpitの設定
+## --------------------------
+mailpit_cfg:
+  smtp_bind_addr: 0.0.0.0:1025
+  ui_bind_addr: 0.0.0.0:8025
 
 ## --------------------------
 ## msmtpの設定(defaults)
