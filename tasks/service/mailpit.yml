@@ -1,0 +1,13 @@
+---
+- name: Create/update mailpit ui systemd unit file
+  ansible.builtin.template:
+    src: mailpit/mailpit.service.j2
+    dest: /usr/lib/systemd/system/mailpit.service
+    mode: "0644"
+  notify: restart mailpit
+- name: Service mailpit is active and enabled on system startup
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: mailpit
+    state: started
+    enabled: true
