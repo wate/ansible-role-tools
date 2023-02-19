@@ -1,14 +1,17 @@
 ---
-- name: Get latest release
-  ansible.builtin.uri:
-    url: https://api.github.com/repos/k1LoW/tbls/releases/latest
-    headers:
-      Accept: application/vnd.github+json
-  register: latest_releases
-- name: Set tbls_version variable
-  ansible.builtin.set_fact:
-    tbls_version: "{{ latest_releases.json.tag_name }}"
-- name: Set variable
+- name: Set Install version variable
+  when: tbls_version == 'latest'
+  block:
+    - name: Get latest release
+      ansible.builtin.uri:
+        url: https://api.github.com/repos/k1LoW/tbls/releases/latest
+        headers:
+          Accept: application/vnd.github+json
+      register: latest_releases
+    - name: Set tbls_version variable
+      ansible.builtin.set_fact:
+        tbls_version: "{{ latest_releases.json.tag_name }}"
+- name: Set pckage file variable
   ansible.builtin.set_fact:
     package_file: tbls_{{ tbls_version[1:] }}-1_{{ architecture_files[ansible_facts['architecture']] }}.deb
   vars:

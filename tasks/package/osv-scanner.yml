@@ -1,14 +1,17 @@
 ---
-- name: Get osv-scanner latest version
-  ansible.builtin.uri:
-    url: https://api.github.com/repos/google/osv-scanner/releases/latest
-    headers:
-      Accept: application/vnd.github+json
-  register: latest_releases
-- name: Set osv_scanner_version variable
-  ansible.builtin.set_fact:
-    osv_scanner_version: "{{ latest_releases.json.tag_name }}"
-- name: set variable
+- name: Set Install version variable
+  when: osv_scanner_version == 'latest'
+  block:
+    - name: Get osv-scanner latest version
+      ansible.builtin.uri:
+        url: https://api.github.com/repos/google/osv-scanner/releases/latest
+        headers:
+          Accept: application/vnd.github+json
+      register: latest_releases
+    - name: Set osv_scanner_version variable
+      ansible.builtin.set_fact:
+        osv_scanner_version: "{{ latest_releases.json.tag_name }}"
+- name: set download file variable
   ansible.builtin.set_fact:
     osv_scanner_download_file: "\
       osv-scanner_{{ osv_scanner_version[1:] }}\

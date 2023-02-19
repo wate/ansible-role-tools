@@ -1,5 +1,5 @@
 ---
-- name: Create/update mailpit ui systemd unit file
+- name: Create/update mailpit systemd unit file
   ansible.builtin.template:
     src: mailpit/mailpit.service.j2
     dest: /usr/lib/systemd/system/mailpit.service

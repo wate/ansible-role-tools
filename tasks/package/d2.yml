@@ -1,14 +1,17 @@
 ---
-- name: Get d2 latest version
-  ansible.builtin.uri:
-    url: https://api.github.com/repos/terrastruct/d2/releases/latest
-    headers:
-      Accept: application/vnd.github+json
-  register: latest_releases
-- name: Set d2_version variable
-  ansible.builtin.set_fact:
-    d2_version: "{{ latest_releases.json.tag_name }}"
-- name: Set variable
+- name: Set Install version variable
+  when: d2_version == 'latest'
+  block:
+    - name: Get latest version
+      ansible.builtin.uri:
+        url: https://api.github.com/repos/terrastruct/d2/releases/latest
+        headers:
+          Accept: application/vnd.github+json
+      register: latest_releases
+    - name: Set d2_version variable
+      ansible.builtin.set_fact:
+        d2_version: "{{ latest_releases.json.tag_name }}"
+- name: Set download file variable
   ansible.builtin.set_fact:
     d2_download_file: d2-{{ d2_version }}-{{ ansible_facts['system'] | lower }}-{{ architecture_types[ansible_facts['architecture']] }}.tar.gz
   vars:
