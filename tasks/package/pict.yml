@@ -10,8 +10,6 @@
     cmd: make
     chdir: /usr/local/src/pict
   when: git_result is changed
-  tags:
-    - skip_ansible_lint
 - name: Create symlink
   ansible.builtin.file:
     src: /usr/local/src/pict/pict

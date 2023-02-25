@@ -11,5 +11,6 @@
       paths:
         - tasks/dependency
 - name: Install dependency packages
-  ansible.builtin.include_tasks: "{{ include_task_file }}"
+  ansible.builtin.include_tasks:
+    file: "{{ include_task_file }}"
   when: include_task_file | length > 0
