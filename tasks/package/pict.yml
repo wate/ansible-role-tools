@@ -1,5 +1,5 @@
 ---
-- name: Checkout source
+- name: Checkout pict source
   ansible.builtin.git:
     repo: https://github.com/microsoft/pict.git
     dest: /usr/local/src/pict

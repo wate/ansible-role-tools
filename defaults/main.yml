@@ -11,6 +11,8 @@ install_tools:
   - osv-scanner
   - wp-cli
   - pict
+  ## https://github.com/tesseract-ocr/tesseract
+  # - tesseract-ocr
   # - mailhog
   # - msmtp
   # - mecab
@@ -48,6 +50,17 @@ msmtp_acounts:
 #   port: 2525
 #   user: user_name
 #   password: user_password
+
+## --------------------------
+## Tesseract OCRの言語ファイル
+## --------------------------
+tesseract_ocr_langages:
+  # tesseract-ocr language files for English
+  - tesseract-ocr-eng
+  # tesseract-ocr language files for Japanese
+  - tesseract-ocr-jpn
+  # Tesseract OCR with all language and script packages
+  # - tesseract-ocr-all
 
 ## --------------------------
 ## msmtpの設定(デフォルトで理容するアカウント)

@@ -1,0 +1,21 @@
+---
+- name: Install dependency packages
+  ansible.builtin.apt:
+    update_cache: true
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg
+- name: Add apt signing key
+  ansible.builtin.apt_key:
+    url: https://notesalexp.org/debian/alexp_key.asc
+    state: present
+- name: Add notesalexp repository
+  ansible.builtin.apt_repository:
+    filename: notesalexp
+    repo: deb https://notesalexp.org/tesseract-ocr5/{{ ansible_facts.distribution_release }}/ {{ ansible_facts.distribution_release }} main
+    state: present
+- name: Update package cache
+  ansible.builtin.apt:
+    update_cache: true
