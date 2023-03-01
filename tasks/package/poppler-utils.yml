@@ -1,0 +1,4 @@
+---
+- name: Install poppler-utils package
+  ansible.builtin.apt:
+    name: poppler-utils

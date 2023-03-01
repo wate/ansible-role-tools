@@ -13,6 +13,8 @@ install_tools:
   - pict
   ## https://github.com/tesseract-ocr/tesseract
   # - tesseract-ocr
+  ## PDF 向けユーティリティ
+  # - poppler-utils
   # - mailhog
   # - msmtp
   # - mecab
