@@ -36,6 +36,10 @@ msmtpの設定(defaults)
 
 msmtpの設定(acount)
 
+### `tesseract_ocr_langages`
+
+Tesseract OCRの言語ファイル
+
 ### `msmtp_account_default`
 
 msmtpの設定(デフォルトで理容するアカウント)
