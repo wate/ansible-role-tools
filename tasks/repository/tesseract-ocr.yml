@@ -8,13 +8,18 @@
       - curl
       - gnupg
 - name: Add apt signing key
-  ansible.builtin.apt_key:
-    url: https://notesalexp.org/debian/alexp_key.asc
-    state: present
+  ansible.builtin.get_url:
+    url: "{{ tesseractocr_apt_key_url }}"
+    dest: "{{ tesseractocr_apt_key_dest }}"
+    mode: "0644"
 - name: Add notesalexp repository
   ansible.builtin.apt_repository:
     filename: notesalexp
-    repo: deb https://notesalexp.org/tesseract-ocr5/{{ ansible_facts.distribution_release }}/ {{ ansible_facts.distribution_release }} main
+    repo: >
+      deb [signed-by={{ tesseractocr_apt_key_dest }}]
+      https://notesalexp.org/tesseract-ocr5/{{ ansible_facts.distribution_release }}/
+      {{ ansible_facts.distribution_release }}
+      main
     state: present
 - name: Update package cache
   ansible.builtin.apt:
