@@ -1,0 +1,14 @@
+---
+- name: Add apt signing key
+  ansible.builtin.get_url:
+    url: "{{ tools_glow_apt_key_url }}"
+    dest: "{{ tools_glow_apt_key_dest }}"
+    mode: "0644"
+- name: Add charm repository
+  ansible.builtin.apt_repository:
+    filename: charm
+    repo: deb [signed-by={{ tools_glow_apt_key_dest }}] https://repo.charm.sh/apt/ * *
+    state: present
+- name: Update package cache
+  ansible.builtin.apt:
+    update_cache: true

@@ -1,22 +1,14 @@
 ---
-- name: Install dependency packages
-  ansible.builtin.apt:
-    update_cache: true
-    name:
-      - apt-transport-https
-      - ca-certificates
-      - curl
-      - gnupg
 - name: Add apt signing key
   ansible.builtin.get_url:
-    url: "{{ tesseractocr_apt_key_url }}"
-    dest: "{{ tesseractocr_apt_key_dest }}"
+    url: "{{ tools_tesseract_ocr_apt_key_url }}"
+    dest: "{{ tools_tesseract_ocr_apt_key_dest }}"
     mode: "0644"
 - name: Add notesalexp repository
   ansible.builtin.apt_repository:
     filename: notesalexp
     repo: >
-      deb [signed-by={{ tesseractocr_apt_key_dest }}]
+      deb [signed-by={{ tools_tesseract_ocr_apt_key_dest }}]
       https://notesalexp.org/tesseract-ocr5/{{ ansible_facts.distribution_release }}/
       {{ ansible_facts.distribution_release }}
       main

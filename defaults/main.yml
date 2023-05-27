@@ -3,20 +3,29 @@
 ## インストールするツール
 ## --------------------------
 install_tools:
+  ## https://direnv.net/
   - direnv
+  ## https://github.com/k1LoW/tbls
   - tbls
+  ## https://github.com/axllent/mailpit
   - mailpit
-  - mkdocs
+  ## https://github.com/terrastruct/d2
   - d2
+  ## https://github.com/google/osv-scanner
   - osv-scanner
+  ## https://github.com/charmbracelet/glow
+  - glow
+  ## https://wp-cli.org/ja/
   - wp-cli
+  ## https://github.com/microsoft/pict
   - pict
+  ## https://www.mkdocs.org/
+  - mkdocs
   ## https://github.com/tesseract-ocr/tesseract
   # - tesseract-ocr
   ## PDF 向けユーティリティ
   # - poppler-utils
-  # - mailhog
-  # - msmtp
+  ## https://taku910.github.io/mecab/
   # - mecab
 
 ## --------------------------
@@ -32,28 +41,6 @@ mailpit_cfg:
   ui_bind_addr: "0.0.0.0:8025"
 
 ## --------------------------
-## msmtpの設定(defaults)
-## --------------------------
-msmtp_default_cfg:
-  auth: "off"
-  tls: "off"
-  tls_starttls: "off"
-  syslog: LOG_MAIL
-
-## --------------------------
-## msmtpの設定(acount)
-## --------------------------
-msmtp_acounts:
-  - name: mailhog
-    port: 1025
-    from: username@example.com
-# - name: mailtrap
-#   host: smtp.mailtrap.io
-#   port: 2525
-#   user: user_name
-#   password: user_password
-
-## --------------------------
 ## Tesseract OCRの言語ファイル
 ## --------------------------
 tesseract_ocr_langages:
@@ -63,16 +50,6 @@ tesseract_ocr_langages:
   - tesseract-ocr-jpn
   # Tesseract OCR with all language and script packages
   # - tesseract-ocr-all
-
-## --------------------------
-## msmtpの設定(デフォルトで理容するアカウント)
-## --------------------------
-msmtp_account_default: mailhog
-
-## --------------------------
-## msmtpdの設定(/etc/default/msmtpd)
-## --------------------------
-msmtpd_cfg: ""
 
 ## --------------------------
 ## インストールするd2のバージョン
@@ -88,33 +65,6 @@ osv_scanner_version: latest
 ## インストールするtblsのバージョン
 ## --------------------------
 tbls_version: latest
-
-## --------------------------
-## インストールするmailhog(本体)のバージョン
-## --------------------------
-mailhog_version: v1.0.1
-
-## --------------------------
-## インストールするmailhog(mhsendmail)のバージョン
-## --------------------------
-mailhog_mhsendmail_version: v0.2.0
-
-## --------------------------
-## mailhogの設定
-## --------------------------
-mailhog_cfg:
-  cors_origin: false
-  hostname: mailhog.example
-  api_bind_addr: "0.0.0.0:8025"
-  ui_bind_addr: "0.0.0.0:8025"
-  maildir_path: ""
-  mongo_coll: messages
-  mongo_db: mailhog
-  mongo_uri: 127.0.0.1:27017
-  smtp_bind_addr: "0.0.0.0:1025"
-  storage: memory
-  outgoing_smtp: false
-  ui_web_path: false
 
 ## --------------------------
 ## mecabの設定

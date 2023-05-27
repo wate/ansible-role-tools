@@ -1,0 +1,4 @@
+---
+- name: Install glow
+  ansible.builtin.apt:
+    name: glow

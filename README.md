@@ -28,25 +28,9 @@ Role Variables
 
 mailpitの設定
 
-### `msmtp_default_cfg`
-
-msmtpの設定(defaults)
-
-### `msmtp_acounts`
-
-msmtpの設定(acount)
-
 ### `tesseract_ocr_langages`
 
 Tesseract OCRの言語ファイル
-
-### `msmtp_account_default`
-
-msmtpの設定(デフォルトで理容するアカウント)
-
-### `msmtpd_cfg`
-
-msmtpdの設定(/etc/default/msmtpd)
 
 ### `d2_version`
 
@@ -59,18 +43,6 @@ msmtpdの設定(/etc/default/msmtpd)
 ### `tbls_version`
 
 インストールするtblsのバージョン
-
-### `mailhog_version`
-
-インストールするmailhog(本体)のバージョン
-
-### `mailhog_mhsendmail_version`
-
-インストールするmailhog(mhsendmail)のバージョン
-
-### `mailhog_cfg`
-
-mailhogの設定
 
 ### `mecab_extra_cfg`
 
