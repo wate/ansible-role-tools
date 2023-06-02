@@ -4,5 +4,9 @@ tools_add_repository_dependency_packages: []
 tools_tesseract_ocr_apt_key_url: https://notesalexp.org/debian/alexp_key.asc
 tools_tesseract_ocr_apt_key_dest: /usr/share/keyrings/tesseract-ocr.gpg.asc
 
-tools_glow_apt_key_url: https://repo.charm.sh/apt/gpg.key
-tools_glow_apt_key_dest: /usr/share/keyrings/charm.gpg.key
+tools_tbls_repo: k1LoW/tbls
+tools_pict_repo: microsoft/pict
+tools_osv_scanner_repo: google/osv-scanner
+tools_mailpit_repo: axllent/mailpit
+tools_d2_repo: terrastruct/d2
+tools_glow_repo: charmbracelet/glow

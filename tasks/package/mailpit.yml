@@ -4,11 +4,11 @@
   block:
     - name: Get latest version
       ansible.builtin.uri:
-        url: https://api.github.com/repos/axllent/mailpit/releases/latest
+        url: https://api.github.com/repos/{{ tools_mailpit_repo }}/releases/latest
         headers:
           Accept: application/vnd.github+json
       register: latest_releases
-    - name: Set mailpit_version variable
+    - name: Set version variable
       ansible.builtin.set_fact:
         mailpit_version: "{{ latest_releases.json.tag_name }}"
 - name: Set download file variable
@@ -20,7 +20,7 @@
       aarch64: arm64
 - name: Install mailpit
   ansible.builtin.unarchive:
-    src: https://github.com/axllent/mailpit/releases/download/{{ mailpit_version }}/{{ mailpit_download_file }}
+    src: https://github.com/{{ tools_mailpit_repo }}/releases/download/{{ mailpit_version }}/{{ mailpit_download_file }}
     dest: /usr/local/bin
     include:
       - mailpit

@@ -4,11 +4,11 @@
   block:
     - name: Get osv-scanner latest version
       ansible.builtin.uri:
-        url: https://api.github.com/repos/google/osv-scanner/releases/latest
+        url: https://api.github.com/repos/{{ tools_osv_scanner_repo }}/releases/latest
         headers:
           Accept: application/vnd.github+json
       register: latest_releases
-    - name: Set osv_scanner_version variable
+    - name: Set version variable
       ansible.builtin.set_fact:
         osv_scanner_version: "{{ latest_releases.json.tag_name }}"
 - name: set download file variable
@@ -24,6 +24,6 @@
       aarch64: arm64
 - name: Install osv-scanner
   ansible.builtin.get_url:
-    url: https://github.com/google/osv-scanner/releases/download/{{ osv_scanner_version }}/{{ osv_scanner_download_file }}
+    url: https://github.com/{{ tools_osv_scanner_repo }}/releases/download/{{ osv_scanner_version }}/{{ osv_scanner_download_file }}
     dest: /usr/local/bin/osv-scanner
     mode: "0755"

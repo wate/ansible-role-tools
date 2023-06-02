@@ -4,7 +4,7 @@
   block:
     - name: Get latest version
       ansible.builtin.uri:
-        url: https://api.github.com/repos/terrastruct/d2/releases/latest
+        url: https://api.github.com/repos/{{ tools_d2_repo }}/releases/latest
         headers:
           Accept: application/vnd.github+json
       register: latest_releases
@@ -25,7 +25,7 @@
     mode: "0755"
 - name: Download d2
   ansible.builtin.unarchive:
-    src: https://github.com/terrastruct/d2/releases/download/{{ d2_version }}/{{ d2_download_file }}
+    src: https://github.com/{{ tools_d2_repo }}/releases/download/{{ d2_version }}/{{ d2_download_file }}
     dest: /usr/local/src/d2
     extra_opts:
       - --strip-components=1

@@ -17,10 +17,10 @@
         listen_tcp_posts: "{{ ansible_facts.tcp_listen | map(attribute='port') | unique | sort | list }}"
         listen_udp_posts: "{{ ansible_facts.udp_listen | map(attribute='port') | unique | sort | list }}"
     ## direnv
-    - name: Assert direnv
-      ansible.builtin.assert:
-        that:
-          - ansible_facts.packages['direnv']
+    # - name: Assert direnv
+    #   ansible.builtin.assert:
+    #     that:
+    #       - ansible_facts.packages['direnv']
     ## tbls
     - name: Check installd tbls
       ansible.builtin.stat:
@@ -30,10 +30,6 @@
       ansible.builtin.assert:
         that:
           - ansible_facts.packages['tbls']
-    - name: Assert mkdocs
-      ansible.builtin.assert:
-        that:
-          - ansible_facts.packages['mkdocs']
     ## mailpit
     - name: Check installd mailpit
       ansible.builtin.stat:
@@ -49,11 +45,6 @@
           - ansible_facts.services['mailpit.service']['status'] == 'enabled'
           - 1025 in listen_tcp_posts
           - 8025 in listen_tcp_posts
-    ## mkdos
-    - name: Assert mkdocs
-      ansible.builtin.assert:
-        that:
-          - ansible_facts.packages['mkdocs'] is defined
     ## d2
     - name: Check installd d2
       ansible.builtin.stat:
@@ -94,31 +85,12 @@
         that:
           - pict_result.stat.exists
           - pict_result.stat.executable
-    # ## mailhog
-    # - name: Check installd mailhog
-    #   ansible.builtin.stat:
-    #     path: /usr/local/bin/mailhog
-    #   register: mailhog_result
-    # - name: Check installd mhsendmail
-    #   ansible.builtin.stat:
-    #     path: /usr/local/bin/mhsendmail
-    #   register: mhsendmail_result
-    # - name: Assert mailhog
-    #   ansible.builtin.assert:
-    #     that:
-    #       - mailhog_result.stat.exists
-    #       - mailhog_result.stat.executable
-    #       - mhsendmail_result.stat.exists
-    #       - mhsendmail_result.stat.executable
-    #       - ansible_facts.services['mailhog.service'] is defined
-    #       - ansible_facts.services['mailhog.service']['state'] == 'running'
-    #       - ansible_facts.services['mailhog.service']['status'] == 'enabled'
-    # ## msmtp
-    # - name: Assert msmtp
-    #   ansible.builtin.assert:
-    #     that:
-    #       - ansible_facts.packages['msmtp'] is defined
-    #       - ansible_facts.packages['msmtp-mta'] is defined
-    #       - ansible_facts.services['msmtpd.service'] is defined
-    #       - ansible_facts.services['msmtpd.service']['state'] == 'running'
-    #       - ansible_facts.services['msmtpd.service']['status'] == 'enabled'
+    ## glow
+    - name: Check installd glow
+      ansible.builtin.stat:
+        path: /usr/local/bin/glow
+      register: glow_result
+    - name: Assert glow
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['glow']

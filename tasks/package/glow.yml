@@ -1,4 +1,23 @@
 ---
+- name: Set Install version variable
+  when: glow_version == 'latest'
+  block:
+    - name: Get latest release
+      ansible.builtin.uri:
+        url: https://api.github.com/repos/{{ tools_glow_repo }}/releases/latest
+        headers:
+          Accept: application/vnd.github+json
+      register: latest_releases
+    - name: Set version variable
+      ansible.builtin.set_fact:
+        glow_version: "{{ latest_releases.json.tag_name }}"
+- name: Set pckage file variable
+  ansible.builtin.set_fact:
+    package_file: glow_{{ glow_version[1:] }}_{{ architecture_files[ansible_facts['architecture']] }}.deb
+  vars:
+    architecture_files:
+      x86_64: amd64
+      aarch64: arm64
 - name: Install glow
   ansible.builtin.apt:
-    name: glow
+    deb: https://github.com/{{ tools_glow_repo }}/releases/download/{{ glow_version }}/{{ package_file }}

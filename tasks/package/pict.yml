@@ -1,7 +1,7 @@
 ---
 - name: Checkout pict source
   ansible.builtin.git:
-    repo: https://github.com/microsoft/pict.git
+    repo: https://github.com/{{ tools_pict_repo }}.git
     dest: /usr/local/src/pict
     version: main
   register: git_result

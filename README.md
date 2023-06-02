@@ -44,6 +44,10 @@ Tesseract OCRの言語ファイル
 
 インストールするtblsのバージョン
 
+### `glow_version`
+
+インストールするglowのバージョン
+
 ### `mecab_extra_cfg`
 
 mecabの設定

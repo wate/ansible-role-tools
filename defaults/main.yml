@@ -4,7 +4,7 @@
 ## --------------------------
 install_tools:
   ## https://direnv.net/
-  - direnv
+  # - direnv
   ## https://github.com/k1LoW/tbls
   - tbls
   ## https://github.com/axllent/mailpit
@@ -20,7 +20,7 @@ install_tools:
   ## https://github.com/microsoft/pict
   - pict
   ## https://www.mkdocs.org/
-  - mkdocs
+  # - mkdocs
   ## https://github.com/tesseract-ocr/tesseract
   # - tesseract-ocr
   ## PDF 向けユーティリティ
@@ -65,6 +65,11 @@ osv_scanner_version: latest
 ## インストールするtblsのバージョン
 ## --------------------------
 tbls_version: latest
+
+## --------------------------
+## インストールするglowのバージョン
+## --------------------------
+glow_version: latest
 
 ## --------------------------
 ## mecabの設定
