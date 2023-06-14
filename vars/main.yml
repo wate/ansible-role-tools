@@ -3,6 +3,8 @@ tools_dependency_packages: []
 tools_add_repository_dependency_packages: []
 tools_tesseract_ocr_apt_key_url: https://notesalexp.org/debian/alexp_key.asc
 tools_tesseract_ocr_apt_key_dest: /usr/share/keyrings/tesseract-ocr.gpg.asc
+tools_vlt_apt_key_url: https://apt.releases.hashicorp.com/gpg
+tools_vlt_apt_key_dest: /usr/share/keyrings/hashicorp-archive-keyring.gpg
 
 tools_tbls_repo: k1LoW/tbls
 tools_pict_repo: microsoft/pict

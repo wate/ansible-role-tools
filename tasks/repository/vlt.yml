@@ -1,0 +1,18 @@
+---
+- name: Add apt signing key
+  ansible.builtin.get_url:
+    url: "{{ tools_vlt_apt_key_url }}"
+    dest: "{{ tools_vlt_apt_key_dest }}"
+    mode: "0644"
+- name: Add hashicorp repository
+  ansible.builtin.apt_repository:
+    filename: hashicorp
+    repo: >
+      deb [signed-by={{ tools_vlt_apt_key_dest }}]
+      https://apt.releases.hashicorp.com
+      {{ ansible_facts.distribution_release }}
+      main
+    state: present
+- name: Update package cache
+  ansible.builtin.apt:
+    update_cache: true
