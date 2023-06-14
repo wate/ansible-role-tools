@@ -1,1 +1,26 @@
 ---
+install_tools:
+  ## https://direnv.net/
+  - direnv
+  ## https://github.com/k1LoW/tbls
+  - tbls
+  ## https://github.com/axllent/mailpit
+  - mailpit
+  ## https://github.com/terrastruct/d2
+  - d2
+  ## https://github.com/google/osv-scanner
+  - osv-scanner
+  ## https://github.com/charmbracelet/glow
+  - glow
+  ## https://wp-cli.org/ja/
+  - wp-cli
+  ## https://github.com/microsoft/pict
+  - pict
+  ## https://www.mkdocs.org/
+  - mkdocs
+  ## https://github.com/tesseract-ocr/tesseract
+  - tesseract-ocr
+  ## PDF 向けユーティリティ
+  - poppler-utils
+  ## https://taku910.github.io/mecab/
+  - mecab

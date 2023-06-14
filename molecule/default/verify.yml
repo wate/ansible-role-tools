@@ -17,10 +17,10 @@
         listen_tcp_posts: "{{ ansible_facts.tcp_listen | map(attribute='port') | unique | sort | list }}"
         listen_udp_posts: "{{ ansible_facts.udp_listen | map(attribute='port') | unique | sort | list }}"
     ## direnv
-    # - name: Assert direnv
-    #   ansible.builtin.assert:
-    #     that:
-    #       - ansible_facts.packages['direnv']
+    - name: Assert direnv
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['direnv']
     ## tbls
     - name: Check installd tbls
       ansible.builtin.stat:
@@ -94,3 +94,18 @@
       ansible.builtin.assert:
         that:
           - ansible_facts.packages['glow']
+    ## poppler-utils
+    - name: Assert poppler-utils
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['poppler-utils']
+    ## mkdocs
+    - name: Assert mkdocs
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['mkdocs']
+    ## mecab
+    - name: Assert mecab
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['mecab']
