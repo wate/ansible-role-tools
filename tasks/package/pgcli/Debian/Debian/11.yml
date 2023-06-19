@@ -1,0 +1,9 @@
+---
+- name: Install pipx
+  ansible.builtin.apt:
+    name: pipx
+    default_release: "{{ ansible_facts.distribution_release }}-backports"
+- name: Install pgcli
+  community.general.pipx:
+    name: pgcli
+  become: false

@@ -86,14 +86,51 @@
           - pict_result.stat.exists
           - pict_result.stat.executable
     ## glow
-    - name: Check installd glow
-      ansible.builtin.stat:
-        path: /usr/local/bin/glow
-      register: glow_result
     - name: Assert glow
       ansible.builtin.assert:
         that:
           - ansible_facts.packages['glow']
+    ## mycli
+    - name: Assert mycli
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['mycli']
+    ## pgcli
+    - name: Assert pgcli
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['pgcli']
+      when: ansible_facts.distribution_major_version is version('11', '>')
+    - name: Assert  package
+      when: ansible_facts.distribution_major_version is version('11', '<=')
+      block:
+        - name: Check pgcli
+          ansible.builtin.stat:
+            path: ~/.local/bin/pgcli
+          become: false
+          register: pgcli_result
+        - name: Assert pgcli
+          ansible.builtin.assert:
+            that:
+              - pgcli_result.stat.exists
+    ## litecli
+    - name: Assert litecli
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['litecli']
+      when: ansible_facts.distribution_major_version is version('11', '>')
+    - name: Assert  package
+      when: ansible_facts.distribution_major_version is version('11', '<=')
+      block:
+        - name: Check litecli
+          ansible.builtin.stat:
+            path: ~/.local/bin/litecli
+          become: false
+          register: litecli_result
+        - name: Assert litecli
+          ansible.builtin.assert:
+            that:
+              - litecli_result.stat.exists
     ## poppler-utils
     - name: Assert poppler-utils
       ansible.builtin.assert:

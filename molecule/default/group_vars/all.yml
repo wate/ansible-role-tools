@@ -12,6 +12,12 @@ install_tools:
   - osv-scanner
   ## https://github.com/charmbracelet/glow
   - glow
+  ## https://www.mycli.net/
+  - mycli
+  ## https://www.pgcli.com/
+  - pgcli
+  ## https://litecli.com/
+  - litecli
   ## https://wp-cli.org/ja/
   - wp-cli
   ## https://github.com/microsoft/pict

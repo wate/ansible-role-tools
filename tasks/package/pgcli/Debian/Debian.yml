@@ -1,0 +1,4 @@
+---
+- name: Install pgcli
+  ansible.builtin.apt:
+    name: pgcli
