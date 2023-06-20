@@ -65,26 +65,6 @@
         that:
           - osv_scanner_result.stat.exists
           - osv_scanner_result.stat.executable
-    ## wp-cli
-    - name: Check installd wp-cli
-      ansible.builtin.stat:
-        path: /usr/local/bin/wp
-      register: wp_result
-    - name: Assert wp-cli
-      ansible.builtin.assert:
-        that:
-          - wp_result.stat.exists
-          - wp_result.stat.executable
-    ## pict
-    - name: Check installd wp-cli
-      ansible.builtin.stat:
-        path: /usr/local/bin/pict
-      register: pict_result
-    - name: Assert pict
-      ansible.builtin.assert:
-        that:
-          - pict_result.stat.exists
-          - pict_result.stat.executable
     ## glow
     - name: Assert glow
       ansible.builtin.assert:
@@ -131,16 +111,69 @@
           ansible.builtin.assert:
             that:
               - litecli_result.stat.exists
-    ## poppler-utils
-    - name: Assert poppler-utils
+    ## pre-commit
+    - name: Assert litecli
       ansible.builtin.assert:
         that:
-          - ansible_facts.packages['poppler-utils']
+          - ansible_facts.packages['pre-commit']
+      when: ansible_facts.distribution_major_version is version('11', '>')
+    - name: Assert  package
+      when: ansible_facts.distribution_major_version is version('11', '<=')
+      block:
+        - name: Check litecli
+          ansible.builtin.stat:
+            path: ~/.local/bin/pre-commit
+          become: false
+          register: pre_commit_result
+        - name: Assert pre-commit
+          ansible.builtin.assert:
+            that:
+              - pre_commit_result.stat.exists
+    ## graphviz
+    - name: Assert graphviz
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['graphviz']
+    ## plantuml
+    # - name: Assert plantuml
+    #   ansible.builtin.assert:
+    #     that:
+    #       - ansible_facts.packages['plantuml']
+    ## wp-cli
+    - name: Check installd wp-cli
+      ansible.builtin.stat:
+        path: /usr/local/bin/wp
+      register: wp_result
+    - name: Assert wp-cli
+      ansible.builtin.assert:
+        that:
+          - wp_result.stat.exists
+          - wp_result.stat.executable
+    ## pict
+    - name: Check installd wp-cli
+      ansible.builtin.stat:
+        path: /usr/local/bin/pict
+      register: pict_result
+    - name: Assert pict
+      ansible.builtin.assert:
+        that:
+          - pict_result.stat.exists
+          - pict_result.stat.executable
     ## mkdocs
     - name: Assert mkdocs
       ansible.builtin.assert:
         that:
           - ansible_facts.packages['mkdocs']
+    ## tesseract-ocr
+    - name: Assert tesseract-ocr
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['tesseract-ocr']
+    ## poppler-utils
+    - name: Assert poppler-utils
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['poppler-utils']
     ## mecab
     - name: Assert mecab
       ansible.builtin.assert:

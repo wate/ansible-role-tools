@@ -1,0 +1,4 @@
+---
+- name: Install Plantuml
+  ansible.builtin.apt:
+    name: plantuml

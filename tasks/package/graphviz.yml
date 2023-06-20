@@ -1,0 +1,4 @@
+---
+- name: Install graphviz
+  ansible.builtin.apt:
+    name: graphviz
