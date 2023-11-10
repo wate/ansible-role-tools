@@ -2,6 +2,8 @@
 install_tools:
   ## https://direnv.net/
   - direnv
+  ## https://github.com/eza-community/eza
+  - eza
   ## https://github.com/k1LoW/tbls
   - tbls
   ## https://github.com/axllent/mailpit

@@ -25,6 +25,7 @@ tools_add_repository_dependency_packages:
   - ca-certificates
   - curl
   - gnupg
+  - gpg
   - software-properties-common
 
 mecab_packages:
