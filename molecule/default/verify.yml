@@ -4,6 +4,7 @@
   gather_facts: true
   become: true
   tasks:
+    ## テストの前処理
     - name: Gather package facts
       ansible.builtin.package_facts:
         manager: auto
@@ -22,49 +23,84 @@
         that:
           - ansible_facts.packages['direnv']
     ## tbls
-    - name: Check installd tbls
-      ansible.builtin.stat:
-        path: /usr/local/bin/tbls
-      register: tbls_result
-    - name: Assert tbls
-      ansible.builtin.assert:
-        that:
-          - ansible_facts.packages['tbls']
+    - name: Test tbls
+      block:
+        - name: Check installd tbls
+          ansible.builtin.stat:
+            path: /usr/local/bin/tbls
+          register: tbls_result
+        - name: Assert tbls
+          ansible.builtin.assert:
+            that:
+              - ansible_facts.packages['tbls']
     ## mailpit
-    - name: Check installd mailpit
-      ansible.builtin.stat:
-        path: /usr/local/bin/mailpit
-      register: mailpit_result
-    - name: Assert mailpit
-      ansible.builtin.assert:
-        that:
-          - mailpit_result.stat.exists
-          - mailpit_result.stat.executable
-          - ansible_facts.services['mailpit.service'] is defined
-          - ansible_facts.services['mailpit.service']['state'] == 'running'
-          - ansible_facts.services['mailpit.service']['status'] == 'enabled'
-          - 1025 in listen_tcp_posts
-          - 8025 in listen_tcp_posts
-    ## d2
-    - name: Check installd d2
-      ansible.builtin.stat:
-        path: /usr/local/bin/d2
-      register: d2_result
-    - name: Assert d2
-      ansible.builtin.assert:
-        that:
-          - d2_result.stat.exists
-          - d2_result.stat.executable
+    - name: Test mailpit
+      block:
+        - name: Check installd mailpit
+          ansible.builtin.stat:
+            path: /usr/local/bin/mailpit
+          register: mailpit_result
+        - name: Assert mailpit
+          ansible.builtin.assert:
+            that:
+              - mailpit_result.stat.exists
+              - mailpit_result.stat.executable
+              - ansible_facts.services['mailpit.service'] is defined
+              - ansible_facts.services['mailpit.service']['state'] == 'running'
+              - ansible_facts.services['mailpit.service']['status'] == 'enabled'
+              - 1025 in listen_tcp_posts
+              - 8025 in listen_tcp_posts
+        - name: Send test mail
+          community.general.mail:
+            subject: test mail subject
+            to: test to <to@example.com>
+            from: test from <from@example.com>
+            body: test mail body
+            port: 1025
+        - name: Test API mailpit infomation request
+          ansible.builtin.uri:
+            url: http://localhost:8025/api/v1/info
+          register: mailpit_api_result
+        - name: Assert API
+          ansible.builtin.assert:
+            that: mailpit_api_result.status == 200
+        - name: Test API List message request
+          ansible.builtin.uri:
+            url: http://localhost:8025/api/v1/messages
+          register: mailpit_list_message_api_result
+        - name: Assert API
+          ansible.builtin.assert:
+            that:
+              - mailpit_list_message_api_result.status == 200
+              - mailpit_list_message_api_result.json.messages[0].Subject == "test mail subject"
+              - mailpit_list_message_api_result.json.messages[0].From.Address == "from@example.com"
+              - mailpit_list_message_api_result.json.messages[0].From.Name == "test from"
+              - mailpit_list_message_api_result.json.messages[0].To[0].Address == "to@example.com"
+              - mailpit_list_message_api_result.json.messages[0].To[0].Name == "test to"
+    ## D2
+    - name: Test D2
+      block:
+        - name: Check installd d2
+          ansible.builtin.stat:
+            path: /usr/local/bin/d2
+          register: d2_result
+        - name: Assert d2
+          ansible.builtin.assert:
+            that:
+              - d2_result.stat.exists
+              - d2_result.stat.executable
     ## osv-scanner
-    - name: Check installd osv-scanner
-      ansible.builtin.stat:
-        path: /usr/local/bin/osv-scanner
-      register: osv_scanner_result
-    - name: Assert mkdocs
-      ansible.builtin.assert:
-        that:
-          - osv_scanner_result.stat.exists
-          - osv_scanner_result.stat.executable
+    - name: Test osv-scanner
+      block:
+        - name: Check installd osv-scanner
+          ansible.builtin.stat:
+            path: /usr/local/bin/osv-scanner
+          register: osv_scanner_result
+        - name: Assert mkdocs
+          ansible.builtin.assert:
+            that:
+              - osv_scanner_result.stat.exists
+              - osv_scanner_result.stat.executable
     ## glow
     - name: Assert glow
       ansible.builtin.assert:

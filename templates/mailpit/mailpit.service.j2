@@ -1,12 +1,17 @@
 [Unit]
-Description=mailpit Service
+Description=Mailpit server
 After=network.service
 
 [Service]
 Type=simple
 ExecStart=/usr/local/bin/mailpit --smtp {{ mailpit_cfg.smtp_bind_addr }} --listen {{ mailpit_cfg.ui_bind_addr }}
 StandardOutput=journal
-Restart=on-failure
+Restart=always
+# Restart service after 10 seconds if node service crashes
+RestartSec=10
+SyslogIdentifier=mailpit
+User=mailpit
+Group=mailpit
 
 [Install]
 WantedBy=multi-user.target

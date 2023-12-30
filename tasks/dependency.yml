@@ -14,3 +14,8 @@
   ansible.builtin.include_tasks:
     file: "{{ include_task_file }}"
   when: include_task_file | length > 0
+- name: Execute tool dependency task
+  ansible.builtin.include_tasks:
+    file: "{{ item }}"
+  when: install_tools is undefined or (item | basename)[0:-4] in install_tools
+  loop: "{{ lookup('fileglob', 'tasks/dependency/*.yml', wantlist=True) }}"
