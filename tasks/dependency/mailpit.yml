@@ -1,0 +1,9 @@
+---
+- name: Add group
+  ansible.builtin.group:
+    name: group
+    system: true
+- name: user
+  ansible.builtin.user:
+    name: mailpit
+    system: true
