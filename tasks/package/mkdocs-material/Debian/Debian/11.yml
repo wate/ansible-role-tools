@@ -1,0 +1,10 @@
+---
+- name: Install pipx
+  ansible.builtin.apt:
+    name: pipx
+    default_release: "{{ ansible_facts.distribution_release }}-backports"
+- name: Install mkdocs-material
+  community.general.pipx:
+    name: mkdocs-material
+    install_deps: true
+  become: false

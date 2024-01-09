@@ -11,8 +11,9 @@ tools_eza_apt_key_dest: /usr/share/keyrings/gierens.gpg.asc
 
 ## repos
 tools_tbls_repo: k1LoW/tbls
-tools_pict_repo: microsoft/pict
 tools_osv_scanner_repo: google/osv-scanner
 tools_mailpit_repo: axllent/mailpit
+tools_delta_repo: dandavison/delta
+tools_pict_repo: microsoft/pict
 tools_d2_repo: terrastruct/d2
 tools_glow_repo: charmbracelet/glow

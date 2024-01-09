@@ -5,34 +5,40 @@
   become: true
   tasks:
     ## テストの前処理
-    - name: Gather package facts
-      ansible.builtin.package_facts:
-        manager: auto
-    - name: Gather service facts
-      ansible.builtin.service_facts:
-    - name: Gather facts on listening ports
-      community.general.listen_ports_facts:
-        command: ss
-    - name: Set assert variables
-      ansible.builtin.set_fact:
-        listen_tcp_posts: "{{ ansible_facts.tcp_listen | map(attribute='port') | unique | sort | list }}"
-        listen_udp_posts: "{{ ansible_facts.udp_listen | map(attribute='port') | unique | sort | list }}"
+    - name: Gather facts
+      block:
+        - name: Gather package facts
+          ansible.builtin.package_facts:
+            manager: auto
+        - name: Gather service facts
+          ansible.builtin.service_facts:
+        - name: Gather facts on listening ports
+          community.general.listen_ports_facts:
+            command: ss
+        - name: Set assert variables
+          ansible.builtin.set_fact:
+            listen_tcp_posts: "{{ ansible_facts.tcp_listen | map(attribute='port') | unique | sort | list }}"
+            listen_udp_posts: "{{ ansible_facts.udp_listen | map(attribute='port') | unique | sort | list }}"
     ## direnv
     - name: Assert direnv
       ansible.builtin.assert:
         that:
           - ansible_facts.packages['direnv']
+    ## bat
+    - name: Assert bat
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['bat']
+    ## fd
+    - name: Assert fd
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['fd-find']
     ## tbls
-    - name: Test tbls
-      block:
-        - name: Check installd tbls
-          ansible.builtin.stat:
-            path: /usr/local/bin/tbls
-          register: tbls_result
-        - name: Assert tbls
-          ansible.builtin.assert:
-            that:
-              - ansible_facts.packages['tbls']
+    - name: Assert tbls
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['tbls']
     ## mailpit
     - name: Test mailpit
       block:
@@ -77,6 +83,12 @@
               - mailpit_list_message_api_result.json.messages[0].From.Name == "test from"
               - mailpit_list_message_api_result.json.messages[0].To[0].Address == "to@example.com"
               - mailpit_list_message_api_result.json.messages[0].To[0].Name == "test to"
+    ## delta
+    - name: Assert delta
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['git-delta']
+      when: ansible_facts.distribution_major_version is version('11', '>')
     ## D2
     - name: Test D2
       block:
@@ -112,41 +124,45 @@
         that:
           - ansible_facts.packages['mycli']
     ## pgcli
-    - name: Assert pgcli
-      ansible.builtin.assert:
-        that:
-          - ansible_facts.packages['pgcli']
-      when: ansible_facts.distribution_major_version is version('11', '>')
-    - name: Assert  package
-      when: ansible_facts.distribution_major_version is version('11', '<=')
+    - name: Test pgcli
       block:
-        - name: Check pgcli
-          ansible.builtin.stat:
-            path: ~/.local/bin/pgcli
-          become: false
-          register: pgcli_result
         - name: Assert pgcli
           ansible.builtin.assert:
             that:
-              - pgcli_result.stat.exists
+              - ansible_facts.packages['pgcli']
+          when: ansible_facts.distribution_major_version is version('11', '>')
+        - name: Assert  package
+          when: ansible_facts.distribution_major_version is version('11', '<=')
+          block:
+            - name: Check pgcli
+              ansible.builtin.stat:
+                path: ~/.local/bin/pgcli
+              become: false
+              register: pgcli_result
+            - name: Assert pgcli
+              ansible.builtin.assert:
+                that:
+                  - pgcli_result.stat.exists
     ## litecli
-    - name: Assert litecli
-      ansible.builtin.assert:
-        that:
-          - ansible_facts.packages['litecli']
-      when: ansible_facts.distribution_major_version is version('11', '>')
-    - name: Assert  package
-      when: ansible_facts.distribution_major_version is version('11', '<=')
+    - name: Test litecli
       block:
-        - name: Check litecli
-          ansible.builtin.stat:
-            path: ~/.local/bin/litecli
-          become: false
-          register: litecli_result
         - name: Assert litecli
           ansible.builtin.assert:
             that:
-              - litecli_result.stat.exists
+              - ansible_facts.packages['litecli']
+          when: ansible_facts.distribution_major_version is version('11', '>')
+        - name: Assert  package
+          when: ansible_facts.distribution_major_version is version('11', '<=')
+          block:
+            - name: Check litecli
+              ansible.builtin.stat:
+                path: ~/.local/bin/litecli
+              become: false
+              register: litecli_result
+            - name: Assert litecli
+              ansible.builtin.assert:
+                that:
+                  - litecli_result.stat.exists
     ## pre-commit
     - name: Assert litecli
       ansible.builtin.assert:
@@ -170,11 +186,6 @@
       ansible.builtin.assert:
         that:
           - ansible_facts.packages['graphviz']
-    ## plantuml
-    # - name: Assert plantuml
-    #   ansible.builtin.assert:
-    #     that:
-    #       - ansible_facts.packages['plantuml']
     ## wp-cli
     - name: Check installd wp-cli
       ansible.builtin.stat:
@@ -195,11 +206,26 @@
         that:
           - pict_result.stat.exists
           - pict_result.stat.executable
-    ## mkdocs
-    - name: Assert mkdocs
-      ansible.builtin.assert:
-        that:
-          - ansible_facts.packages['mkdocs']
+    ## mkdocs-material
+    - name: Test mkdocs-material
+      block:
+        - name: Assert mkdocs-material
+          ansible.builtin.assert:
+            that:
+              - ansible_facts.packages['mkdocs-material']
+          when: ansible_facts.distribution_major_version is version('11', '>')
+        - name: Assert package
+          when: ansible_facts.distribution_major_version is version('11', '<=')
+          block:
+            - name: Check mkdocs
+              ansible.builtin.stat:
+                path: ~/.local/bin/mkdocs
+              become: false
+              register: mkdocs_result
+            - name: Assert mkdocs
+              ansible.builtin.assert:
+                that:
+                  - mkdocs_result.stat.exists
     ## tesseract-ocr
     - name: Assert tesseract-ocr
       ansible.builtin.assert:

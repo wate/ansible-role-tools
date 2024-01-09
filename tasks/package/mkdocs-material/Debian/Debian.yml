@@ -1,0 +1,4 @@
+---
+- name: Install mkdocs-material
+  ansible.builtin.apt:
+    name: mkdocs-material
