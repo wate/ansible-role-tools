@@ -44,6 +44,10 @@ Tesseract OCRの言語ファイル
 
 インストールするtblsのバージョン
 
+### `delta_version`
+
+インストールするdeltaのバージョン
+
 ### `glow_version`
 
 インストールするglowのバージョン
