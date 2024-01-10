@@ -1,28 +1,32 @@
 ---
-- name: Install delta
-  when: ansible_facts.distribution_major_version is version('11', '>')
+- name: Set Install version variable
+  when: delta_version == 'latest'
   block:
-    - name: Set Install version variable
-      when: delta_version == 'latest'
-      block:
-        - name: Get latest release
-          ansible.builtin.uri:
-            url: https://api.github.com/repos/{{ tools_delta_repo }}/releases/latest
-            headers:
-              Accept: application/vnd.github+json
-          register: latest_releases
-        - name: Set version variable
-          ansible.builtin.set_fact:
-            delta_version: "{{ latest_releases.json.tag_name }}"
-    - name: Set pckage file variable
+    - name: Get latest release
+      ansible.builtin.uri:
+        url: https://api.github.com/repos/{{ tools_delta_repo }}/releases/latest
+        headers:
+          Accept: application/vnd.github+json
+      register: latest_releases
+    - name: Set version variable
       ansible.builtin.set_fact:
-        package_file: git-delta_{{ delta_version }}_{{ architecture_files[ansible_facts['architecture']] }}.deb
-      vars:
-        architecture_files:
-          x86_64: amd64
-    - name: Debug
-      ansible.builtin.debug:
-        var: package_file
-    - name: Install delta
-      ansible.builtin.apt:
-        deb: https://github.com/{{ tools_delta_repo }}/releases/download/{{ delta_version }}/{{ package_file }}
+        delta_version: "{{ latest_releases.json.tag_name }}"
+- name: Find pgcli packages install task file
+  ansible.builtin.set_fact:
+    delta_package_task_file: "{{ lookup('first_found', params, errors='ignore') }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_facts.os_family }}/{{ ansible_facts.distribution }}/{{ ansible_facts.distribution_major_version }}.yml"
+        - "{{ ansible_facts.os_family }}/{{ ansible_facts.distribution }}.yml"
+        - "{{ ansible_facts.os_family }}.yml"
+      paths:
+        - tasks/package/delta
+- name: Execute delta  task
+  ansible.builtin.include_tasks:
+    file: "{{ delta_package_task_file }}"
+  when: delta_package_task_file | length > 0
+- name: Install delta
+  ansible.builtin.apt:
+    deb: https://github.com/{{ tools_delta_repo }}/releases/download/{{ delta_version }}/{{ delta_package_file }}
+  when: delta_package_file is defined

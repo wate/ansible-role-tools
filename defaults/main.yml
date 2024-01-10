@@ -16,7 +16,6 @@ install_tools:
   ## https://github.com/axllent/mailpit
   - mailpit
   ## https://github.com/dandavison/delta
-  ## (※libc6のバージョン2.34以上が必要となるためbookworm以降のみ対応)
   - delta
   ## https://github.com/terrastruct/d2
   - d2
@@ -42,6 +41,8 @@ install_tools:
   - pict
   # https://squidfunk.github.io/mkdocs-material/
   - mkdocs-material
+  ## https://plantuml.com/ja/
+  # - plantuml
   ## https://github.com/tesseract-ocr/tesseract
   # - tesseract-ocr
   ## PDF 向けユーティリティ

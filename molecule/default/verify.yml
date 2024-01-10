@@ -84,11 +84,18 @@
               - mailpit_list_message_api_result.json.messages[0].To[0].Address == "to@example.com"
               - mailpit_list_message_api_result.json.messages[0].To[0].Name == "test to"
     ## delta
-    - name: Assert delta
-      ansible.builtin.assert:
-        that:
-          - ansible_facts.packages['git-delta']
-      when: ansible_facts.distribution_major_version is version('11', '>')
+    - name: Test delta
+      block:
+        - name: Assert delta
+          ansible.builtin.assert:
+            that:
+              - ansible_facts.packages['git-delta-musl']
+          when: ansible_facts.distribution_major_version is version('11', '<=')
+        - name: Assert delta
+          ansible.builtin.assert:
+            that:
+              - ansible_facts.packages['git-delta']
+          when: ansible_facts.distribution_major_version is version('11', '>')
     ## D2
     - name: Test D2
       block:
@@ -226,6 +233,11 @@
               ansible.builtin.assert:
                 that:
                   - mkdocs_result.stat.exists
+    ## plantuml
+    - name: Assert Plantuml
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['plantuml']
     ## tesseract-ocr
     - name: Assert tesseract-ocr
       ansible.builtin.assert:
