@@ -1,7 +1,0 @@
----
-- name: Create/update mecab setting
-  ansible.builtin.template:
-    src: mailpit/environment_file.j2
-    dest: /etc/default/mailpit
-    mode: "0644"
-  notify: restart mailpit

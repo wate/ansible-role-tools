@@ -13,8 +13,6 @@ install_tools:
   - bat
   ## https://github.com/k1LoW/tbls
   - tbls
-  ## https://github.com/axllent/mailpit
-  - mailpit
   ## https://github.com/dandavison/delta
   - delta
   ## https://github.com/terrastruct/d2
@@ -33,8 +31,6 @@ install_tools:
   - pre-commit
   ## https://graphviz.org/
   - graphviz
-  ## https://plantuml.com/ja/
-  # - plantuml
   ## https://wp-cli.org/ja/
   - wp-cli
   ## https://github.com/microsoft/pict
@@ -49,24 +45,6 @@ install_tools:
   # - poppler-utils
   ## https://taku910.github.io/mecab/
   # - mecab
-
-## --------------------------
-## インストールするmailpitのバージョン
-## --------------------------
-mailpit_version: latest
-
-## --------------------------
-## mailpitのポート設定
-## --------------------------
-mailpit_cfg:
-  smtp_bind_addr: "0.0.0.0:1025"
-  ui_bind_addr: "0.0.0.0:8025"
-
-## --------------------------
-## mailpitのその他の環境変数
-## --------------------------
-mailpit_envs: {}
-#   MP_ENABLE_SPAMASSASSIN: "127.0.0.1:783"
 
 ## --------------------------
 ## Tesseract OCRの言語ファイル
