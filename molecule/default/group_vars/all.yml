@@ -44,3 +44,7 @@ install_tools:
   - poppler-utils
   ## https://taku910.github.io/mecab/
   - mecab
+
+mailpit_envs:
+  MP_WEBHOOK_URL: http://example.com/
+  MP_SMTP_AUTH: user1:user1_password user2:user2_password

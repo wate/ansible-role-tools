@@ -45,12 +45,22 @@
         - name: Check installd mailpit
           ansible.builtin.stat:
             path: /usr/local/bin/mailpit
-          register: mailpit_result
+          register: mailpit_bin_result
+        - name: Check mailpit environment file
+          ansible.builtin.stat:
+            path: /etc/default/mailpit
+          register: mailpit_env_file_result
+        - name: Check mailpit systemd unit file
+          ansible.builtin.stat:
+            path: /usr/lib/systemd/system/mailpit.service
+          register: mailpit_systemd_unit_file_result
         - name: Assert mailpit
           ansible.builtin.assert:
             that:
-              - mailpit_result.stat.exists
-              - mailpit_result.stat.executable
+              - mailpit_bin_result.stat.exists
+              - mailpit_bin_result.stat.executable
+              - mailpit_env_file_result.stat.exists
+              - mailpit_systemd_unit_file_result.stat.exists
               - ansible_facts.services['mailpit.service'] is defined
               - ansible_facts.services['mailpit.service']['state'] == 'running'
               - ansible_facts.services['mailpit.service']['status'] == 'enabled'
