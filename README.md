@@ -20,18 +20,6 @@ Role Variables
 
 インストールするツール
 
-### `mailpit_version`
-
-インストールするmailpitのバージョン
-
-### `mailpit_cfg`
-
-mailpitのポート設定
-
-### `mailpit_envs`
-
-mailpitのその他の環境変数
-
 ### `tesseract_ocr_langages`
 
 Tesseract OCRの言語ファイル
