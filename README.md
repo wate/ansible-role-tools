@@ -26,7 +26,11 @@ Role Variables
 
 ### `mailpit_cfg`
 
-mailpitの設定
+mailpitのポート設定
+
+### `mailpit_envs`
+
+mailpitのその他の環境変数
 
 ### `tesseract_ocr_langages`
 
