@@ -13,6 +13,8 @@ install_tools:
   - bat
   ## https://github.com/k1LoW/tbls
   - tbls
+  ## https://github.com/k1LoW/runn
+  - runn
   ## https://github.com/dandavison/delta
   - delta
   ## https://github.com/terrastruct/d2
@@ -71,6 +73,11 @@ osv_scanner_version: latest
 ## インストールするtblsのバージョン
 ## --------------------------
 tbls_version: latest
+
+## --------------------------
+## インストールするrunnのバージョン
+## --------------------------
+runn_version: latest
 
 ## --------------------------
 ## インストールするdeltaのバージョン

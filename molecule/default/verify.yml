@@ -39,6 +39,11 @@
       ansible.builtin.assert:
         that:
           - ansible_facts.packages['tbls']
+    ## runn
+    - name: Assert runn
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['runn']
     ## delta
     - name: Test delta
       block:
@@ -71,7 +76,7 @@
           ansible.builtin.stat:
             path: /usr/local/bin/osv-scanner
           register: osv_scanner_result
-        - name: Assert mkdocs
+        - name: Assert osv-scanner
           ansible.builtin.assert:
             that:
               - osv_scanner_result.stat.exists
@@ -94,7 +99,7 @@
             that:
               - ansible_facts.packages['pgcli']
           when: ansible_facts.distribution_major_version is version('11', '>')
-        - name: Assert  package
+        - name: Assert package
           when: ansible_facts.distribution_major_version is version('11', '<=')
           block:
             - name: Check pgcli
@@ -114,7 +119,7 @@
             that:
               - ansible_facts.packages['litecli']
           when: ansible_facts.distribution_major_version is version('11', '>')
-        - name: Assert  package
+        - name: Assert package
           when: ansible_facts.distribution_major_version is version('11', '<=')
           block:
             - name: Check litecli
@@ -127,23 +132,25 @@
                 that:
                   - litecli_result.stat.exists
     ## pre-commit
-    - name: Assert litecli
-      ansible.builtin.assert:
-        that:
-          - ansible_facts.packages['pre-commit']
-      when: ansible_facts.distribution_major_version is version('11', '>')
-    - name: Assert  package
-      when: ansible_facts.distribution_major_version is version('11', '<=')
+    - name: Test pre-commit
       block:
-        - name: Check litecli
-          ansible.builtin.stat:
-            path: ~/.local/bin/pre-commit
-          become: false
-          register: pre_commit_result
         - name: Assert pre-commit
           ansible.builtin.assert:
             that:
-              - pre_commit_result.stat.exists
+              - ansible_facts.packages['pre-commit']
+          when: ansible_facts.distribution_major_version is version('11', '>')
+        - name: Assert package
+          when: ansible_facts.distribution_major_version is version('11', '<=')
+          block:
+            - name: Check litecli
+              ansible.builtin.stat:
+                path: ~/.local/bin/pre-commit
+              become: false
+              register: pre_commit_result
+            - name: Assert pre-commit
+              ansible.builtin.assert:
+                that:
+                  - pre_commit_result.stat.exists
     ## graphviz
     - name: Assert graphviz
       ansible.builtin.assert:
@@ -185,7 +192,7 @@
                 path: ~/.local/bin/mkdocs
               become: false
               register: mkdocs_result
-            - name: Assert mkdocs
+            - name: Assert mkdocs-material
               ansible.builtin.assert:
                 that:
                   - mkdocs_result.stat.exists

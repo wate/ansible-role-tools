@@ -19,9 +19,9 @@ platforms:
     privileged: true
     pre_build_image: true
     # driver:vagrant
-    box: wate/debian-12
-    memory: 1024
-    cpus: 1
+    # box: wate/debian-12
+    # memory: 1024
+    # cpus: 1
   - name: bullseye
     groups:
       - family_debian
@@ -36,9 +36,9 @@ platforms:
     privileged: true
     pre_build_image: true
     # driver:vagrant
-    box: wate/debian-11
-    memory: 1024
-    cpus: 1
+    # box: wate/debian-11
+    # memory: 1024
+    # cpus: 1
 provisioner:
   name: ansible
   options:

@@ -10,6 +10,8 @@ install_tools:
   - bat
   ## https://github.com/k1LoW/tbls
   - tbls
+  ## https://github.com/k1LoW/runn
+  - runn
   ## https://github.com/dandavison/delta
   - delta
   ## https://github.com/terrastruct/d2
