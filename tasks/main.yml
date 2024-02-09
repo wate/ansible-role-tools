@@ -33,8 +33,3 @@
     file: setting.yml
   tags:
     - role_tool_setting
-- name: Import service task
-  ansible.builtin.import_tasks:
-    file: service.yml
-  tags:
-    - role_tool_service
