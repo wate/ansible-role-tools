@@ -42,5 +42,7 @@ install_tools:
   - tesseract-ocr
   ## PDF 向けユーティリティ
   - poppler-utils
+  ## https://github.com/jgm/pandoc
+  - pandoc
   ## https://taku910.github.io/mecab/
   - mecab

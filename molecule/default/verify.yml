@@ -211,6 +211,11 @@
       ansible.builtin.assert:
         that:
           - ansible_facts.packages['poppler-utils']
+    ## pandoc
+    - name: Assert pandoc
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['pandoc']
     ## mecab
     - name: Assert mecab
       ansible.builtin.assert:

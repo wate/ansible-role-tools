@@ -18,3 +18,4 @@ tools_delta_repo: dandavison/delta
 tools_pict_repo: microsoft/pict
 tools_d2_repo: terrastruct/d2
 tools_glow_repo: charmbracelet/glow
+tools_pandoc_repo: jgm/pandoc

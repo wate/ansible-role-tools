@@ -45,6 +45,8 @@ install_tools:
   # - tesseract-ocr
   ## PDF 向けユーティリティ
   # - poppler-utils
+  ## https://github.com/jgm/pandoc
+  # - pandoc
   ## https://taku910.github.io/mecab/
   # - mecab
 
@@ -88,6 +90,11 @@ delta_version: latest
 ## インストールするglowのバージョン
 ## --------------------------
 glow_version: latest
+
+## --------------------------
+## インストールするpandocのバージョン
+## --------------------------
+pandoc_version: latest
 
 ## --------------------------
 ## mecabの設定
