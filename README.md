@@ -48,6 +48,10 @@ Tesseract OCRの言語ファイル
 
 インストールするglowのバージョン
 
+### `pandoc_version`
+
+インストールするpandocのバージョン
+
 ### `mecab_extra_cfg`
 
 mecabの設定
