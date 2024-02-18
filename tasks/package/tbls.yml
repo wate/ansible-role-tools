@@ -11,7 +11,7 @@
     - name: Set version variable
       ansible.builtin.set_fact:
         tbls_version: "{{ latest_releases.json.tag_name }}"
-- name: Set pckage file variable
+- name: Set package file variable
   ansible.builtin.set_fact:
     package_file: tbls_{{ tbls_version[1:] }}-1_{{ architecture_files[ansible_facts['architecture']] }}.deb
   vars:

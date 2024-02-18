@@ -11,7 +11,7 @@
     - name: Set version variable
       ansible.builtin.set_fact:
         delta_version: "{{ latest_releases.json.tag_name }}"
-- name: Find pgcli packages install task file
+- name: Find delta packages install task file
   ansible.builtin.set_fact:
     delta_package_task_file: "{{ lookup('first_found', params, errors='ignore') }}"
   vars:
@@ -22,7 +22,7 @@
         - "{{ ansible_facts.os_family }}.yml"
       paths:
         - tasks/package/delta
-- name: Execute delta  task
+- name: Execute delta task
   ansible.builtin.include_tasks:
     file: "{{ delta_package_task_file }}"
   when: delta_package_task_file | length > 0
