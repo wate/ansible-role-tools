@@ -37,8 +37,6 @@ install_tools:
   - wp-cli
   ## https://github.com/microsoft/pict
   - pict
-  # https://squidfunk.github.io/mkdocs-material/
-  - mkdocs-material
   ## https://plantuml.com/ja/
   # - plantuml
   ## https://github.com/tesseract-ocr/tesseract
@@ -49,17 +47,8 @@ install_tools:
   # - pandoc
   ## https://taku910.github.io/mecab/
   # - mecab
-
-## --------------------------
-## Tesseract OCRの言語ファイル
-## --------------------------
-tesseract_ocr_langages:
-  # tesseract-ocr language files for English
-  - tesseract-ocr-eng
-  # tesseract-ocr language files for Japanese
-  - tesseract-ocr-jpn
-  # Tesseract OCR with all language and script packages
-  # - tesseract-ocr-all
+  # https://squidfunk.github.io/mkdocs-material/
+  # - mkdocs-material
 
 ## --------------------------
 ## インストールするd2のバージョン
@@ -95,6 +84,27 @@ glow_version: latest
 ## インストールするpandocのバージョン
 ## --------------------------
 pandoc_version: latest
+
+## --------------------------
+## Tesseract OCRの言語ファイル
+## --------------------------
+tesseract_ocr_langages:
+  # tesseract-ocr language files for English
+  - tesseract-ocr-eng
+  # tesseract-ocr language files for Japanese
+  - tesseract-ocr-jpn
+  # Tesseract OCR with all language and script packages
+  # - tesseract-ocr-all
+
+## --------------------------
+## インストールするmecab関連のパッケージ
+## --------------------------
+mecab_packages:
+  - mecab
+  - mecab-ipadic
+  - mecab-utils
+  - libmecab2
+  - libmecab-dev
 
 ## --------------------------
 ## mecabの設定

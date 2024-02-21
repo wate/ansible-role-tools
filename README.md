@@ -20,10 +20,6 @@ Role Variables
 
 インストールするツール
 
-### `tesseract_ocr_langages`
-
-Tesseract OCRの言語ファイル
-
 ### `d2_version`
 
 インストールするd2のバージョン
@@ -51,6 +47,14 @@ Tesseract OCRの言語ファイル
 ### `pandoc_version`
 
 インストールするpandocのバージョン
+
+### `tesseract_ocr_langages`
+
+Tesseract OCRの言語ファイル
+
+### `mecab_packages`
+
+インストールするmecab関連のパッケージ
 
 ### `mecab_extra_cfg`
 
