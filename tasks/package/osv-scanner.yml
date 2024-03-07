@@ -20,7 +20,7 @@
       aarch64: arm64
 - name: Set download file name
   ansible.builtin.set_fact:
-    osv_scanner_download_file: osv-scanner_{{ osv_scanner_version[1:] }}_{{ ansible_facts['system'] | lower }}_{{ osv_scanner_architecture_type }}
+    osv_scanner_download_file: osv-scanner_{{ ansible_facts['system'] | lower }}_{{ osv_scanner_architecture_type }}
 - name: Install osv-scanner
   ansible.builtin.get_url:
     url: https://github.com/{{ tools_osv_scanner_repo }}/releases/download/{{ osv_scanner_version }}/{{ osv_scanner_download_file }}

@@ -142,7 +142,7 @@
         - name: Assert package
           when: ansible_facts.distribution_major_version is version('11', '<=')
           block:
-            - name: Check litecli
+            - name: Check pre-commit
               ansible.builtin.stat:
                 path: ~/.local/bin/pre-commit
               become: false
@@ -167,7 +167,7 @@
           - wp_result.stat.exists
           - wp_result.stat.executable
     ## pict
-    - name: Check installd wp-cli
+    - name: Check installd pict
       ansible.builtin.stat:
         path: /usr/local/bin/pict
       register: pict_result
@@ -221,3 +221,67 @@
       ansible.builtin.assert:
         that:
           - ansible_facts.packages['mecab']
+    ## fontforge
+    - name: Assert fontforge
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['fontforge']
+    ## fonttools
+    - name: Test fonttools
+      block:
+        - name: Assert fonttools package
+          ansible.builtin.assert:
+            that:
+              - ansible_facts.packages['fonttools']
+        - name: Check installd fonttools
+          ansible.builtin.stat:
+            path: /usr/bin/fonttools
+          register: fonttools_result
+        - name: Assert fonttools command
+          ansible.builtin.assert:
+            that:
+              - fonttools_result.stat.exists
+              - fonttools_result.stat.executable
+        - name: Check installd pyftsubset
+          ansible.builtin.stat:
+            path: /usr/bin/pyftsubset
+          register: pyftsubset_result
+        - name: Assert pyftsubset command
+          ansible.builtin.assert:
+            that:
+              - pyftsubset_result.stat.exists
+              - pyftsubset_result.stat.executable
+        - name: Check installd pyftmerge
+          ansible.builtin.stat:
+            path: /usr/bin/pyftmerge
+          register: pyftmerge_result
+        - name: Assert pyftmerge command
+          ansible.builtin.assert:
+            that:
+              - pyftmerge_result.stat.exists
+              - pyftmerge_result.stat.executable
+    ## woff-tools
+    - name: Test woff-tools
+      block:
+        - name: Assert fonttools package
+          ansible.builtin.assert:
+            that:
+              - ansible_facts.packages['woff-tools']
+        - name: Check installd sfnt2woff
+          ansible.builtin.stat:
+            path: /usr/bin/sfnt2woff
+          register: sfnt2woff_result
+        - name: Assert sfnt2woff command
+          ansible.builtin.assert:
+            that:
+              - sfnt2woff_result.stat.exists
+              - sfnt2woff_result.stat.executable
+        - name: Check installd woff2sfnt
+          ansible.builtin.stat:
+            path: /usr/bin/woff2sfnt
+          register: woff2sfnt_result
+        - name: Assert sfnt2woff command
+          ansible.builtin.assert:
+            that:
+              - woff2sfnt_result.stat.exists
+              - woff2sfnt_result.stat.executable

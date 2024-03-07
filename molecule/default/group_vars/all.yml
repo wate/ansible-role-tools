@@ -46,3 +46,9 @@ install_tools:
   - pandoc
   ## https://taku910.github.io/mecab/
   - mecab
+  # https://github.com/fontforge/fontforge
+  - fontforge
+  # https://github.com/fonttools/fonttools
+  - fonttools
+  # https://packages.debian.org/search?keywords=woff-tools
+  - woff-tools

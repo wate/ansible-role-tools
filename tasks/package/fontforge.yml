@@ -1,0 +1,4 @@
+---
+- name: Install fontforge
+  ansible.builtin.apt:
+    name: fontforge
