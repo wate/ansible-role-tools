@@ -50,6 +50,8 @@ install_tools:
   # https://squidfunk.github.io/mkdocs-material/
   # - mkdocs-material
   # https://github.com/fontforge/fontforge
+  # ※ttcをttfに分解する場合などにも利用
+  # @see https://gist.github.com/fatum12/941a10f31ac1ad48ccbc
   # - fontforge
   # https://github.com/fonttools/fonttools
   # - fonttools
