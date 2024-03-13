@@ -285,3 +285,28 @@
             that:
               - woff2sfnt_result.stat.exists
               - woff2sfnt_result.stat.executable
+    ## woff2
+    - name: Test woff2
+      block:
+        - name: Assert fonttools package
+          ansible.builtin.assert:
+            that:
+              - ansible_facts.packages['woff2']
+        - name: Check installd woff2_compress
+          ansible.builtin.stat:
+            path: /usr/bin/woff2_compress
+          register: woff2_compress_result
+        - name: Assert woff2_compress command
+          ansible.builtin.assert:
+            that:
+              - woff2_compress_result.stat.exists
+              - woff2_compress_result.stat.executable
+        - name: Check installd woff2_decompress
+          ansible.builtin.stat:
+            path: /usr/bin/woff2_decompress
+          register: woff2_decompress_result
+        - name: Assert woff2_decompress command
+          ansible.builtin.assert:
+            that:
+              - woff2_decompress_result.stat.exists
+              - woff2_decompress_result.stat.executable

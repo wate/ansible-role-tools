@@ -55,6 +55,8 @@ install_tools:
   # - fonttools
   # https://packages.debian.org/search?keywords=woff-tools
   # - woff-tools
+  # https://github.com/google/woff2
+  # - woff2
 
 ## --------------------------
 ## インストールするd2のバージョン
