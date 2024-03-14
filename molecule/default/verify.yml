@@ -260,6 +260,15 @@
             that:
               - pyftmerge_result.stat.exists
               - pyftmerge_result.stat.executable
+        - name: Check installd ttx
+          ansible.builtin.stat:
+            path: /usr/bin/ttx
+          register: ttx_result
+        - name: Assert ttx command
+          ansible.builtin.assert:
+            that:
+              - ttx_result.stat.exists
+              - ttx_result.stat.executable
     ## woff-tools
     - name: Test woff-tools
       block:
