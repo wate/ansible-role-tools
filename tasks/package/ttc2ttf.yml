@@ -1,0 +1,9 @@
+---
+- name: Install fontforge
+  ansible.builtin.apt:
+    name: fontforge
+- name: Copy fontforge script
+  ansible.builtin.copy:
+    src: files/ttc2ttf/ttc2ttf.pe
+    dest: /usr/local/bin/ttc2ttf
+    mode: "0755"

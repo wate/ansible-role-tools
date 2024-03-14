@@ -319,3 +319,15 @@
             that:
               - woff2_decompress_result.stat.exists
               - woff2_decompress_result.stat.executable
+    ## ttc2ttf
+    - name: Test ttc2ttf
+      block:
+        - name: Check installd woff2_decompress
+          ansible.builtin.stat:
+            path: /usr/local/bin/ttc2ttf
+          register: ttc2ttf_result
+        - name: Assert ttc2ttf command
+          ansible.builtin.assert:
+            that:
+              - ttc2ttf_result.stat.exists
+              - ttc2ttf_result.stat.executable

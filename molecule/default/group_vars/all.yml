@@ -54,3 +54,5 @@ install_tools:
   - woff-tools
   # https://github.com/google/woff2
   - woff2
+  # https://gist.github.com/fatum12/941a10f31ac1ad48ccbc
+  - ttc2ttf
