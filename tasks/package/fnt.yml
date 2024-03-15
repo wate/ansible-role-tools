@@ -1,0 +1,4 @@
+---
+- name: Install fnt
+  ansible.builtin.apt:
+    name: fnt
