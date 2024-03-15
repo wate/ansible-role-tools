@@ -49,6 +49,8 @@ install_tools:
   # - mecab
   # https://squidfunk.github.io/mkdocs-material/
   # - mkdocs-material
+  # https://github.com/alexmyczko/fnt
+  # - fnt
   # https://github.com/fontforge/fontforge
   # - fontforge
   # https://github.com/fonttools/fonttools
@@ -57,8 +59,6 @@ install_tools:
   # - woff-tools
   # https://github.com/google/woff2
   # - woff2
-  # https://gist.github.com/fatum12/941a10f31ac1ad48ccbc
-  # - ttc2ttf
 
 ## --------------------------
 ## インストールするd2のバージョン

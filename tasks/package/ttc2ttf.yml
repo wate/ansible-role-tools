@@ -1,6 +1,0 @@
----
-- name: Download ttc2ttf script
-  ansible.builtin.get_url:
-    url: https://raw.githubusercontent.com/yhchen/ttc2ttf/master/ttc2ttf.py
-    dest: /usr/local/bin/ttc2ttf
-    mode: "0755"
