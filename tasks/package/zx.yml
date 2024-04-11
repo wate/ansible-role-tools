@@ -1,0 +1,13 @@
+---
+- name: Check npm command
+  ansible.builtin.stat:
+    path: /usr/bin/npm
+  register: npm_result
+- name: Install node.js and npm command
+  ansible.builtin.import_role:
+    name: nodejs
+  when: not npm_result.stat.exists
+- name: Install zx
+  community.general.npm:
+    name: zx
+    global: true

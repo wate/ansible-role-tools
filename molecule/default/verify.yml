@@ -324,3 +324,15 @@
             that:
               - woff2_decompress_result.stat.exists
               - woff2_decompress_result.stat.executable
+    ## zx
+    - name: Test zx
+      block:
+        - name: Check installd zx
+          ansible.builtin.stat:
+            path: /usr/bin/zx
+          register: zx_result
+        - name: Assert zx command
+          ansible.builtin.assert:
+            that:
+              - zx_result.stat.exists
+              - zx_result.stat.executable

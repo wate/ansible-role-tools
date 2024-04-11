@@ -49,6 +49,8 @@ install_tools:
   # - mecab
   # https://squidfunk.github.io/mkdocs-material/
   # - mkdocs-material
+  ## https://github.com/google/zx
+  # - zx
   # https://github.com/alexmyczko/fnt
   # - fnt
   # https://github.com/fontforge/fontforge
