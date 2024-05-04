@@ -1,4 +1,0 @@
----
-- name: Install fonttools
-  ansible.builtin.apt:
-    name: fonttools

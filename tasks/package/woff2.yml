@@ -1,4 +1,0 @@
----
-- name: Install woff2
-  ansible.builtin.apt:
-    name: woff2

@@ -49,18 +49,12 @@ install_tools:
   # - mecab
   # https://squidfunk.github.io/mkdocs-material/
   # - mkdocs-material
+  # https://github.com/gohugoio/hugo
+  # - hugo
   ## https://github.com/google/zx
   # - zx
   # https://github.com/alexmyczko/fnt
   # - fnt
-  # https://github.com/fontforge/fontforge
-  # - fontforge
-  # https://github.com/fonttools/fonttools
-  # - fonttools
-  # https://packages.debian.org/search?keywords=woff-tools
-  # - woff-tools
-  # https://github.com/google/woff2
-  # - woff2
 
 ## --------------------------
 ## インストールするd2のバージョン
@@ -96,6 +90,16 @@ glow_version: latest
 ## インストールするpandocのバージョン
 ## --------------------------
 pandoc_version: latest
+
+## --------------------------
+## インストールするHugoのバージョン
+## --------------------------
+hugo_version: latest
+
+## --------------------------
+## インストールするHugoのタイプ
+## --------------------------
+hugo_install_type: extended
 
 ## --------------------------
 ## Tesseract OCRの言語ファイル

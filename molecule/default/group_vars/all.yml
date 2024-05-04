@@ -36,6 +36,8 @@ install_tools:
   - pict
   ## https://squidfunk.github.io/mkdocs-material/
   - mkdocs-material
+  # https://github.com/gohugoio/hugo
+  - hugo
   ## https://plantuml.com/ja/
   - plantuml
   ## https://github.com/tesseract-ocr/tesseract
@@ -50,11 +52,3 @@ install_tools:
   - zx
   # https://github.com/alexmyczko/fnt
   - fnt
-  # https://github.com/fontforge/fontforge
-  - fontforge
-  # https://github.com/fonttools/fonttools
-  - fonttools
-  # https://packages.debian.org/search?keywords=woff-tools
-  - woff-tools
-  # https://github.com/google/woff2
-  - woff2

@@ -196,6 +196,18 @@
               ansible.builtin.assert:
                 that:
                   - mkdocs_result.stat.exists
+    ## Hugo
+    - name: Test Hogo
+      block:
+        - name: Check hogo
+          ansible.builtin.stat:
+            path: /usr/local/bin/hugo
+          register: hugo_result
+        - name: Assert hogo
+          ansible.builtin.assert:
+            that:
+              - hugo_result.stat.exists
+              - hugo_result.stat.executable
     ## plantuml
     - name: Assert Plantuml
       ansible.builtin.assert:
@@ -226,104 +238,6 @@
       ansible.builtin.assert:
         that:
           - ansible_facts.packages['fnt']
-    ## fontforge
-    - name: Assert fontforge
-      ansible.builtin.assert:
-        that:
-          - ansible_facts.packages['fontforge']
-    ## fonttools
-    - name: Test fonttools
-      block:
-        - name: Assert fonttools package
-          ansible.builtin.assert:
-            that:
-              - ansible_facts.packages['fonttools']
-        - name: Check installd fonttools
-          ansible.builtin.stat:
-            path: /usr/bin/fonttools
-          register: fonttools_result
-        - name: Assert fonttools command
-          ansible.builtin.assert:
-            that:
-              - fonttools_result.stat.exists
-              - fonttools_result.stat.executable
-        - name: Check installd pyftsubset
-          ansible.builtin.stat:
-            path: /usr/bin/pyftsubset
-          register: pyftsubset_result
-        - name: Assert pyftsubset command
-          ansible.builtin.assert:
-            that:
-              - pyftsubset_result.stat.exists
-              - pyftsubset_result.stat.executable
-        - name: Check installd pyftmerge
-          ansible.builtin.stat:
-            path: /usr/bin/pyftmerge
-          register: pyftmerge_result
-        - name: Assert pyftmerge command
-          ansible.builtin.assert:
-            that:
-              - pyftmerge_result.stat.exists
-              - pyftmerge_result.stat.executable
-        - name: Check installd ttx
-          ansible.builtin.stat:
-            path: /usr/bin/ttx
-          register: ttx_result
-        - name: Assert ttx command
-          ansible.builtin.assert:
-            that:
-              - ttx_result.stat.exists
-              - ttx_result.stat.executable
-    ## woff-tools
-    - name: Test woff-tools
-      block:
-        - name: Assert fonttools package
-          ansible.builtin.assert:
-            that:
-              - ansible_facts.packages['woff-tools']
-        - name: Check installd sfnt2woff
-          ansible.builtin.stat:
-            path: /usr/bin/sfnt2woff
-          register: sfnt2woff_result
-        - name: Assert sfnt2woff command
-          ansible.builtin.assert:
-            that:
-              - sfnt2woff_result.stat.exists
-              - sfnt2woff_result.stat.executable
-        - name: Check installd woff2sfnt
-          ansible.builtin.stat:
-            path: /usr/bin/woff2sfnt
-          register: woff2sfnt_result
-        - name: Assert sfnt2woff command
-          ansible.builtin.assert:
-            that:
-              - woff2sfnt_result.stat.exists
-              - woff2sfnt_result.stat.executable
-    ## woff2
-    - name: Test woff2
-      block:
-        - name: Assert fonttools package
-          ansible.builtin.assert:
-            that:
-              - ansible_facts.packages['woff2']
-        - name: Check installd woff2_compress
-          ansible.builtin.stat:
-            path: /usr/bin/woff2_compress
-          register: woff2_compress_result
-        - name: Assert woff2_compress command
-          ansible.builtin.assert:
-            that:
-              - woff2_compress_result.stat.exists
-              - woff2_compress_result.stat.executable
-        - name: Check installd woff2_decompress
-          ansible.builtin.stat:
-            path: /usr/bin/woff2_decompress
-          register: woff2_decompress_result
-        - name: Assert woff2_decompress command
-          ansible.builtin.assert:
-            that:
-              - woff2_decompress_result.stat.exists
-              - woff2_decompress_result.stat.executable
     ## zx
     - name: Test zx
       block:

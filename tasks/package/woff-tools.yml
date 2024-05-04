@@ -1,4 +1,0 @@
----
-- name: Install woff-tools
-  ansible.builtin.apt:
-    name: woff-tools
