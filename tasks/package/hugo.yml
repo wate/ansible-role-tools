@@ -1,6 +1,6 @@
 ---
 - name: Set Install version variable
-  when: pandoc_version == 'latest'
+  when: hugo_version == 'latest'
   block:
     - name: Set Github API request header
       ansible.builtin.set_fact:
@@ -12,21 +12,21 @@
       vars:
         merge_reauest_header:
           Authorization: Bearer {{ lookup('env', 'GITHUB_TOKEN') }}
-      when: lookup('env', 'GITHUB_TOKEN') | length > 0
     - name: Get latest release
       ansible.builtin.uri:
-        url: https://api.github.com/repos/{{ tools_pandoc_repo }}/releases/latest
+        url: https://api.github.com/repos/{{ tools_hugo_repo }}/releases/latest
         headers: "{{ github_api_request_headers }}"
       register: latest_releases
     - name: Set version variable
       ansible.builtin.set_fact:
-        pandoc_version: "{{ latest_releases.json.tag_name }}"
+        hugo_version: "{{ latest_releases.json.tag_name }}"
 - name: Set package file variable
   ansible.builtin.set_fact:
-    package_file: pandoc-{{ pandoc_version }}-1-{{ asset_file_maps[ansible_facts['architecture']] }}.deb
+    package_file: hugo_{{ hugo_version[1:] }}_linux_{{ asset_file_maps[ansible_facts['architecture']] }}.deb
   vars:
     asset_file_maps:
       x86_64: amd64
-- name: Install pandoc
+      aarch64: arm64
+- name: Install Hugo
   ansible.builtin.apt:
-    deb: https://github.com/{{ tools_pandoc_repo }}/releases/download/{{ pandoc_version }}/{{ package_file }}
+    deb: https://github.com/{{ tools_hugo_repo }}/releases/download/{{ hugo_version }}/{{ package_file }}

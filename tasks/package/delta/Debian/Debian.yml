@@ -1,7 +1,7 @@
 ---
 - name: Set package file variable
   ansible.builtin.set_fact:
-    delta_package_file: git-delta_{{ delta_version }}_{{ architecture_files[ansible_facts['architecture']] }}.deb
+    delta_package_file: git-delta_{{ delta_version }}_{{ asset_file_maps[ansible_facts['architecture']] }}.deb
   vars:
-    architecture_files:
+    asset_file_maps:
       x86_64: amd64
