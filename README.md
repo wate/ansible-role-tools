@@ -48,6 +48,14 @@ Role Variables
 
 インストールするpandocのバージョン
 
+### `hugo_version`
+
+インストールするHugoのバージョン
+
+### `hugo_install_type`
+
+インストールするHugoのタイプ
+
 ### `tesseract_ocr_langages`
 
 Tesseract OCRの言語ファイル
