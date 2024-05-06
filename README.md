@@ -52,7 +52,7 @@ Role Variables
 
 インストールするHugoのバージョン
 
-### `hugo_install_type`
+### `hugo_extended`
 
 インストールするHugoのタイプ
 

@@ -99,7 +99,7 @@ hugo_version: latest
 ## --------------------------
 ## インストールするHugoのタイプ
 ## --------------------------
-hugo_install_type: extended
+hugo_extended: false
 
 ## --------------------------
 ## Tesseract OCRの言語ファイル
