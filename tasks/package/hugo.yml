@@ -12,6 +12,7 @@
       vars:
         merge_reauest_header:
           Authorization: Bearer {{ lookup('env', 'GITHUB_TOKEN') }}
+      when: lookup('env', 'GITHUB_TOKEN') | length > 0
     - name: Get latest release
       ansible.builtin.uri:
         url: https://api.github.com/repos/{{ tools_hugo_repo }}/releases/latest
