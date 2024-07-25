@@ -1,9 +1,0 @@
----
-- name: Install pipx
-  ansible.builtin.apt:
-    name: pipx
-    default_release: "{{ ansible_facts.distribution_release }}-backports"
-- name: Install pre-commit
-  community.general.pipx:
-    name: pre-commit
-  become: false

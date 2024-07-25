@@ -23,9 +23,9 @@
         d2_version: "{{ latest_releases.json.tag_name }}"
 - name: Set download file variable
   ansible.builtin.set_fact:
-    d2_download_file: d2-{{ d2_version }}-{{ ansible_facts['system'] | lower }}-{{ architecture_types[ansible_facts['architecture']] }}.tar.gz
+    d2_download_file: d2-{{ d2_version }}-{{ ansible_facts['system'] | lower }}-{{ arch_type_maps[ansible_facts['architecture']] }}.tar.gz
   vars:
-    architecture_types:
+    arch_type_maps:
       x86_64: amd64
       aarch64: arm64
 - name: Create download directory

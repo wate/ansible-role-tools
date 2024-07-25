@@ -1,7 +1,8 @@
 ---
 - name: Set pckage file variable
   ansible.builtin.set_fact:
-    delta_package_file: git-delta-musl_{{ delta_version }}_{{ asset_file_maps[ansible_facts['architecture']] }}.deb
+    delta_package_file: git-delta-musl_{{ delta_version }}_{{ arch_type_maps[ansible_facts['architecture']] }}.deb
   vars:
-    asset_file_maps:
+    arch_type_maps:
       x86_64: amd64
+      aarch64: arm64

@@ -23,10 +23,10 @@
         hugo_version: "{{ latest_releases.json.tag_name }}"
 - name: Set package file variable
   ansible.builtin.set_fact:
-    package_file: "{{ asset_file_prefix }}_{{ hugo_version[1:] }}_linux-{{ asset_file_maps[ansible_facts['architecture']] }}.deb"
+    package_file: "{{ asset_file_prefix }}_{{ hugo_version[1:] }}_linux-{{ arch_type_maps[ansible_facts['architecture']] }}.deb"
   vars:
     asset_file_prefix: "{{ 'hugo_extended' if hugo_extended else 'hugo' }}"
-    asset_file_maps:
+    arch_type_maps:
       x86_64: amd64
       aarch64: arm64
 - name: Install Hugo

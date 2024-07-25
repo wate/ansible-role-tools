@@ -1,4 +1,0 @@
----
-- name: Install pre-commit
-  ansible.builtin.apt:
-    name: pre-commit

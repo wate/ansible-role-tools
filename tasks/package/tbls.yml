@@ -23,10 +23,11 @@
         tbls_version: "{{ latest_releases.json.tag_name }}"
 - name: Set package file variable
   ansible.builtin.set_fact:
-    package_file: tbls_{{ tbls_version[1:] }}-1_{{ asset_file_maps[ansible_facts['architecture']] }}.deb
+    package_file: tbls_{{ tbls_version[1:] }}-1_{{ arch_type_maps[ansible_facts['architecture']] }}.deb
   vars:
-    asset_file_maps:
+    arch_type_maps:
       x86_64: amd64
+      aarch64: arm64
 - name: Install tbls
   ansible.builtin.apt:
     deb: https://github.com/{{ tools_tbls_repo }}/releases/download/{{ tbls_version }}/{{ package_file }}
