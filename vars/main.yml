@@ -1,13 +1,14 @@
 ---
 tools_dependency_packages: []
 tools_add_repository_dependency_packages: []
-## Tesseract OCR
-tools_tesseract_ocr_apt_key_url: https://notesalexp.org/debian/alexp_key.asc
-tools_tesseract_ocr_apt_key_dest: /usr/share/keyrings/tesseract-ocr.gpg.asc
 
 ## eza
 tools_eza_apt_key_url: https://raw.githubusercontent.com/eza-community/eza/main/deb.asc
 tools_eza_apt_key_dest: /usr/share/keyrings/gierens.gpg.asc
+
+## Tesseract OCR
+tools_tesseract_ocr_apt_key_url: https://notesalexp.org/debian/alexp_key.asc
+tools_tesseract_ocr_apt_key_dest: /usr/share/keyrings/tesseract-ocr.gpg.asc
 
 ## repos
 tools_tbls_repo: k1LoW/tbls

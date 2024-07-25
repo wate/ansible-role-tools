@@ -13,6 +13,3 @@
       {{ ansible_facts.distribution_release }}
       main
     state: present
-- name: Update package cache
-  ansible.builtin.apt:
-    update_cache: true
