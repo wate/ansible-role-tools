@@ -23,9 +23,9 @@
         osv_scanner_version: "{{ latest_releases.json.tag_name }}"
 - name: Set download file variable
   ansible.builtin.set_fact:
-    osv_scanner_architecture_type: "{{ architecture_types[ansible_facts['architecture']] }}"
+    osv_scanner_architecture_type: "{{ arch_type_maps[ansible_facts['architecture']] }}"
   vars:
-    architecture_types:
+    arch_type_maps:
       x86_64: amd64
       aarch64: arm64
 - name: Set download file name
