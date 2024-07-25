@@ -20,22 +20,12 @@ install_tools:
   - osv-scanner
   ## https://github.com/charmbracelet/glow
   - glow
-  ## https://www.mycli.net/
-  - mycli
-  ## https://www.pgcli.com/
-  - pgcli
-  ## https://litecli.com/
-  - litecli
-  ## https://pre-commit.com/
-  - pre-commit
   ## https://graphviz.org/
   - graphviz
   ## https://wp-cli.org/ja/
   - wp-cli
   ## https://github.com/microsoft/pict
   - pict
-  ## https://squidfunk.github.io/mkdocs-material/
-  - mkdocs-material
   # https://github.com/gohugoio/hugo
   - hugo
   ## https://plantuml.com/ja/

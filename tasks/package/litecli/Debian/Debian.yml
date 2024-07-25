@@ -1,4 +1,0 @@
----
-- name: Install litecli
-  ansible.builtin.apt:
-    name: litecli
