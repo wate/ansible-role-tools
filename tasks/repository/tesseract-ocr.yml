@@ -1,4 +1,5 @@
 ---
+## @see https://notesalexp.org/tesseract-ocr/html/
 - name: Add apt signing key
   ansible.builtin.get_url:
     url: "{{ tools_tesseract_ocr_apt_key_url }}"

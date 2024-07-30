@@ -3,14 +3,24 @@
 ## インストールするツール
 ## --------------------------
 install_tools:
-  # https://direnv.net/
-  - direnv
   ## https://github.com/eza-community/eza
   - eza
+  ## https://graphviz.org/
+  - graphviz
   ## https://github.com/sharkdp/fd
   - fd
   ## https://github.com/sharkdp/bat
   - bat
+  ## https://goaccess.io/
+  - goaccess
+  ## https://github.com/google/osv-scanner
+  - osv-scanner
+  # https://direnv.net/
+  - direnv
+  ## https://github.com/jgm/pandoc
+  - pandoc
+  ## https://plantuml.com/ja/
+  - plantuml
   ## https://github.com/k1LoW/tbls
   - tbls
   ## https://github.com/k1LoW/runn
@@ -19,34 +29,24 @@ install_tools:
   - delta
   ## https://github.com/terrastruct/d2
   - d2
-  ## https://github.com/google/osv-scanner
-  - osv-scanner
   ## https://github.com/charmbracelet/glow
   - glow
-  ## https://graphviz.org/
-  - graphviz
   ## https://wp-cli.org/ja/
   - wp-cli
   ## https://github.com/microsoft/pict
   - pict
-  ## https://plantuml.com/ja/
-  - plantuml
-  ## https://github.com/jgm/pandoc
-  - pandoc
-  ## https://github.com/tesseract-ocr/tesseract
-  # - tesseract-ocr
-  ## PDF 向けユーティリティ
-  # - poppler-utils
-  ## https://taku910.github.io/mecab/
-  # - mecab
-  # https://squidfunk.github.io/mkdocs-material/
-  # - mkdocs-material
-  # https://github.com/gohugoio/hugo
-  # - hugo
-  ## https://github.com/google/zx
-  # - zx
   # https://github.com/alexmyczko/fnt
   # - fnt
+  ## PDF 向けユーティリティ
+  # - poppler-utils
+  # https://github.com/gohugoio/hugo
+  # - hugo
+  ## https://github.com/tesseract-ocr/tesseract
+  # - tesseract-ocr
+  ## https://taku910.github.io/mecab/
+  # - mecab
+  ## https://github.com/google/zx
+  # - zx
 
 ## --------------------------
 ## インストールするd2のバージョン
@@ -92,6 +92,31 @@ hugo_version: latest
 ## インストールするHugoのタイプ
 ## --------------------------
 hugo_extended: false
+
+## -----------------
+## MaxMindのアカウントIDとライセンスキー
+## @see https://dev.maxmind.com/geoip/geolite2-free-geolocation-data
+## -----------------
+goaccess_maxmind_account:
+  account_id: ""
+  license_key: ""
+
+## -----------------
+## インストールするMaxMindのGeoIPデータベースのエディション
+## -----------------
+goaccess_maxmind_database_editions:
+  - GeoLite2-Country
+  - GeoLite2-City
+
+## -----------------
+## GoAccessに設定するGeoIPデータベースのパス
+## -----------------
+goaccess_maxmind_database_path: /usr/share/GeoIP/GeoLite2-City.mmdb
+
+## -----------------
+## GeoIPデータベースの自動更新頻度
+## -----------------
+goaccess_geoipupdate_interval: weekly
 
 ## --------------------------
 ## Tesseract OCRの言語ファイル
