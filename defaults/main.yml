@@ -93,6 +93,31 @@ hugo_version: latest
 ## --------------------------
 hugo_extended: false
 
+## -----------------
+## MaxMindのアカウントIDとライセンスキー
+## @see https://dev.maxmind.com/geoip/geolite2-free-geolocation-data
+## -----------------
+goaccess_maxmind_account:
+  account_id: ""
+  license_key: ""
+
+## -----------------
+## インストールするMaxMindのGeoIPデータベースのエディション
+## -----------------
+goaccess_maxmind_database_editions:
+  - GeoLite2-Country
+  - GeoLite2-City
+
+## -----------------
+## GoAccessに設定するGeoIPデータベースのパス
+## -----------------
+goaccess_maxmind_database_path: /usr/share/GeoIP/GeoLite2-City.mmdb
+
+## -----------------
+## GeoIPデータベースの自動更新頻度
+## -----------------
+goaccess_geoipupdate_interval: weekly
+
 ## --------------------------
 ## Tesseract OCRの言語ファイル
 ## --------------------------

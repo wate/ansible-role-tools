@@ -44,3 +44,7 @@ install_tools:
   - mecab
   ## https://github.com/google/zx
   - zx
+
+goaccess_maxmind_account:
+  account_id: "{{ lookup('env', 'MAXMIND_ACCOUNT_ID') }}"
+  license_key: "{{ lookup('env', 'MAXMIND_LICENSE_KEY') }}"

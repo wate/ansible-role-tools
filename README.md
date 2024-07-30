@@ -56,6 +56,23 @@ Role Variables
 
 インストールするHugoのタイプ
 
+### `goaccess_maxmind_account`
+
+MaxMindのアカウントIDとライセンスキー  
+@see https://dev.maxmind.com/geoip/geolite2-free-geolocation-data
+
+### `goaccess_maxmind_database_editions`
+
+インストールするMaxMindのGeoIPデータベースのエディション
+
+### `goaccess_maxmind_database_path`
+
+GoAccessに設定するGeoIPデータベースのパス
+
+### `goaccess_geoipupdate_interval`
+
+GeoIPデータベースの自動更新頻度
+
 ### `tesseract_ocr_langages`
 
 Tesseract OCRの言語ファイル
