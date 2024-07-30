@@ -26,4 +26,3 @@ tools_add_repository_dependency_packages:
   - curl
   - gnupg
   - gpg
-  - software-properties-common

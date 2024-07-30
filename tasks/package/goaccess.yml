@@ -1,0 +1,4 @@
+---
+- name: Install GoAccess
+  ansible.builtin.apt:
+    name: goaccess

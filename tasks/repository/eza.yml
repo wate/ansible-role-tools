@@ -1,4 +1,5 @@
 ---
+## @see https://github.com/eza-community/eza/blob/main/INSTALL.md
 - name: Add apt signing key
   ansible.builtin.get_url:
     url: "{{ tools_eza_apt_key_url }}"
