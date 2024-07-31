@@ -22,7 +22,7 @@
         label: "{{ item.name }}"
     - name: Add geoipupdate cron job
       ansible.builtin.copy:
-        src: goaccess/geoipupdate
+        src: goaccess/cron/geoipupdate
         dest: /etc/cron.{{ goaccess_geoipupdate_interval }}/geoipupdate
         mode: "0755"
       register: geoipupdate_cron_result
