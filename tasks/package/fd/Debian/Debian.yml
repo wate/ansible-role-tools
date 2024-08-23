@@ -1,6 +1,6 @@
 ---
 - name: Set Install version variable
-  when: bat_version == 'latest'
+  when: fd_version == 'latest'
   block:
     - name: Set Github API request header
       ansible.builtin.set_fact:
@@ -15,19 +15,22 @@
       when: lookup('env', 'GITHUB_TOKEN') | length > 0
     - name: Get latest release
       ansible.builtin.uri:
-        url: https://api.github.com/repos/{{ tools_bat_repo }}/releases/latest
+        url: https://api.github.com/repos/{{ tools_fd_repo }}/releases/latest
         headers: "{{ github_api_request_headers }}"
       register: latest_releases
     - name: Set version variable
       ansible.builtin.set_fact:
-        bat_version: "{{ latest_releases.json.tag_name }}"
+        fd_version: "{{ latest_releases.json.tag_name }}"
 - name: Set package file variable
   ansible.builtin.set_fact:
-    package_file: bat_{{ bat_version[1:] }}_{{ arch_type_maps[ansible_facts['architecture']] }}.deb
+    package_file: fd_{{ fd_version[1:] }}_{{ arch_type_maps[ansible_facts['architecture']] }}.deb
   vars:
     arch_type_maps:
       x86_64: amd64
       aarch64: arm64
-- name: Install bat
+- name: Debug
+  ansible.builtin.debug:
+    var: package_file
+- name: Install fd
   ansible.builtin.apt:
-    deb: https://github.com/{{ tools_bat_repo }}/releases/download/{{ bat_version }}/{{ package_file }}
+    deb: https://github.com/{{ tools_fd_repo }}/releases/download/{{ fd_version }}/{{ package_file }}
