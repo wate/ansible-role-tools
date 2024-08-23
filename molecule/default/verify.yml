@@ -50,12 +50,39 @@
       block:
         - name: Assert installed fd
           ansible.builtin.assert:
-            that: ansible_facts.packages['fd-find']
+            that:
+              - ansible_facts.packages['fd-find']
+              - ansible_facts.packages['fd-find'][-1]['origin'] == 'Debian'
+          when: ansible_facts.distribution_major_version is version(12, '<')
+        - name: Assert installed fd
+          ansible.builtin.assert:
+            that:
+              - ansible_facts.packages['fd']
+              - ansible_facts.packages['fd'][-1]['origin'] != 'Debian'
+          when: ansible_facts.distribution_major_version is version(12, '>=')
     - name: Test bat
       block:
         - name: Assert bat
           ansible.builtin.assert:
-            that: ansible_facts.packages['bat']
+            that:
+              - ansible_facts.packages['bat']
+              - ansible_facts.packages['bat'][-1]['origin'] != 'Debian'
+    - name: Test tig
+      block:
+        - name: Assert installed tig
+          ansible.builtin.assert:
+            that: ansible_facts.packages['tig']
+    - name: Test lazygit
+      block:
+        - name: Check lazygit
+          ansible.builtin.stat:
+            path: /usr/local/bin/lazygit
+          register: lazygit_command_result
+        - name: Assert installed lazygit
+          ansible.builtin.assert:
+            that:
+              - lazygit_command_result.stat.exists
+              - lazygit_command_result.stat.executable
     - name: Test GoAccess
       block:
         - name: Check goaccess gpg key

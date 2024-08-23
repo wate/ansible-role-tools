@@ -18,6 +18,9 @@ tools_tesseract_ocr_apt_key_dest: /usr/share/keyrings/tesseract-ocr.gpg.asc
 tools_tbls_repo: k1LoW/tbls
 tools_runn_repo: k1LoW/runn
 tools_osv_scanner_repo: google/osv-scanner
+tools_fd_repo: sharkdp/fd
+tools_bat_repo: sharkdp/bat
+tools_lazygit_repo: jesseduffield/lazygit
 tools_delta_repo: dandavison/delta
 tools_pict_repo: microsoft/pict
 tools_d2_repo: terrastruct/d2

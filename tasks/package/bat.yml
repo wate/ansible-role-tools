@@ -1,4 +1,22 @@
 ---
+- name: Set Install version variable
+  when: bat_version == 'latest'
+  block:
+    - name: Get latest version
+      ansible.builtin.include_tasks:
+        file: package/common/get_latest_version.yml
+      vars:
+        github_repo: "{{ tools_bat_repo }}"
+    - name: Set package version
+      ansible.builtin.set_fact:
+        bat_version: "{{ latest_version }}"
+- name: Set package file variable
+  ansible.builtin.set_fact:
+    package_file: bat_{{ bat_version[1:] }}_{{ arch_type_maps[ansible_facts['architecture']] }}.deb
+  vars:
+    arch_type_maps:
+      x86_64: amd64
+      aarch64: arm64
 - name: Install bat
   ansible.builtin.apt:
-    name: bat
+    deb: https://github.com/{{ tools_bat_repo }}/releases/download/{{ bat_version }}/{{ package_file }}

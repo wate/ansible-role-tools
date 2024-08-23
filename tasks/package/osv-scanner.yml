@@ -2,37 +2,27 @@
 - name: Set Install version variable
   when: osv_scanner_version == 'latest'
   block:
-    - name: Set Github API request header
-      ansible.builtin.set_fact:
-        github_api_request_headers:
-          Accept: application/vnd.github+json
-    - name: Merge Github API Authorization request header
-      ansible.builtin.set_fact:
-        github_api_request_headers: "{{ github_api_request_headers | combine(merge_reauest_header) }}"
+    - name: Get latest version
+      ansible.builtin.include_tasks:
+        file: package/common/get_latest_version.yml
       vars:
-        merge_reauest_header:
-          Authorization: Bearer {{ lookup('env', 'GITHUB_TOKEN') }}
-      when: lookup('env', 'GITHUB_TOKEN') | length > 0
-    - name: Get osv-scanner latest version
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/{{ tools_osv_scanner_repo }}/releases/latest
-        headers: "{{ github_api_request_headers }}"
-      register: latest_releases
-    - name: Set version variable
+        github_repo: "{{ tools_osv_scanner_repo }}"
+    - name: Set package version
       ansible.builtin.set_fact:
-        osv_scanner_version: "{{ latest_releases.json.tag_name }}"
+        osv_scanner_version: "{{ latest_version }}"
 - name: Set download file variable
   ansible.builtin.set_fact:
-    osv_scanner_architecture_type: "{{ arch_type_maps[ansible_facts['architecture']] }}"
+    osv_scanner_arch_type: "{{ arch_type_maps[ansible_facts['architecture']] }}"
   vars:
     arch_type_maps:
       x86_64: amd64
       aarch64: arm64
-- name: Set download file name
+- name: Set asset file name
   ansible.builtin.set_fact:
-    osv_scanner_download_file: osv-scanner_{{ ansible_facts['system'] | lower }}_{{ osv_scanner_architecture_type }}
+    osv_scanner_asset_file: osv-scanner_{{ ansible_facts['system'] | lower }}_{{ osv_scanner_arch_type }}
 - name: Install osv-scanner
   ansible.builtin.get_url:
-    url: https://github.com/{{ tools_osv_scanner_repo }}/releases/download/{{ osv_scanner_version }}/{{ osv_scanner_download_file }}
+    url: https://github.com/{{ tools_osv_scanner_repo }}/releases/download/{{ osv_scanner_version }}/{{ osv_scanner_asset_file }}
     dest: /usr/local/bin/osv-scanner
+    checksum: sha256:https://github.com/{{ tools_osv_scanner_repo }}/releases/download/{{ osv_scanner_version }}/osv-scanner_SHA256SUMS
     mode: "0755"

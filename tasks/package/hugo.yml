@@ -2,25 +2,14 @@
 - name: Set Install version variable
   when: hugo_version == 'latest'
   block:
-    - name: Set Github API request header
-      ansible.builtin.set_fact:
-        github_api_request_headers:
-          Accept: application/vnd.github+json
-    - name: Merge Github API Authorization request header
-      ansible.builtin.set_fact:
-        github_api_request_headers: "{{ github_api_request_headers | combine(merge_reauest_header) }}"
+    - name: Get latest version
+      ansible.builtin.include_tasks:
+        file: package/common/get_latest_version.yml
       vars:
-        merge_reauest_header:
-          Authorization: Bearer {{ lookup('env', 'GITHUB_TOKEN') }}
-      when: lookup('env', 'GITHUB_TOKEN') | length > 0
-    - name: Get latest release
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/{{ tools_hugo_repo }}/releases/latest
-        headers: "{{ github_api_request_headers }}"
-      register: latest_releases
-    - name: Set version variable
+        github_repo: "{{ tools_hugo_repo }}"
+    - name: Set package version
       ansible.builtin.set_fact:
-        hugo_version: "{{ latest_releases.json.tag_name }}"
+        hugo_version: "{{ latest_version }}"
 - name: Set package file variable
   ansible.builtin.set_fact:
     package_file: "{{ asset_file_prefix }}_{{ hugo_version[1:] }}_linux-{{ arch_type_maps[ansible_facts['architecture']] }}.deb"
@@ -29,6 +18,6 @@
     arch_type_maps:
       x86_64: amd64
       aarch64: arm64
-- name: Install Hugo
+- name: Install hugo
   ansible.builtin.apt:
     deb: https://github.com/{{ tools_hugo_repo }}/releases/download/{{ hugo_version }}/{{ package_file }}

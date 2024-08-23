@@ -1,22 +1,22 @@
 ---
 - name: Set Install version variable
-  when: pandoc_version == 'latest'
+  when: fd_version == 'latest'
   block:
     - name: Get latest version
       ansible.builtin.include_tasks:
         file: package/common/get_latest_version.yml
       vars:
-        github_repo: "{{ tools_pandoc_repo }}"
+        github_repo: "{{ tools_fd_repo }}"
     - name: Set package version
       ansible.builtin.set_fact:
-        pandoc_version: "{{ latest_version }}"
+        fd_version: "{{ latest_version }}"
 - name: Set package file variable
   ansible.builtin.set_fact:
-    package_file: pandoc-{{ pandoc_version }}-1-{{ arch_type_maps[ansible_facts['architecture']] }}.deb
+    package_file: fd_{{ fd_version[1:] }}_{{ arch_type_maps[ansible_facts['architecture']] }}.deb
   vars:
     arch_type_maps:
       x86_64: amd64
       aarch64: arm64
-- name: Install pandoc
+- name: Install fd
   ansible.builtin.apt:
-    deb: https://github.com/{{ tools_pandoc_repo }}/releases/download/{{ pandoc_version }}/{{ package_file }}
+    deb: https://github.com/{{ tools_fd_repo }}/releases/download/{{ fd_version }}/{{ package_file }}

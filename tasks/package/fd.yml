@@ -1,4 +1,15 @@
 ---
-- name: Install fd
-  ansible.builtin.apt:
-    name: fd-find
+- name: Find fd packages install task file
+  ansible.builtin.set_fact:
+    fd_install_task_file: "{{ lookup('first_found', params, errors='ignore') }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_facts.os_family }}/{{ ansible_facts.distribution }}/{{ ansible_facts.distribution_major_version }}.yml"
+        - "{{ ansible_facts.os_family }}/{{ ansible_facts.distribution }}.yml"
+        - "{{ ansible_facts.os_family }}.yml"
+      paths:
+        - tasks/package/fd
+- name: Execute fd install task
+  ansible.builtin.include_tasks:
+    file: "{{ fd_install_task_file }}"

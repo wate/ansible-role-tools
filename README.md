@@ -36,6 +36,18 @@ Role Variables
 
 インストールするrunnのバージョン
 
+### `fd_version`
+
+インストールするfdのバージョン
+
+### `bat_version`
+
+インストールするbatのバージョン
+
+### `lazygit_version`
+
+インストールするlazygitのバージョン
+
 ### `delta_version`
 
 インストールするdeltaのバージョン

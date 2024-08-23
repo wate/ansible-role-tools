@@ -8,6 +8,10 @@ install_tools:
   - fd
   ## https://github.com/sharkdp/bat
   - bat
+  ## https://jonas.github.io/tig/
+  - tig
+  ## https://github.com/jesseduffield/lazygit
+  - lazygit
   ## https://goaccess.io/
   - goaccess
   ## https://github.com/google/osv-scanner
