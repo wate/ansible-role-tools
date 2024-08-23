@@ -29,6 +29,6 @@
     arch_type_maps:
       x86_64: amd64
       aarch64: arm64
-- name: Install Hugo
+- name: Install hugo
   ansible.builtin.apt:
     deb: https://github.com/{{ tools_hugo_repo }}/releases/download/{{ hugo_version }}/{{ package_file }}
