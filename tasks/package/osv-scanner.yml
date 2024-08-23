@@ -17,7 +17,7 @@
     arch_type_maps:
       x86_64: amd64
       aarch64: arm64
-- name: Set download file name
+- name: Set asset file name
   ansible.builtin.set_fact:
     osv_scanner_asset_file: osv-scanner_{{ ansible_facts['system'] | lower }}_{{ osv_scanner_arch_type }}
 - name: Install osv-scanner

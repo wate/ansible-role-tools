@@ -11,6 +11,10 @@ install_tools:
   - fd
   ## https://github.com/sharkdp/bat
   - bat
+  ## https://jonas.github.io/tig/
+  - tig
+  ## https://github.com/jesseduffield/lazygit
+  - lazygit
   ## https://goaccess.io/
   - goaccess
   ## https://github.com/google/osv-scanner
@@ -77,6 +81,11 @@ fd_version: latest
 ## インストールするbatのバージョン
 ## --------------------------
 bat_version: latest
+
+## --------------------------
+## インストールするlazygitのバージョン
+## --------------------------
+lazygit_version: latest
 
 ## --------------------------
 ## インストールするdeltaのバージョン

@@ -1,0 +1,4 @@
+---
+- name: Install tig
+  ansible.builtin.apt:
+    name: tig
