@@ -1,5 +1,5 @@
 ---
-- name: Install GoAccess
+- name: Install goaccess
   ansible.builtin.apt:
     name: goaccess
 - name: Install geoipupdate dependency packages
