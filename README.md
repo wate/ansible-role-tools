@@ -48,6 +48,10 @@ Role Variables
 
 インストールするlazygitのバージョン
 
+### `task_version`
+
+インストールするtaskのバージョン
+
 ### `delta_version`
 
 インストールするdeltaのバージョン
