@@ -18,6 +18,8 @@ install_tools:
   - osv-scanner
   # https://direnv.net/
   - direnv
+  ## https://taskfile.dev/
+  - task
   ## https://github.com/jgm/pandoc
   - pandoc
   ## https://plantuml.com/ja/
