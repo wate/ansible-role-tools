@@ -1,0 +1,4 @@
+---
+- name: Install restic package
+  ansible.builtin.apt:
+    name: restic

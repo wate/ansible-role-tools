@@ -20,6 +20,10 @@ install_tools:
   - direnv
   ## https://taskfile.dev/
   - task
+  ## https://restic.net/
+  - restic
+  ## https://rclone.org/
+  - rclone
   ## https://github.com/jgm/pandoc
   - pandoc
   ## https://plantuml.com/ja/
