@@ -40,7 +40,7 @@
           ansible.builtin.assert:
             that:
               - ansible_facts.packages['eza']
-              - ansible_facts.packages['eza'][-1]['origin'] != 'Debian'
+              - ansible_facts.packages['eza'][0]['origin'] != 'Debian'
     - name: Test Graphviz
       block:
         - name: Assert installed graphviz
@@ -52,13 +52,13 @@
           ansible.builtin.assert:
             that:
               - ansible_facts.packages['fd-find']
-              - ansible_facts.packages['fd-find'][-1]['origin'] == 'Debian'
+              - ansible_facts.packages['fd-find'][0]['origin'] == 'Debian'
           when: ansible_facts.distribution_major_version is version(12, '<')
         - name: Assert installed fd
           ansible.builtin.assert:
             that:
               - ansible_facts.packages['fd']
-              - ansible_facts.packages['fd'][-1]['origin'] != 'Debian'
+              - ansible_facts.packages['fd'][0]['origin'] != 'Debian'
           when: ansible_facts.distribution_major_version is version(12, '>=')
     - name: Test bat
       block:
@@ -66,7 +66,7 @@
           ansible.builtin.assert:
             that:
               - ansible_facts.packages['bat']
-              - ansible_facts.packages['bat'][-1]['origin'] != 'Debian'
+              - ansible_facts.packages['bat'][0]['origin'] != 'Debian'
     - name: Test tig
       block:
         - name: Assert installed tig
@@ -103,7 +103,7 @@
           ansible.builtin.assert:
             that:
               - ansible_facts.packages['goaccess']
-              - ansible_facts.packages['goaccess'][-1]['origin'] != 'Debian'
+              - ansible_facts.packages['goaccess'][0]['origin'] != 'Debian'
         ## MaxMindのGeoIPデータベース関連テスト
         - name: Set goaccess_geoip_enabled variable
           ansible.builtin.set_fact:
@@ -115,7 +115,7 @@
               ansible.builtin.assert:
                 that:
                   - ansible_facts.packages['geoipupdate']
-                  - ansible_facts.packages['geoipupdate'][-1]['origin'] != 'Debian'
+                  - ansible_facts.packages['geoipupdate'][0]['origin'] != 'Debian'
             - name: Check geoipupdate setting
               ansible.builtin.lineinfile:
                 path: /etc/GeoIP.conf
@@ -183,13 +183,25 @@
         - name: Assert installed task
           ansible.builtin.assert:
             that: ansible_facts.packages['task']
+    - name: Test restic
+      block:
+        - name: Assert installed restic
+          ansible.builtin.assert:
+            that: ansible_facts.packages['restic']
+    - name: Test rclone
+      block:
+        - name: Assert installed rclone
+          ansible.builtin.assert:
+            that:
+              - ansible_facts.packages['rclone']
+              - ansible_facts.packages['rclone'][0]['origin'] != 'Debian'
     - name: Test Pandoc
       block:
         - name: Assert installed pandoc
           ansible.builtin.assert:
             that:
               - ansible_facts.packages['pandoc']
-              - ansible_facts.packages['pandoc'][-1]['origin'] != 'Debian'
+              - ansible_facts.packages['pandoc'][0]['origin'] != 'Debian'
     - name: Test Plantuml
       block:
         - name: Assert installed plantuml
@@ -211,13 +223,13 @@
           ansible.builtin.assert:
             that:
               - ansible_facts.packages['git-delta-musl']
-              - ansible_facts.packages['git-delta-musl'][-1]['origin'] != 'Debian'
+              - ansible_facts.packages['git-delta-musl'][0]['origin'] != 'Debian'
           when: ansible_facts.distribution_major_version is version('11', '<=')
         - name: Assert installed delta
           ansible.builtin.assert:
             that:
               - ansible_facts.packages['git-delta']
-              - ansible_facts.packages['git-delta'][-1]['origin'] != 'Debian'
+              - ansible_facts.packages['git-delta'][0]['origin'] != 'Debian'
           when: ansible_facts.distribution_major_version is version('11', '>')
     - name: Test D2
       block:

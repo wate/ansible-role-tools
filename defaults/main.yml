@@ -23,6 +23,10 @@ install_tools:
   - direnv
   ## https://taskfile.dev/
   - task
+  ## https://restic.net/
+  # - restic
+  ## https://rclone.org/
+  # - rclone
   ## https://github.com/jgm/pandoc
   - pandoc
   ## https://plantuml.com/ja/
@@ -93,6 +97,11 @@ lazygit_version: latest
 ## インストールするtaskのバージョン
 ## --------------------------
 task_version: latest
+
+## --------------------------
+## インストールするrcloneのバージョン
+## --------------------------
+rclone_version: latest
 
 ## --------------------------
 ## インストールするdeltaのバージョン
