@@ -195,6 +195,18 @@
             that:
               - ansible_facts.packages['rclone']
               - ansible_facts.packages['rclone'][0]['origin'] != 'Debian'
+    - name: Test jc
+      block:
+        - name: Assert installed rclone
+          ansible.builtin.assert:
+            that:
+              - ansible_facts.packages['jc']
+              - ansible_facts.packages['jc'][0]['origin'] != 'Debian'
+    - name: Test s3fs
+      block:
+        - name: Assert installed rclone
+          ansible.builtin.assert:
+            that: ansible_facts.packages['s3fs']
     - name: Test Pandoc
       block:
         - name: Assert installed pandoc

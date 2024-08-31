@@ -1,0 +1,4 @@
+---
+- name: Install s3fs package
+  ansible.builtin.apt:
+    name: s3fs
