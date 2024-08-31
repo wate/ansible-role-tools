@@ -24,6 +24,10 @@ install_tools:
   - restic
   ## https://rclone.org/
   - rclone
+  ## https://github.com/kellyjonbrazil/jc
+  - jc
+  ## https://github.com/s3fs-fuse/s3fs-fuse
+  - s3fs
   ## https://github.com/jgm/pandoc
   - pandoc
   ## https://plantuml.com/ja/
