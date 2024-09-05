@@ -192,9 +192,7 @@
       block:
         - name: Assert installed rclone
           ansible.builtin.assert:
-            that:
-              - ansible_facts.packages['rclone']
-              - ansible_facts.packages['rclone'][0]['origin'] != 'Debian'
+            that: ansible_facts.packages['rclone']
     - name: Test jc
       block:
         - name: Assert installed rclone

@@ -52,10 +52,6 @@ Role Variables
 
 インストールするtaskのバージョン
 
-### `rclone_version`
-
-インストールするrcloneのバージョン
-
 ### `delta_version`
 
 インストールするdeltaのバージョン

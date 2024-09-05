@@ -103,11 +103,6 @@ lazygit_version: latest
 task_version: latest
 
 ## --------------------------
-## インストールするrcloneのバージョン
-## --------------------------
-rclone_version: latest
-
-## --------------------------
 ## インストールするdeltaのバージョン
 ## --------------------------
 delta_version: latest
