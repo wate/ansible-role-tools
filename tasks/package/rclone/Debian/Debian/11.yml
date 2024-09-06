@@ -1,0 +1,19 @@
+---
+- name: Get latest version
+  ansible.builtin.include_tasks:
+    file: package/common/get_latest_version.yml
+  vars:
+    github_repo: "{{ tools_rclone_repo }}"
+- name: Set package version
+  ansible.builtin.set_fact:
+    rclone_version: "{{ latest_version }}"
+- name: Set package file variable
+  ansible.builtin.set_fact:
+    package_file: rclone-{{ rclone_version }}-{{ ansible_facts['system'] | lower }}-{{ arch_type_maps[ansible_facts['architecture']] }}.deb
+  vars:
+    arch_type_maps:
+      x86_64: amd64
+      aarch64: arm64
+- name: Install rclone
+  ansible.builtin.apt:
+    deb: https://github.com/{{ tools_rclone_repo }}/releases/download/{{ rclone_version }}/{{ package_file }}
