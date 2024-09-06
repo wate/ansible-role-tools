@@ -1,4 +1,15 @@
 ---
+## 以下のエラーが出てしまうため、標準で提供されているパッケージをインストール
+##
+## ```
+## uses unknown compression for member 'control.tar.zst', giving up
+## ```
+##
+## ※以下の記事に記載してある内容を行ってまで、最新のバージョンをインストールする必要性が低いため
+##
+## dpkgがzstdに対応していなかったときの対応
+## https://zenn.dev/nagomiso/articles/59dc56d37a65d4
+##
 - name: Install fd
   ansible.builtin.apt:
     name: fd-find

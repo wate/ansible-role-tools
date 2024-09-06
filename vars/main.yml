@@ -21,6 +21,8 @@ tools_osv_scanner_repo: google/osv-scanner
 tools_jc_repo: kellyjonbrazil/jc
 tools_fd_repo: sharkdp/fd
 tools_bat_repo: sharkdp/bat
+tools_rclone_repo: rclone/rclone
+tools_restic_repo: restic/restic
 tools_task_repo: go-task/task
 tools_lazygit_repo: jesseduffield/lazygit
 tools_delta_repo: dandavison/delta
