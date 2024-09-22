@@ -14,7 +14,7 @@ OS Platform
 Role Variables
 --------------
 
-### `defaults/main.yml`
+### [defaults/main.yml](defaults/main.yml)
 
 設定方法の詳細については[defaults/main.yml](defaults/main.yml)のサンプルコードなどを参照してください。
 
@@ -103,9 +103,9 @@ Tesseract OCRの言語ファイル
 
 mecabの設定
 
-### `vars/main.yml`
+### [vars/main.yml](vars/main.yml)
 
-設定方法の詳細については[vars/main.yml](vars/main.yml)のサンプルコードなどを参照してください。
+設定値については[vars/main.yml](vars/main.yml)を参照してください。
 
 #### `tools_dependency_packages`
 
