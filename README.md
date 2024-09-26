@@ -14,92 +14,148 @@ OS Platform
 Role Variables
 --------------
 
-設定方法の詳細については[defaults/main.yml](defaults/main.yml)のサンプルコードを参照してください。
+### [defaults/main.yml](defaults/main.yml)
 
-### `install_tools`
+設定方法の詳細については[defaults/main.yml](defaults/main.yml)のサンプルコードなどを参照してください。
+
+#### `install_tools`
 
 インストールするツール
 
-### `d2_version`
+#### `d2_version`
 
 インストールするd2のバージョン
 
-### `osv_scanner_version`
+#### `osv_scanner_version`
 
 インストールするosv-scannerのバージョン
 
-### `tbls_version`
+#### `tbls_version`
 
 インストールするtblsのバージョン
 
-### `runn_version`
+#### `runn_version`
 
 インストールするrunnのバージョン
 
-### `fd_version`
+#### `fd_version`
 
 インストールするfdのバージョン
 
-### `bat_version`
+#### `bat_version`
 
 インストールするbatのバージョン
 
-### `lazygit_version`
+#### `lazygit_version`
 
 インストールするlazygitのバージョン
 
-### `task_version`
+#### `task_version`
 
 インストールするtaskのバージョン
 
-### `delta_version`
+#### `delta_version`
 
 インストールするdeltaのバージョン
 
-### `glow_version`
+#### `glow_version`
 
 インストールするglowのバージョン
 
-### `pandoc_version`
+#### `pandoc_version`
 
 インストールするpandocのバージョン
 
-### `hugo_version`
+#### `hugo_version`
 
 インストールするHugoのバージョン
 
-### `hugo_extended`
+#### `hugo_extended`
 
 インストールするHugoのタイプ
 
-### `goaccess_maxmind_account`
+#### `goaccess_maxmind_account`
 
 MaxMindのアカウントIDとライセンスキー  
 @see https://dev.maxmind.com/geoip/geolite2-free-geolocation-data
 
-### `goaccess_maxmind_database_editions`
+#### `goaccess_maxmind_database_editions`
 
 インストールするMaxMindのGeoIPデータベースのエディション
 
-### `goaccess_maxmind_database_path`
+#### `goaccess_maxmind_database_path`
 
 GoAccessに設定するGeoIPデータベースのパス
 
-### `goaccess_geoipupdate_interval`
+#### `goaccess_geoipupdate_interval`
 
 GeoIPデータベースの自動更新頻度
 
-### `tesseract_ocr_langages`
+#### `tesseract_ocr_langages`
 
 Tesseract OCRの言語ファイル
 
-### `mecab_packages`
+#### `mecab_packages`
 
 インストールするmecab関連のパッケージ
 
-### `mecab_extra_cfg`
+#### `mecab_extra_cfg`
 
 mecabの設定
+
+### [vars/main.yml](vars/main.yml)
+
+設定値については[vars/main.yml](vars/main.yml)を参照してください。
+
+#### `tools_dependency_packages`
+
+#### `tools_add_repository_dependency_packages`
+
+#### `tools_eza_apt_key_url`
+
+#### `tools_eza_apt_key_dest`
+
+#### `tools_goaccess_apt_key_url`
+
+#### `tools_goaccess_apt_key_dest`
+
+#### `tools_tesseract_ocr_apt_key_url`
+
+#### `tools_tesseract_ocr_apt_key_dest`
+
+#### `tools_tbls_repo`
+
+#### `tools_runn_repo`
+
+#### `tools_osv_scanner_repo`
+
+#### `tools_jc_repo`
+
+#### `tools_fd_repo`
+
+#### `tools_bat_repo`
+
+#### `tools_rclone_repo`
+
+#### `tools_restic_repo`
+
+#### `tools_task_repo`
+
+#### `tools_lazygit_repo`
+
+#### `tools_delta_repo`
+
+#### `tools_duckdb_repo`
+
+#### `tools_pict_repo`
+
+#### `tools_d2_repo`
+
+#### `tools_glow_repo`
+
+#### `tools_pandoc_repo`
+
+#### `tools_hugo_repo`
 
 Example Playbook
 --------------

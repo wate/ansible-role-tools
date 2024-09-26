@@ -24,11 +24,13 @@ install_tools:
   ## https://taskfile.dev/
   - task
   ## https://restic.net/
-  # - restic
+  - restic
   ## https://rclone.org/
-  # - rclone
+  - rclone
   ## https://github.com/kellyjonbrazil/jc
-  # - jc
+  - jc
+  ## https://duckdb.org/
+  - duckdb
   ## https://github.com/s3fs-fuse/s3fs-fuse
   # - s3fs
   ## https://github.com/jgm/pandoc
@@ -59,7 +61,7 @@ install_tools:
   # - tesseract-ocr
   ## https://taku910.github.io/mecab/
   # - mecab
-  ## https://github.com/google/zx
+  ## https://google.github.io/zx/
   # - zx
 
 ## --------------------------
@@ -106,6 +108,11 @@ task_version: latest
 ## インストールするdeltaのバージョン
 ## --------------------------
 delta_version: latest
+
+## --------------------------
+## インストールするDuckDBのバージョン
+## --------------------------
+duckdb_version: latest
 
 ## --------------------------
 ## インストールするglowのバージョン
