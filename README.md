@@ -145,6 +145,8 @@ mecabの設定
 
 #### `tools_delta_repo`
 
+#### `tools_duckdb_repo`
+
 #### `tools_pict_repo`
 
 #### `tools_d2_repo`

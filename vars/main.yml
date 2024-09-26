@@ -26,6 +26,7 @@ tools_restic_repo: restic/restic
 tools_task_repo: go-task/task
 tools_lazygit_repo: jesseduffield/lazygit
 tools_delta_repo: dandavison/delta
+tools_duckdb_repo: duckdb/duckdb
 tools_pict_repo: microsoft/pict
 tools_d2_repo: terrastruct/d2
 tools_glow_repo: charmbracelet/glow

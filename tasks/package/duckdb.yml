@@ -1,0 +1,26 @@
+---
+- name: Set Install version variable
+  when: duckdb_version == 'latest'
+  block:
+    - name: Get latest version
+      ansible.builtin.include_tasks:
+        file: package/common/get_latest_version.yml
+      vars:
+        github_repo: "{{ tools_duckdb_repo }}"
+    - name: Set package version
+      ansible.builtin.set_fact:
+        duckdb_version: "{{ latest_version }}"
+- name: Set package file variable
+  ansible.builtin.set_fact:
+    dockdb_asset_file: duckdb_cli-linux-{{ arch_type_maps[ansible_facts['architecture']] }}.zip
+  vars:
+    arch_type_maps:
+      x86_64: amd64
+      aarch64: aarch64
+- name: Install DockDB
+  ansible.builtin.unarchive:
+    src: https://github.com/{{ tools_duckdb_repo }}/releases/download/{{ duckdb_version }}/{{ dockdb_asset_file }}
+    dest: /usr/local/bin
+    include:
+      - duckdb
+    remote_src: true

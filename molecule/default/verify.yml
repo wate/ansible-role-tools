@@ -200,6 +200,22 @@
             that:
               - ansible_facts.packages['jc']
               - ansible_facts.packages['jc'][0]['origin'] != 'Debian'
+    - name: Test DuckDB
+      block:
+        - name: Check DuckDB command
+          ansible.builtin.stat:
+            path: /usr/local/bin/duckdb
+          register: duckdb_command_result
+        - name: Assert DuckDB command
+          ansible.builtin.assert:
+            that:
+              - duckdb_command_result.stat.exists
+              - duckdb_command_result.stat.executable
+        - name: Assert installed rclone
+          ansible.builtin.assert:
+            that:
+              - ansible_facts.packages['jc']
+              - ansible_facts.packages['jc'][0]['origin'] != 'Debian'
     - name: Test s3fs
       block:
         - name: Assert installed rclone

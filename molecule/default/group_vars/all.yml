@@ -26,6 +26,8 @@ install_tools:
   - rclone
   ## https://github.com/kellyjonbrazil/jc
   - jc
+  ## https://duckdb.org/
+  - duckdb
   ## https://github.com/s3fs-fuse/s3fs-fuse
   - s3fs
   ## https://github.com/jgm/pandoc
