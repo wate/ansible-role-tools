@@ -9,8 +9,8 @@
     - name: Add/update option setting
       ansible.builtin.lineinfile:
         path: /etc/GeoIP.conf
-        regexp: "^{{ item.name }} "
-        line: "{{ item.name }} {{ item.value }}"
+        regexp: "^{{ goaccess_maxmind_setting.name }} "
+        line: "{{ goaccess_maxmind_setting.name }} {{ goaccess_maxmind_setting.value }}"
       loop:
         - name: AccountID
           value: "{{ goaccess_maxmind_account.account_id }}"
@@ -19,7 +19,8 @@
         - name: EditionIDs
           value: "{{ goaccess_maxmind_database_editions | join(' ') }}"
       loop_control:
-        label: "{{ item.name }}"
+        loop_var: goaccess_maxmind_setting
+        label: "{{ goaccess_maxmind_setting.name }}"
     - name: Add geoipupdate cron job
       ansible.builtin.copy:
         src: goaccess/cron/geoipupdate
