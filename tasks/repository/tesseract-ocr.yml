@@ -1,10 +1,21 @@
 ---
 ## @see https://notesalexp.org/tesseract-ocr/html/
-- name: Add apt signing key
+
+- name: Create GPG key directory
+  ansible.builtin.file:
+    path: "{{ tools_tesseract_ocr_apt_key_dest | dirname }}"
+    state: directory
+    mode: "0755"
+- name: Download GPG key
   ansible.builtin.get_url:
     url: "{{ tools_tesseract_ocr_apt_key_url }}"
-    dest: "{{ tools_tesseract_ocr_apt_key_dest }}"
+    dest: "{{ tools_tesseract_ocr_apt_key_download_dest }}"
     mode: "0644"
+  register: gpg_key_download_result
+- name: Convert GPG key
+  ansible.builtin.command:
+    cmd: gpg --dearmor -o {{ tools_tesseract_ocr_apt_key_dest }} {{ tools_tesseract_ocr_apt_key_download_dest }}
+  when: gpg_key_download_result is changed
 - name: Add notesalexp repository
   ansible.builtin.apt_repository:
     filename: notesalexp

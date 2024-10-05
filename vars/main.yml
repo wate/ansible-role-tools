@@ -4,15 +4,18 @@ tools_add_repository_dependency_packages: []
 
 ## eza
 tools_eza_apt_key_url: https://raw.githubusercontent.com/eza-community/eza/main/deb.asc
-tools_eza_apt_key_dest: /usr/share/keyrings/gierens.gpg.asc
+tools_eza_apt_key_download_dest: /etc/apt/keyrings/eza.gpg.asc
+tools_eza_apt_key_dest: /etc/apt/keyrings/eza.gpg
 
 ## GoAccess
 tools_goaccess_apt_key_url: https://deb.goaccess.io/gnugpg.key
-tools_goaccess_apt_key_dest: /usr/share/keyrings/goaccess.gpg.key
+tools_goaccess_apt_key_download_dest: /etc/apt/keyrings/goaccess.gpg.key
+tools_goaccess_apt_key_dest: /etc/apt/keyrings/goaccess.gpg
 
 ## Tesseract OCR
 tools_tesseract_ocr_apt_key_url: https://notesalexp.org/debian/alexp_key.asc
-tools_tesseract_ocr_apt_key_dest: /usr/share/keyrings/tesseract-ocr.gpg.asc
+tools_tesseract_ocr_apt_key_download_dest: /etc/apt/keyrings/tesseract-ocr.gpg.asc
+tools_tesseract_ocr_apt_key_dest: /etc/apt/keyrings/tesseract-ocr.gpg
 
 ## repos
 tools_tbls_repo: k1LoW/tbls

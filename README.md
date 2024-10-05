@@ -58,6 +58,10 @@ Role Variables
 
 インストールするdeltaのバージョン
 
+#### `duckdb_version`
+
+インストールするDuckDBのバージョン
+
 #### `glow_version`
 
 インストールするglowのバージョン
@@ -113,13 +117,19 @@ mecabの設定
 
 #### `tools_eza_apt_key_url`
 
+#### `tools_eza_apt_key_download_dest`
+
 #### `tools_eza_apt_key_dest`
 
 #### `tools_goaccess_apt_key_url`
 
+#### `tools_goaccess_apt_key_download_dest`
+
 #### `tools_goaccess_apt_key_dest`
 
 #### `tools_tesseract_ocr_apt_key_url`
+
+#### `tools_tesseract_ocr_apt_key_download_dest`
 
 #### `tools_tesseract_ocr_apt_key_dest`
 

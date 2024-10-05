@@ -1,10 +1,20 @@
 ---
 ## @see https://goaccess.io/download#official-repo
-- name: Add apt signing key
+- name: Create GPG key directory
+  ansible.builtin.file:
+    path: "{{ tools_goaccess_apt_key_dest | dirname }}"
+    state: directory
+    mode: "0755"
+- name: Download GPG key
   ansible.builtin.get_url:
     url: "{{ tools_goaccess_apt_key_url }}"
-    dest: "{{ tools_goaccess_apt_key_dest }}"
+    dest: "{{ tools_goaccess_apt_key_download_dest }}"
     mode: "0644"
+  register: gpg_key_download_result
+- name: Convert GPG key
+  ansible.builtin.command:
+    cmd: gpg --dearmor -o {{ tools_goaccess_apt_key_dest }} {{ tools_goaccess_apt_key_download_dest }}
+  when: gpg_key_download_result is changed
 - name: Add goaccess repository
   ansible.builtin.apt_repository:
     filename: goaccess
