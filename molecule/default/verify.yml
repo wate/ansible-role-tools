@@ -22,9 +22,16 @@
     ## 各パッケージのテスト
     - name: Test eza
       block:
-        - name: Check eza gpg key
+        - name: Check eza sorce gpg key
           ansible.builtin.stat:
-            path: /usr/share/keyrings/gierens.gpg.asc
+            path: /etc/apt/keyrings/eza.gpg.asc
+          register: eza_src_gpg_key_result
+        - name: Assert eza sorce gpg key
+          ansible.builtin.assert:
+            that: eza_src_gpg_key_result.stat.exists
+        - name: Check eza sorce gpg key
+          ansible.builtin.stat:
+            path: /etc/apt/keyrings/eza.gpg
           register: eza_gpg_key_result
         - name: Assert eza gpg key
           ansible.builtin.assert:
@@ -85,9 +92,16 @@
               - lazygit_command_result.stat.executable
     - name: Test GoAccess
       block:
+        - name: Check goaccess sorce gpg key
+          ansible.builtin.stat:
+            path: /etc/apt/keyrings/goaccess.gpg.key
+          register: goaccess_src_gpg_key_result
+        - name: Assert goaccess sorce gpg key
+          ansible.builtin.assert:
+            that: goaccess_src_gpg_key_result.stat.exists
         - name: Check goaccess gpg key
           ansible.builtin.stat:
-            path: /usr/share/keyrings/goaccess.gpg.key
+            path: /etc/apt/keyrings/goaccess.gpg
           register: goaccess_gpg_key_result
         - name: Assert goaccess gpg key
           ansible.builtin.assert:
@@ -318,9 +332,16 @@
               - hugo_command_result.stat.executable
     - name: Test Tesseract OCR
       block:
+        - name: Check tesseract-ocr source gpg key
+          ansible.builtin.stat:
+            path: /etc/apt/keyrings/tesseract-ocr.gpg.asc
+          register: tesseract_ocr_src_gpg_key_result
+        - name: Assert tesseract-ocr source gpg key
+          ansible.builtin.assert:
+            that: tesseract_ocr_src_gpg_key_result.stat.exists
         - name: Check tesseract-ocr gpg key
           ansible.builtin.stat:
-            path: /usr/share/keyrings/tesseract-ocr.gpg.asc
+            path: /etc/apt/keyrings/tesseract-ocr.gpg
           register: tesseract_ocr_gpg_key_result
         - name: Assert tesseract-ocr gpg key
           ansible.builtin.assert:

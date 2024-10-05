@@ -1,10 +1,20 @@
 ---
 ## @see https://github.com/eza-community/eza/blob/main/INSTALL.md
-- name: Add apt signing key
+- name: Create GPG key directory
+  ansible.builtin.file:
+    path: "{{ tools_eza_apt_key_dest | dirname }}"
+    state: directory
+    mode: "0755"
+- name: Download GPG key
   ansible.builtin.get_url:
     url: "{{ tools_eza_apt_key_url }}"
-    dest: "{{ tools_eza_apt_key_dest }}"
+    dest: "{{ tools_eza_apt_key_download_dest }}"
     mode: "0644"
+  register: gpg_key_download_result
+- name: Convert GPG key
+  ansible.builtin.command:
+    cmd: gpg --dearmor -o {{ tools_eza_apt_key_dest }} {{ tools_eza_apt_key_download_dest }}
+  when: gpg_key_download_result is changed
 - name: Add notesalexp repository
   ansible.builtin.apt_repository:
     filename: gierens
