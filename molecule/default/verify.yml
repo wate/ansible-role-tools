@@ -209,11 +209,17 @@
             that: ansible_facts.packages['rclone']
     - name: Test jc
       block:
-        - name: Assert installed rclone
+        - name: Assert installed jc
           ansible.builtin.assert:
             that:
               - ansible_facts.packages['jc']
               - ansible_facts.packages['jc'][0]['origin'] != 'Debian'
+    - name: Test HTTPie
+      block:
+        - name: Assert installed HTTPie
+          ansible.builtin.assert:
+            that:
+              - ansible_facts.packages['httpie']
     - name: Test DuckDB
       block:
         - name: Check DuckDB command
