@@ -17,6 +17,6 @@
     arch_type_maps:
       x86_64: amd64
       aarch64: arm64
-- name: Install bat
+- name: Install task
   ansible.builtin.apt:
     deb: https://github.com/{{ tools_task_repo }}/releases/download/{{ task_version }}/{{ package_file }}
