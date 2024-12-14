@@ -27,6 +27,8 @@ install_tools:
   - restic
   ## https://rclone.org/
   - rclone
+  ## https://github.com/tldr-pages/tlrc
+  - tldr
   ## https://github.com/kellyjonbrazil/jc
   - jc
   ## https://httpie.io/
@@ -70,6 +72,11 @@ install_tools:
 ## インストールするd2のバージョン
 ## --------------------------
 d2_version: latest
+
+## --------------------------
+## インストールするtldrのバージョン
+## --------------------------
+tldr_version: latest
 
 ## --------------------------
 ## インストールするosv-scannerのバージョン

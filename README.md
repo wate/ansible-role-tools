@@ -26,6 +26,10 @@ Role Variables
 
 インストールするd2のバージョン
 
+#### `tldr_version`
+
+インストールするtldrのバージョン
+
 #### `osv_scanner_version`
 
 インストールするosv-scannerのバージョン
@@ -148,6 +152,8 @@ mecabの設定
 #### `tools_rclone_repo`
 
 #### `tools_restic_repo`
+
+#### `tools_tldr_repo`
 
 #### `tools_task_repo`
 

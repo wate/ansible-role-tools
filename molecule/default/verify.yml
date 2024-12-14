@@ -207,6 +207,17 @@
         - name: Assert installed rclone
           ansible.builtin.assert:
             that: ansible_facts.packages['rclone']
+    - name: Test tldr
+      block:
+        - name: Check osv-scanner command
+          ansible.builtin.stat:
+            path: /usr/local/bin/tldr
+          register: tldr_command_result
+        - name: Assert tldr command
+          ansible.builtin.assert:
+            that:
+              - tldr_command_result.stat.exists
+              - tldr_command_result.stat.executable
     - name: Test jc
       block:
         - name: Assert installed jc
@@ -238,7 +249,7 @@
               - ansible_facts.packages['jc'][0]['origin'] != 'Debian'
     - name: Test s3fs
       block:
-        - name: Assert installed rclone
+        - name: Assert installed s3fs
           ansible.builtin.assert:
             that: ansible_facts.packages['s3fs']
     - name: Test Pandoc
