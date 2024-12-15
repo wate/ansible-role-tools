@@ -1,0 +1,4 @@
+---
+- name: Install lnav
+  ansible.builtin.apt:
+    name: lnav

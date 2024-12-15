@@ -11,6 +11,8 @@ install_tools:
   - bat
   ## https://jonas.github.io/tig/
   - tig
+  ## https://lnav.org/
+  - lnav
   ## https://github.com/jesseduffield/lazygit
   # - lazygit
   ## https://github.com/dandavison/delta

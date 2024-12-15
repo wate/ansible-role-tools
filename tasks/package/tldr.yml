@@ -1,0 +1,27 @@
+---
+- name: Install tldr
+  when:
+    - ansible_facts['system'] == 'Linux'
+    - ansible_facts['architecture'] == 'x86_64'
+  block:
+    - name: Set Install version variable
+      when: tldr_version == 'latest'
+      block:
+        - name: Get latest version
+          ansible.builtin.include_tasks:
+            file: package/common/get_latest_version.yml
+          vars:
+            github_repo: "{{ tools_tldr_repo }}"
+        - name: Set package version
+          ansible.builtin.set_fact:
+            tldr_version: "{{ latest_version }}"
+    - name: Set asset file name
+      ansible.builtin.set_fact:
+        tldr_asset_file: tlrc-{{ tldr_version }}-{{ ansible_facts['architecture'] }}-unknown-linux-gnu.tar.gz
+    - name: Install tldr
+      ansible.builtin.unarchive:
+        src: https://github.com/{{ tools_tldr_repo }}/releases/download/{{ tldr_version }}/{{ tldr_asset_file }}
+        dest: /usr/local/bin
+        include:
+          - tldr
+        remote_src: true

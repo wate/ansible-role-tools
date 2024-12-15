@@ -79,6 +79,11 @@
         - name: Assert installed tig
           ansible.builtin.assert:
             that: ansible_facts.packages['tig']
+    - name: Test lnav
+      block:
+        - name: Assert installed lnav
+          ansible.builtin.assert:
+            that: ansible_facts.packages['lnav']
     - name: Test lazygit
       block:
         - name: Check lazygit
