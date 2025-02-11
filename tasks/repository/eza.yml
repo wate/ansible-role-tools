@@ -15,12 +15,17 @@
   ansible.builtin.command:
     cmd: gpg --dearmor -o {{ tools_eza_apt_key_dest }} {{ tools_eza_apt_key_download_dest }}
   when: gpg_key_download_result is changed
-- name: Add notesalexp repository
-  ansible.builtin.apt_repository:
-    filename: gierens
-    repo: >
-      deb [signed-by={{ tools_eza_apt_key_dest }}]
-      http://deb.gierens.de
-      stable
-      main
+- name: Add gierens repository
+  ansible.builtin.deb822_repository:
+    name: gierens
+    uris: http://deb.gierens.de
+    suites: stable
+    components: main
+    signed_by: "{{ tools_eza_apt_key_dest }}"
+    enabled: true
     state: present
+  register: apt_repository_result
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: true
+  when: apt_repository_result is changed

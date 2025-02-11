@@ -13,6 +13,7 @@
 - name: Install add repository dependency packages
   ansible.builtin.include_tasks:
     file: "{{ repository_dependency_task_file }}"
+  when: repository_dependency_task_file | length > 0
 - name: Add repository task
   ansible.builtin.include_tasks:
     file: "{{ item }}"

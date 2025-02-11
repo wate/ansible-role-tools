@@ -21,6 +21,8 @@ tools_dependency_packages:
   - pkg-config
 
 tools_add_repository_dependency_packages:
+  - python3-apt
+  - python3-debian
   - apt-transport-https
   - ca-certificates
   - curl

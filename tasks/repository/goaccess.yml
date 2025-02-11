@@ -16,15 +16,21 @@
     cmd: gpg --dearmor -o {{ tools_goaccess_apt_key_dest }} {{ tools_goaccess_apt_key_download_dest }}
   when: gpg_key_download_result is changed
 - name: Add goaccess repository
-  ansible.builtin.apt_repository:
-    filename: goaccess
-    repo: >
-      deb [signed-by={{ tools_goaccess_apt_key_dest }} arch={{ arch_type_maps[ansible_facts.architecture] }}]
-      https://deb.goaccess.io/
-      {{ ansible_facts.distribution_release }}
-      main
+  ansible.builtin.deb822_repository:
+    name: goaccess
+    uris: https://deb.goaccess.io/
+    suites: "{{ ansible_facts.distribution_release }}"
+    components: main
+    architectures: "{{ arch_type_maps[ansible_facts.architecture] }}"
+    signed_by: "{{ tools_goaccess_apt_key_dest }}"
+    enabled: true
     state: present
   vars:
     arch_type_maps:
       x86_64: amd64
       aarch64: arm64
+  register: apt_repository_result
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: true
+  when: apt_repository_result is changed
