@@ -38,7 +38,7 @@
             that: eza_gpg_key_result.stat.exists
         - name: Check eza apt repository
           ansible.builtin.stat:
-            path: /etc/apt/sources.list.d/gierens.list
+            path: /etc/apt/sources.list.d/gierens.sources
           register: eza_repository_result
         - name: Assert goaccess apt repository
           ansible.builtin.assert:
@@ -113,7 +113,7 @@
             that: goaccess_gpg_key_result.stat.exists
         - name: Check goaccess apt repository
           ansible.builtin.stat:
-            path: /etc/apt/sources.list.d/goaccess.list
+            path: /etc/apt/sources.list.d/goaccess.sources
           register: goaccess_repository_result
         - name: Assert goaccess apt repository
           ansible.builtin.assert:
@@ -370,7 +370,7 @@
             that: tesseract_ocr_gpg_key_result.stat.exists
         - name: Check tesseract-ocr apt repository
           ansible.builtin.stat:
-            path: /etc/apt/sources.list.d/notesalexp.list
+            path: /etc/apt/sources.list.d/notesalexp.sources
           register: tesseract_ocr_repository_result
         - name: Assert tesseract-ocr apt repository
           ansible.builtin.assert:

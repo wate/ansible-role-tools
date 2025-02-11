@@ -17,11 +17,17 @@
     cmd: gpg --dearmor -o {{ tools_tesseract_ocr_apt_key_dest }} {{ tools_tesseract_ocr_apt_key_download_dest }}
   when: gpg_key_download_result is changed
 - name: Add notesalexp repository
-  ansible.builtin.apt_repository:
-    filename: notesalexp
-    repo: >
-      deb [signed-by={{ tools_tesseract_ocr_apt_key_dest }}]
-      https://notesalexp.org/tesseract-ocr5/{{ ansible_facts.distribution_release }}/
-      {{ ansible_facts.distribution_release }}
-      main
+  ansible.builtin.deb822_repository:
+    name: notesalexp
+    types: deb
+    uris: https://notesalexp.org/tesseract-ocr5/{{ ansible_facts.distribution_release }}/
+    suites: "{{ ansible_facts.distribution_release }}"
+    components: main
+    signed_by: "{{ tools_tesseract_ocr_apt_key_dest }}"
+    enabled: true
     state: present
+  register: apt_repository_result
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: true
+  when: apt_repository_result is changed

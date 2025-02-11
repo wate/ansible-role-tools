@@ -18,6 +18,9 @@ platforms:
     cgroupns_mode: host
     privileged: true
     pre_build_image: true
+    # driver:vagrant
+    box: wate/debian-12
+    # memory: 1024
   - name: bullseye
     groups:
       - family_debian
@@ -31,6 +34,9 @@ platforms:
     cgroupns_mode: host
     privileged: true
     pre_build_image: true
+    # driver:vagrant
+    box: wate/debian-11
+    # memory: 1024
 provisioner:
   name: ansible
   options:
