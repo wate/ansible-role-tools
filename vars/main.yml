@@ -27,6 +27,7 @@ tools_bat_repo: sharkdp/bat
 tools_rclone_repo: rclone/rclone
 tools_restic_repo: restic/restic
 tools_tldr_repo: tldr-pages/tlrc
+tools_zns_repo: znscli/zns
 tools_task_repo: go-task/task
 tools_lazygit_repo: jesseduffield/lazygit
 tools_delta_repo: dandavison/delta

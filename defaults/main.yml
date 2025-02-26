@@ -31,6 +31,8 @@ install_tools:
   - rclone
   ## https://github.com/tldr-pages/tlrc
   - tldr
+  ## https://github.com/znscli/zns
+  # - zns
   ## https://github.com/kellyjonbrazil/jc
   - jc
   ## https://httpie.io/
@@ -79,6 +81,11 @@ d2_version: latest
 ## インストールするtldrのバージョン
 ## --------------------------
 tldr_version: latest
+
+## --------------------------
+## インストールするznsのバージョン
+## --------------------------
+zns_version: latest
 
 ## --------------------------
 ## インストールするosv-scannerのバージョン

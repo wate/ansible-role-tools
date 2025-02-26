@@ -28,6 +28,8 @@ install_tools:
   - rclone
   ## https://github.com/tldr-pages/tlrc
   - tldr
+  ## https://github.com/znscli/zns
+  - zns
   ## https://github.com/kellyjonbrazil/jc
   - jc
   ## https://httpie.io/
