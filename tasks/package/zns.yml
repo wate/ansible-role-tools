@@ -1,0 +1,28 @@
+- name: Set Install version variable
+  when: zns_version == 'latest'
+  block:
+    - name: Debug
+      ansible.builtin.debug:
+        var: tools_zns_repo
+    - name: Get latest version
+      ansible.builtin.include_tasks:
+        file: package/common/get_latest_version.yml
+      vars:
+        github_repo: "{{ tools_zns_repo }}"
+    - name: Set package version
+      ansible.builtin.set_fact:
+        zns_version: "{{ latest_version }}"
+- name: Set asset file name
+  ansible.builtin.set_fact:
+    zns_asset_file: zns_{{ zns_version[1:] }}_{{ ansible_facts['system'] | lower }}_{{ arch_type_maps[ansible_facts['architecture']] }}.tar.gz
+  vars:
+    arch_type_maps:
+      x86_64: amd64
+      aarch64: arm64
+- name: Install zns
+  ansible.builtin.unarchive:
+    src: https://github.com/{{ tools_zns_repo }}/releases/download/{{ zns_version }}/{{ zns_asset_file }}
+    dest: /usr/local/bin
+    include:
+      - zns
+    remote_src: true

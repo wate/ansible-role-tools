@@ -214,7 +214,7 @@
             that: ansible_facts.packages['rclone']
     - name: Test tldr
       block:
-        - name: Check osv-scanner command
+        - name: Check tldr command
           ansible.builtin.stat:
             path: /usr/local/bin/tldr
           register: tldr_command_result
@@ -223,6 +223,17 @@
             that:
               - tldr_command_result.stat.exists
               - tldr_command_result.stat.executable
+    - name: Test zns
+      block:
+        - name: Check zns command
+          ansible.builtin.stat:
+            path: /usr/local/bin/zns
+          register: zns_command_result
+        - name: Assert zns command
+          ansible.builtin.assert:
+            that:
+              - zns_command_result.stat.exists
+              - zns_command_result.stat.executable
     - name: Test jc
       block:
         - name: Assert installed jc
