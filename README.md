@@ -30,6 +30,10 @@ Role Variables
 
 インストールするtldrのバージョン
 
+#### `zns_version`
+
+インストールするznsのバージョン
+
 #### `osv_scanner_version`
 
 インストールするosv-scannerのバージョン
@@ -154,6 +158,8 @@ mecabの設定
 #### `tools_restic_repo`
 
 #### `tools_tldr_repo`
+
+#### `tools_zns_repo`
 
 #### `tools_task_repo`
 
