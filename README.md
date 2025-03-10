@@ -70,6 +70,10 @@ Role Variables
 
 インストールするDuckDBのバージョン
 
+#### `assh_version`
+
+インストールするasshのバージョン
+
 #### `glow_version`
 
 インストールするglowのバージョン
@@ -103,7 +107,7 @@ GoAccessに設定するGeoIPデータベースのパス
 
 GeoIPデータベースの自動更新頻度
 
-#### `tesseract_ocr_langages`
+#### `tesseract_ocr_languages`
 
 Tesseract OCRの言語ファイル
 
@@ -158,6 +162,8 @@ mecabの設定
 #### `tools_restic_repo`
 
 #### `tools_tldr_repo`
+
+#### `tools_assh_repo`
 
 #### `tools_zns_repo`
 
