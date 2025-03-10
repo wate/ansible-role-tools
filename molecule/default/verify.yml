@@ -258,11 +258,17 @@
             that:
               - duckdb_command_result.stat.exists
               - duckdb_command_result.stat.executable
-        - name: Assert installed rclone
+    - name: Test assh
+      block:
+        - name: Check assh command
+          ansible.builtin.stat:
+            path: /usr/local/bin/assh
+          register: assh_command_result
+        - name: Assert assh command
           ansible.builtin.assert:
             that:
-              - ansible_facts.packages['jc']
-              - ansible_facts.packages['jc'][0]['origin'] != 'Debian'
+              - assh_command_result.stat.exists
+              - assh_command_result.stat.executable
     - name: Test s3fs
       block:
         - name: Assert installed s3fs

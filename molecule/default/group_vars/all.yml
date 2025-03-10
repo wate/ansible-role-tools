@@ -36,6 +36,8 @@ install_tools:
   - httpie
   ## https://duckdb.org/
   - duckdb
+  ## https://github.com/moul/assh
+  - assh
   ## https://github.com/charmbracelet/glow
   - glow
   ## https://github.com/jgm/pandoc
