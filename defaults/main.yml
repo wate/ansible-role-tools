@@ -187,7 +187,7 @@ goaccess_geoipupdate_interval: weekly
 ## --------------------------
 ## Tesseract OCRの言語ファイル
 ## --------------------------
-tesseract_ocr_langages:
+tesseract_ocr_languages:
   # tesseract-ocr language files for English
   - tesseract-ocr-eng
   # tesseract-ocr language files for Japanese
