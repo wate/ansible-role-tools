@@ -1,4 +1,4 @@
 ---
 - name: Install tesseract-ocr
   ansible.builtin.apt:
-    name: "{{ ['tesseract-ocr'] + tesseract_ocr_langages }}"
+    name: "{{ ['tesseract-ocr'] + tesseract_ocr_languages }}"

@@ -1,0 +1,26 @@
+---
+- name: Set Install version variable
+  when: assh_version == 'latest'
+  block:
+    - name: Get latest version
+      ansible.builtin.include_tasks:
+        file: package/common/get_latest_version.yml
+      vars:
+        github_repo: "{{ tools_assh_repo }}"
+    - name: Set package version
+      ansible.builtin.set_fact:
+        assh_version: "{{ latest_version }}"
+- name: Set package file variable
+  ansible.builtin.set_fact:
+    assh_asset_file: assh_{{ assh_version[1:] }}_{{ ansible_facts['system'] | lower }}_{{ arch_type_maps[ansible_facts['architecture']] }}.tar.gz
+  vars:
+    arch_type_maps:
+      x86_64: amd64
+      aarch64: arm64
+- name: Install assh
+  ansible.builtin.unarchive:
+    src: https://github.com/{{ tools_assh_repo }}/releases/download/{{ assh_version }}/{{ assh_asset_file }}
+    dest: /usr/local/bin
+    include:
+      - assh
+    remote_src: true
