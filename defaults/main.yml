@@ -36,11 +36,11 @@ install_tools:
   ## https://github.com/kellyjonbrazil/jc
   - jc
   ## https://httpie.io/
-  - httpie
+  # - httpie
   ## https://duckdb.org/
   - duckdb
   ## https://github.com/moul/assh
-  - assh
+  # - assh
   ## https://github.com/charmbracelet/glow
   # - glow
   ## https://github.com/jgm/pandoc
