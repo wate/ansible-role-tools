@@ -82,6 +82,10 @@ Role Variables
 
 インストールするpandocのバージョン
 
+#### `drawio_version`
+
+インストールするdraw.ioのバージョン
+
 #### `hugo_version`
 
 インストールするHugoのバージョン
@@ -184,6 +188,8 @@ mecabの設定
 #### `tools_pandoc_repo`
 
 #### `tools_hugo_repo`
+
+#### `tools_drawio_repo`
 
 Example Playbook
 --------------
