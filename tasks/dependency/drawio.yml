@@ -1,0 +1,9 @@
+---
+- name: Install draw.io dependency packages
+  ansible.builtin.apt:
+    name:
+      - xvfb
+      - libgbm1
+      - libnotify4
+      - libsecret-common
+      - libsecret-1-0
