@@ -24,9 +24,4 @@
       when: variable_file | length > 0
     - name: Execute tool test
       ansible.builtin.include_tasks:
-        file: ../_common/tests/{{ tool_name }}.yml
-      loop:
-        - "{{ lookup('env', 'MOLECULE_SCENARIO_DIRECTORY') | basename }}"
-      loop_control:
-        loop_var: tool_name
-        label: "{{ tool_name }}"
+        file: ../_common/tests/{{ lookup('env', 'MOLECULE_SCENARIO_DIRECTORY') | basename }}.yml
