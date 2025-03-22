@@ -63,8 +63,10 @@ install_tools:
   # - wp-cli
   ## https://github.com/s3fs-fuse/s3fs-fuse
   # - s3fs
-  # https://github.com/alexmyczko/fnt
+  ## https://github.com/alexmyczko/fnt
   # - fnt
+  ## https://github.com/jgraph/drawio-desktop
+  # - drawio
   ## PDF 向けユーティリティ
   # - poppler-utils
   # https://github.com/gohugoio/hugo
@@ -148,6 +150,11 @@ glow_version: latest
 ## インストールするpandocのバージョン
 ## --------------------------
 pandoc_version: latest
+
+## --------------------------
+## インストールするdraw.ioのバージョン
+## --------------------------
+drawio_version: latest
 
 ## --------------------------
 ## インストールするHugoのバージョン
