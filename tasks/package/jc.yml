@@ -19,4 +19,4 @@
       aarch64: arm64
 - name: Install jc
   ansible.builtin.apt:
-    deb: https://github.com/kellyjonbrazil/jc/releases/download/{{ jc_version }}/{{ package_file }}
+    deb: https://github.com/{{ tools_jc_repo }}/releases/download/{{ jc_version }}/{{ package_file }}
