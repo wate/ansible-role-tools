@@ -10,11 +10,14 @@
         - name: Gather package fact
           ansible.builtin.package_facts:
             manager: auto
+          when: ansible_facts.packages is undefined
         - name: Gather service fact
           ansible.builtin.service_facts:
+          when: ansible_facts.services is undefined
         - name: Gather listening ports fact
           community.general.listen_ports_facts:
             command: ss
+          when: ansible_facts.tcp_listen is undefined or ansible_facts.udp_listen is undefined
         - name: Set listen ports fact variables
           ansible.builtin.set_fact:
             listen_tcp_posts: "{{ ansible_facts.tcp_listen | map(attribute='port') | unique | sort | list }}"
