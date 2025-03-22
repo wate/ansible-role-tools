@@ -15,6 +15,9 @@
       when: ansible_facts.pkg_mgr == 'dnf'
       changed_when: false
   tasks:
+    - name: Include variable file
+      ansible.builtin.include_vars:
+        file: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') }}/defaults/main.yml"
     - name: Include role
       ansible.builtin.include_role:
         name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
