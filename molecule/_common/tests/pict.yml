@@ -1,0 +1,10 @@
+---
+- name: Check pict command
+  ansible.builtin.stat:
+    path: /usr/local/bin/pict
+  register: pict_command_result
+- name: Assert pict command
+  ansible.builtin.assert:
+    that:
+      - pict_command_result.stat.exists
+      - pict_command_result.stat.executable

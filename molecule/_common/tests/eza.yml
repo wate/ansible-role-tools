@@ -1,0 +1,27 @@
+---
+- name: Check eza source gpg key
+  ansible.builtin.stat:
+    path: /etc/apt/keyrings/eza.gpg.asc
+  register: eza_src_gpg_key_result
+- name: Assert eza sorce gpg key
+  ansible.builtin.assert:
+    that: eza_src_gpg_key_result.stat.exists
+- name: Check eza sorce gpg key
+  ansible.builtin.stat:
+    path: /etc/apt/keyrings/eza.gpg
+  register: eza_gpg_key_result
+- name: Assert eza gpg key
+  ansible.builtin.assert:
+    that: eza_gpg_key_result.stat.exists
+- name: Check eza apt repository
+  ansible.builtin.stat:
+    path: /etc/apt/sources.list.d/gierens.sources
+  register: eza_repository_result
+- name: Assert eza apt repository
+  ansible.builtin.assert:
+    that: eza_repository_result.stat.exists
+- name: Assert installed eza
+  ansible.builtin.assert:
+    that:
+      - ansible_facts.packages['eza']
+      - ansible_facts.packages['eza'][0]['origin'] != 'Debian'

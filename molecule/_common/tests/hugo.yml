@@ -1,0 +1,10 @@
+---
+- name: Check hogo command
+  ansible.builtin.stat:
+    path: /usr/local/bin/hugo
+  register: hugo_command_result
+- name: Assert hogo command
+  ansible.builtin.assert:
+    that:
+      - hugo_command_result.stat.exists
+      - hugo_command_result.stat.executable

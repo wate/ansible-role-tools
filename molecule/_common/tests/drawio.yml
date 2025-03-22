@@ -1,0 +1,13 @@
+---
+- name: Assert installed draw.io
+  ansible.builtin.assert:
+    that: ansible_facts.packages['draw.io']
+- name: Excecute drawio command
+  ansible.builtin.command:
+    cmd: xvfb-run drawio --help
+  register: cmd_drawio_help_result
+  become: false
+- name: Assert drawio command exit code
+  ansible.builtin.assert:
+    that:
+      - cmd_drawio_help_result.rc == 0

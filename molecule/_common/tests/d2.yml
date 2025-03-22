@@ -1,0 +1,10 @@
+---
+- name: Check d2 command
+  ansible.builtin.stat:
+    path: /usr/local/bin/d2
+  register: d2_command_result
+- name: Assert d2 command
+  ansible.builtin.assert:
+    that:
+      - d2_command_result.stat.exists
+      - d2_command_result.stat.executable

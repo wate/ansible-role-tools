@@ -1,0 +1,6 @@
+---
+- name: Assert bat
+  ansible.builtin.assert:
+    that:
+      - ansible_facts.packages['bat']
+      - ansible_facts.packages['bat'][0]['origin'] != 'Debian'

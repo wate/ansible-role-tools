@@ -1,0 +1,88 @@
+---
+- name: Test goaccess
+  block:
+    - name: Check goaccess source gpg key
+      ansible.builtin.stat:
+        path: /etc/apt/keyrings/goaccess.gpg.key
+      register: goaccess_src_gpg_key_result
+    - name: Assert goaccess sorce gpg key
+      ansible.builtin.assert:
+        that: goaccess_src_gpg_key_result.stat.exists
+    - name: Check goaccess gpg key
+      ansible.builtin.stat:
+        path: /etc/apt/keyrings/goaccess.gpg
+      register: goaccess_gpg_key_result
+    - name: Assert goaccess gpg key
+      ansible.builtin.assert:
+        that: goaccess_gpg_key_result.stat.exists
+    - name: Check goaccess apt repository
+      ansible.builtin.stat:
+        path: /etc/apt/sources.list.d/goaccess.sources
+      register: goaccess_repository_result
+    - name: Assert goaccess apt repository
+      ansible.builtin.assert:
+        that: goaccess_repository_result.stat.exists
+    - name: Assert installed GoAccess
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.packages['goaccess']
+          - ansible_facts.packages['goaccess'][0]['origin'] != 'Debian'
+- name: Test MaxMind GeoIP database
+  block:
+    - name: Set goaccess_geoip_enabled variable
+      ansible.builtin.set_fact:
+        goaccess_geoip_enabled: "{{ lookup('env', 'MAXMIND_ACCOUNT_ID') | length > 0 and lookup('env', 'MAXMIND_LICENSE_KEY') | length > 0 }}"
+    - name: Test geoipupdate
+      when: goaccess_geoip_enabled
+      block:
+        - name: Assert installed geoipupdate
+          ansible.builtin.assert:
+            that:
+              - ansible_facts.packages['geoipupdate']
+              - ansible_facts.packages['geoipupdate'][0]['origin'] != 'Debian'
+        - name: Check geoipupdate setting
+          ansible.builtin.lineinfile:
+            path: /etc/GeoIP.conf
+            line: "{{ item }}"
+          loop:
+            - AccountID {{ lookup('env', 'MAXMIND_ACCOUNT_ID') }}
+            - LicenseKey {{ lookup('env', 'MAXMIND_LICENSE_KEY') }}
+            - EditionIDs GeoLite2-Country GeoLite2-City
+          register: geoipupdate_setting_result
+          no_log: true
+          check_mode: true
+        - name: Assert geoipupdate setting
+          ansible.builtin.assert:
+            that: geoipupdate_setting_result is not changed
+        - name: Check GeoIP database autoupdate setting
+          ansible.builtin.stat:
+            path: /etc/cron.weekly/geoipupdate
+          register: geoipupdate_cron_setting_result
+        - name: Assert GeoIP database autoupdate setting
+          ansible.builtin.assert:
+            that:
+              - geoipupdate_cron_setting_result.stat.exists
+              - geoipupdate_cron_setting_result.stat.executable
+        - name: Check GeoLite2-Country database file
+          ansible.builtin.stat:
+            path: /usr/share/GeoIP/GeoLite2-Country.mmdb
+          register: geoip_database_country_stat_result
+        - name: Assert GeoLite2-Country database file
+          ansible.builtin.assert:
+            that: geoip_database_country_stat_result.stat.exists
+        - name: Check GeoLite2-City database file
+          ansible.builtin.stat:
+            path: /usr/share/GeoIP/GeoLite2-City.mmdb
+          register: geoip_database_city_stat_result
+        - name: Assert GeoLite2-City database file
+          ansible.builtin.assert:
+            that: geoip_database_city_stat_result.stat.exists
+        - name: Check goaccess geoip-database setting
+          ansible.builtin.lineinfile:
+            path: /etc/goaccess/goaccess.conf
+            line: geoip-database /usr/share/GeoIP/GeoLite2-City.mmdb
+          register: goaccess_geoip_database_setting_result
+          check_mode: true
+        - name: Assert goaccess geoip-database setting
+          ansible.builtin.assert:
+            that: goaccess_geoip_database_setting_result is not changed

@@ -1,0 +1,10 @@
+---
+- name: Check tldr command
+  ansible.builtin.stat:
+    path: /usr/local/bin/tldr
+  register: tldr_command_result
+- name: Assert tldr command
+  ansible.builtin.assert:
+    that:
+      - tldr_command_result.stat.exists
+      - tldr_command_result.stat.executable
