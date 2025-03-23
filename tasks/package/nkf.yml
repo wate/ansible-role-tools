@@ -1,0 +1,4 @@
+---
+- name: Install nkf package
+  ansible.builtin.apt:
+    name: nkf
