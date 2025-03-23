@@ -53,6 +53,8 @@ install_tools:
   # - plantuml
   ## https://github.com/terrastruct/d2
   # - d2
+  ## https://github.com/petervanderdoes/gitflow-avh
+  # - git-flow
   ## https://github.com/k1LoW/tbls
   # - tbls
   ## https://github.com/k1LoW/runn
