@@ -13,6 +13,8 @@ install_tools:
   - tig
   ## https://lnav.org/
   - lnav
+  ## https://github.com/ggreer/the_silver_searcher
+  - the_silver_searcher
   ## https://github.com/jesseduffield/lazygit
   # - lazygit
   ## https://github.com/dandavison/delta
