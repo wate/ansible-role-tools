@@ -94,6 +94,14 @@ Role Variables
 
 インストールするHugoのタイプ
 
+#### `zx_latest_install`
+
+zxを最新版に更新するか否か
+
+#### `ni_latest_install`
+
+niを最新版に更新するか否か
+
 #### `goaccess_maxmind_account`
 
 MaxMindのアカウントIDとライセンスキー  
