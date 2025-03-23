@@ -63,6 +63,8 @@ install_tools:
   # - pict
   ## https://google.github.io/zx/
   # - zx
+  ## https://github.com/antfu-collective/ni
+  # - ni
   ## https://wp-cli.org/ja/
   # - wp-cli
   ## https://github.com/s3fs-fuse/s3fs-fuse
@@ -171,6 +173,16 @@ hugo_version: latest
 ## インストールするHugoのタイプ
 ## --------------------------
 hugo_extended: false
+
+## --------------------------
+## zxを最新版に更新するか否か
+## --------------------------
+zx_latest_install: true
+
+## --------------------------
+## niを最新版に更新するか否か
+## --------------------------
+ni_latest_install: true
 
 ## -----------------
 ## MaxMindのアカウントIDとライセンスキー
