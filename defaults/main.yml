@@ -40,7 +40,7 @@ install_tools:
   ## https://httpie.io/
   # - httpie
   ## https://duckdb.org/
-  - duckdb
+  # - duckdb
   ## https://github.com/moul/assh
   # - assh
   ## https://github.com/charmbracelet/glow
