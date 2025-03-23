@@ -1,0 +1,25 @@
+---
+- name: Check tesseract-ocr source gpg key
+  ansible.builtin.stat:
+    path: /etc/apt/keyrings/tesseract-ocr.gpg.asc
+  register: tesseract_ocr_src_gpg_key_result
+- name: Assert tesseract-ocr source gpg key
+  ansible.builtin.assert:
+    that: tesseract_ocr_src_gpg_key_result.stat.exists
+- name: Check tesseract-ocr gpg key
+  ansible.builtin.stat:
+    path: /etc/apt/keyrings/tesseract-ocr.gpg
+  register: tesseract_ocr_gpg_key_result
+- name: Assert tesseract-ocr gpg key
+  ansible.builtin.assert:
+    that: tesseract_ocr_gpg_key_result.stat.exists
+- name: Check tesseract-ocr apt repository
+  ansible.builtin.stat:
+    path: /etc/apt/sources.list.d/notesalexp.sources
+  register: tesseract_ocr_repository_result
+- name: Assert tesseract-ocr apt repository
+  ansible.builtin.assert:
+    that: tesseract_ocr_repository_result.stat.exists
+- name: Assert installed tesseract-ocr
+  ansible.builtin.assert:
+    that: ansible_facts.packages['tesseract-ocr']

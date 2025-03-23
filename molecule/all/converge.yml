@@ -15,9 +15,12 @@
       when: ansible_facts.pkg_mgr == 'dnf'
       changed_when: false
   tasks:
-    - name: Include variable file
-      ansible.builtin.include_vars:
-        file: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') }}/defaults/main.yml"
+    - name: Find install task files
+      ansible.builtin.set_fact:
+        task_files: "{{ lookup('fileglob', lookup('env', 'MOLECULE_PROJECT_DIRECTORY') + '/tasks/package/*.yml', wantlist=True) }}"
+    - name: Set install tool name variable
+      ansible.builtin.set_fact:
+        install_tools: "{{ task_files | map('basename') | map('regex_replace', '\\.yml$', '') | sort }}"
     - name: Include role
       ansible.builtin.include_role:
         name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"

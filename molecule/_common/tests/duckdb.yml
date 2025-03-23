@@ -1,0 +1,10 @@
+---
+- name: Check duckdb command
+  ansible.builtin.stat:
+    path: /usr/local/bin/duckdb
+  register: duckdb_command_result
+- name: Assert installed duckdb
+  ansible.builtin.assert:
+    that:
+      - duckdb_command_result.stat.exists
+      - duckdb_command_result.stat.executable

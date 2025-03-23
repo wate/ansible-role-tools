@@ -17,7 +17,7 @@
     arch_type_maps:
       x86_64: amd64
       aarch64: aarch64
-- name: Install DockDB
+- name: Install duckdb
   ansible.builtin.unarchive:
     src: https://github.com/{{ tools_duckdb_repo }}/releases/download/{{ duckdb_version }}/{{ dockdb_asset_file }}
     dest: /usr/local/bin
