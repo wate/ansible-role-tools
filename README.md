@@ -86,6 +86,10 @@ Role Variables
 
 インストールするdraw.ioのバージョン
 
+#### `gitleaks_version`
+
+インストールするgitleaksのバージョン
+
 #### `hugo_version`
 
 インストールするHugoのバージョン
@@ -198,6 +202,8 @@ mecabの設定
 #### `tools_hugo_repo`
 
 #### `tools_drawio_repo`
+
+#### `tools_gitleaks_repo`
 
 Example Playbook
 --------------
