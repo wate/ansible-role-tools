@@ -59,6 +59,8 @@ install_tools:
   # - tbls
   ## https://github.com/k1LoW/runn
   # - runn
+  ## https://github.com/gitleaks/gitleaks
+  # - gitleaks
   ## https://github.com/microsoft/pict
   # - pict
   ## https://google.github.io/zx/
@@ -163,6 +165,11 @@ pandoc_version: latest
 ## インストールするdraw.ioのバージョン
 ## --------------------------
 drawio_version: latest
+
+## --------------------------
+## インストールするgitleaksのバージョン
+## --------------------------
+gitleaks_version: latest
 
 ## --------------------------
 ## インストールするHugoのバージョン
