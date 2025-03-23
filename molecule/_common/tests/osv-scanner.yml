@@ -3,7 +3,7 @@
   ansible.builtin.stat:
     path: /usr/local/bin/osv-scanner
   register: osv_scanner_command_result
-- name: Assert osv-scanner command
+- name: Assert installed osv-scanner
   ansible.builtin.assert:
     that:
       - osv_scanner_command_result.stat.exists

@@ -3,7 +3,7 @@
   ansible.builtin.stat:
     path: /usr/local/bin/pict
   register: pict_command_result
-- name: Assert pict command
+- name: Assert installed pict
   ansible.builtin.assert:
     that:
       - pict_command_result.stat.exists

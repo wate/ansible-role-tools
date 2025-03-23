@@ -3,7 +3,7 @@
   ansible.builtin.stat:
     path: /usr/local/bin/wp
   register: wp_command_result
-- name: Assert wp command
+- name: Assert installed wp-cli
   ansible.builtin.assert:
     that:
       - wp_command_result.stat.exists

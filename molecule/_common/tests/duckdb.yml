@@ -3,7 +3,7 @@
   ansible.builtin.stat:
     path: /usr/local/bin/duckdb
   register: duckdb_command_result
-- name: Assert duckdb command
+- name: Assert installed duckdb
   ansible.builtin.assert:
     that:
       - duckdb_command_result.stat.exists

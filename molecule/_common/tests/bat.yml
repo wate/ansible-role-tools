@@ -1,5 +1,5 @@
 ---
-- name: Assert bat
+- name: Assert installed bat
   ansible.builtin.assert:
     that:
       - ansible_facts.packages['bat']

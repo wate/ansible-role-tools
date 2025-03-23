@@ -3,7 +3,7 @@
   ansible.builtin.stat:
     path: /usr/local/bin/d2
   register: d2_command_result
-- name: Assert d2 command
+- name: Assert installed d2
   ansible.builtin.assert:
     that:
       - d2_command_result.stat.exists

@@ -22,7 +22,7 @@
     - name: Assert goaccess apt repository
       ansible.builtin.assert:
         that: goaccess_repository_result.stat.exists
-    - name: Assert installed GoAccess
+    - name: Assert installed goaccess
       ansible.builtin.assert:
         that:
           - ansible_facts.packages['goaccess']

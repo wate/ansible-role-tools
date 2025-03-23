@@ -3,7 +3,7 @@
   ansible.builtin.stat:
     path: /usr/bin/zx
   register: zx_command_result
-- name: Assert zx command
+- name: Assert installed zx
   ansible.builtin.assert:
     that:
       - zx_command_result.stat.exists

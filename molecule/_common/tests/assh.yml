@@ -3,7 +3,7 @@
   ansible.builtin.stat:
     path: /usr/local/bin/assh
   register: assh_command_result
-- name: Assert assh command
+- name: Assert installed assh
   ansible.builtin.assert:
     that:
       - assh_command_result.stat.exists

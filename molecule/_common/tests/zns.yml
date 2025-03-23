@@ -3,7 +3,7 @@
   ansible.builtin.stat:
     path: /usr/local/bin/zns
   register: zns_command_result
-- name: Assert zns command
+- name: Assert installed zns
   ansible.builtin.assert:
     that:
       - zns_command_result.stat.exists
