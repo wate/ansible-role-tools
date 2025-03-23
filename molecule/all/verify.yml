@@ -1,0 +1,26 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: true
+  become: true
+  tasks:
+    ## テストの前処理
+    - name: Gather facts
+      block:
+        - name: Gather package fact
+          ansible.builtin.package_facts:
+            manager: auto
+          when: ansible_facts.packages is undefined
+    - name: Include variable file
+      ansible.builtin.include_vars:
+        file: "{{ lookup('env', 'MOLECULE_SCENARIO_DIRECTORY') }}/group_vars/all.yml"
+    - name: Find install task files
+      ansible.builtin.set_fact:
+        task_files: "{{ lookup('fileglob', lookup('env', 'MOLECULE_PROJECT_DIRECTORY') + '/tasks/package/*.yml', wantlist=True) }}"
+    - name: Execute test
+      ansible.builtin.include_tasks:
+        file: ../_common/tests/{{ tool_name }}.yml
+      loop: "{{ task_files | map('basename') | map('regex_replace', '\\.yml$', '') | sort }}"
+      loop_control:
+        loop_var: tool_name
+        label: "{{ tool_name }}"

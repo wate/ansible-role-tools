@@ -6,6 +6,7 @@
   ansible.builtin.command:
     cmd: xvfb-run drawio --help --no-sandbox
   register: drawio_command_help_result
+  changed_when: false
 - name: Assert drawio command exit code
   ansible.builtin.assert:
     that:
