@@ -1,0 +1,15 @@
+---
+- name: Find diff-pdf dependency task file
+  ansible.builtin.set_fact:
+    diff_pdf_dependency_task_file: "{{ lookup('first_found', params, errors='ignore') }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_facts.os_family }}/{{ ansible_facts.distribution }}/{{ ansible_facts.distribution_major_version }}.yml"
+        - "{{ ansible_facts.os_family }}/{{ ansible_facts.distribution }}.yml"
+        - "{{ ansible_facts.os_family }}.yml"
+      paths:
+        - tasks/dependency/diff-pdf
+- name: Execute diff-pdf dependency task
+  ansible.builtin.include_tasks:
+    file: "{{ diff_pdf_dependency_task_file }}"

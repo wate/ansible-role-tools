@@ -1,0 +1,11 @@
+---
+- name: Install diff-pdf dependency packages
+  ansible.builtin.apt:
+    name:
+      - make
+      - automake
+      - g++
+      - libpoppler-glib-dev
+      - poppler-utils
+      - libwxgtk3.0-gtk3-dev
+      - xvfb

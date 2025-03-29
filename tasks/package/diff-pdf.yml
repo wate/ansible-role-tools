@@ -1,0 +1,26 @@
+---
+- name: Checkout diff-pdf source
+  ansible.builtin.git:
+    repo: https://github.com/{{ tools_tools_diff_pdf_repo }}.git
+    dest: /usr/local/src/diff-pdf
+    version: master
+  register: checkout_result
+- name: Compiling sources
+  when: checkout_result is changed
+  block:
+    - name: Compiling sources(./bootstrap)
+      ansible.builtin.command:
+        cmd: ./bootstrap
+        chdir: /usr/local/src/diff-pdf
+    - name: Compiling sources(./configure)
+      ansible.builtin.command:
+        cmd: ./configure
+        chdir: /usr/local/src/diff-pdf
+    - name: Compiling sources(make)
+      ansible.builtin.command:
+        cmd: make
+        chdir: /usr/local/src/diff-pdf
+    - name: Compiling sources(make install)
+      ansible.builtin.command:
+        cmd: make install
+        chdir: /usr/local/src/diff-pdf
