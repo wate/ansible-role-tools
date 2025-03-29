@@ -1,0 +1,22 @@
+---
+- name: Get latest release
+  when: drawio_version | default('latest') == 'latest'
+  block:
+    - name: Get latest version
+      ansible.builtin.include_tasks:
+        file: package/common/get_latest_version.yml
+      vars:
+        github_repo: "{{ tools_drawio_repo }}"
+    - name: Set package version
+      ansible.builtin.set_fact:
+        drawio_version: "{{ latest_version }}"
+- name: Set variable
+  ansible.builtin.set_fact:
+    asset_file: drawio-{{ arch_type_maps[ansible_facts['architecture']] }}-{{ drawio_version[1:] }}.deb
+  vars:
+    arch_type_maps:
+      x86_64: amd64
+      aarch64: arm64
+- name: Install draw.io
+  ansible.builtin.apt:
+    deb: https://github.com/{{ tools_drawio_repo }}/releases/download/{{ drawio_version }}/{{ asset_file }}

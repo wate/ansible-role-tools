@@ -82,6 +82,14 @@ Role Variables
 
 インストールするpandocのバージョン
 
+#### `drawio_version`
+
+インストールするdraw.ioのバージョン
+
+#### `gitleaks_version`
+
+インストールするgitleaksのバージョン
+
 #### `hugo_version`
 
 インストールするHugoのバージョン
@@ -89,6 +97,14 @@ Role Variables
 #### `hugo_extended`
 
 インストールするHugoのタイプ
+
+#### `zx_latest_install`
+
+zxを最新版に更新するか否か
+
+#### `ni_latest_install`
+
+niを最新版に更新するか否か
 
 #### `goaccess_maxmind_account`
 
@@ -184,6 +200,12 @@ mecabの設定
 #### `tools_pandoc_repo`
 
 #### `tools_hugo_repo`
+
+#### `tools_drawio_repo`
+
+#### `tools_gitleaks_repo`
+
+#### `tools_tools_diff_pdf_repo`
 
 Example Playbook
 --------------

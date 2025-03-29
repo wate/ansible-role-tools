@@ -1,0 +1,10 @@
+---
+- name: Check gitleaks command
+  ansible.builtin.stat:
+    path: /usr/local/bin/gitleaks
+  register: gitleaks_command_result
+- name: Assert installed gitleaks
+  ansible.builtin.assert:
+    that:
+      - gitleaks_command_result.stat.exists
+      - gitleaks_command_result.stat.executable

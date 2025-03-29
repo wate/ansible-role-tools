@@ -1,0 +1,4 @@
+---
+- name: Assert installed git-flow
+  ansible.builtin.assert:
+    that: ansible_facts.packages['git-flow']

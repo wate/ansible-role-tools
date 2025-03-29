@@ -1,9 +1,6 @@
 - name: Set Install version variable
   when: zns_version == 'latest'
   block:
-    - name: Debug
-      ansible.builtin.debug:
-        var: tools_zns_repo
     - name: Get latest version
       ansible.builtin.include_tasks:
         file: package/common/get_latest_version.yml

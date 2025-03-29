@@ -1,0 +1,6 @@
+---
+- name: Assert installed jc
+  ansible.builtin.assert:
+    that:
+      - ansible_facts.packages['jc']
+      - ansible_facts.packages['jc'][0]['origin'] != 'Debian'

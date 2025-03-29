@@ -1,0 +1,6 @@
+---
+- name: Install ni
+  community.general.npm:
+    name: "@antfu/ni"
+    global: true
+    state: "{{ ni_latest_install | default(false) | ternary('latest', 'present') }}"

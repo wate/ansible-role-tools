@@ -1,0 +1,4 @@
+---
+- name: Install the silver searcher package
+  ansible.builtin.apt:
+    name: silversearcher-ag

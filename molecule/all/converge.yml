@@ -1,0 +1,26 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: true
+  become: true
+  pre_tasks:
+    - name: Update cache(apt)
+      ansible.builtin.apt:
+        update_cache: true
+      when: ansible_facts.pkg_mgr == 'apt'
+      changed_when: false
+    - name: Update cache(dnf)
+      ansible.builtin.dnf:
+        update_cache: true
+      when: ansible_facts.pkg_mgr == 'dnf'
+      changed_when: false
+  tasks:
+    - name: Find install task files
+      ansible.builtin.set_fact:
+        task_files: "{{ lookup('fileglob', lookup('env', 'MOLECULE_PROJECT_DIRECTORY') + '/tasks/package/*.yml', wantlist=True) }}"
+    - name: Set install tool name variable
+      ansible.builtin.set_fact:
+        install_tools: "{{ task_files | map('basename') | map('regex_replace', '\\.yml$', '') | sort }}"
+    - name: Include role
+      ansible.builtin.include_role:
+        name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"

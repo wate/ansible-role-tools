@@ -38,3 +38,6 @@ tools_d2_repo: terrastruct/d2
 tools_glow_repo: charmbracelet/glow
 tools_pandoc_repo: jgm/pandoc
 tools_hugo_repo: gohugoio/hugo
+tools_drawio_repo: jgraph/drawio-desktop
+tools_gitleaks_repo: gitleaks/gitleaks
+tools_tools_diff_pdf_repo: vslavik/diff-pdf

@@ -1,0 +1,26 @@
+---
+- name: Set Install version variable
+  when: gitleaks_version == 'latest'
+  block:
+    - name: Get latest version
+      ansible.builtin.include_tasks:
+        file: package/common/get_latest_version.yml
+      vars:
+        github_repo: "{{ tools_gitleaks_repo }}"
+    - name: Set package version
+      ansible.builtin.set_fact:
+        gitleaks_version: "{{ latest_version }}"
+- name: Set package file variable
+  ansible.builtin.set_fact:
+    asset_file: gitleaks_{{ gitleaks_version[1:] }}_{{ ansible_facts['system'] | lower }}_{{ arch_type_maps[ansible_facts['architecture']] }}.tar.gz
+  vars:
+    arch_type_maps:
+      x86_64: x64
+      aarch64: arm64
+- name: Install gitleaks
+  ansible.builtin.unarchive:
+    src: https://github.com/{{ tools_gitleaks_repo }}/releases/download/{{ gitleaks_version }}/{{ asset_file }}
+    dest: /usr/local/bin
+    include:
+      - gitleaks
+    remote_src: true
