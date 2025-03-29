@@ -17,5 +17,5 @@
 - name: Add repository task
   ansible.builtin.include_tasks:
     file: "{{ item }}"
-  when: install_tools is undefined or (item | basename)[0:-4] in install_tools
+  when: (item | basename)[0:-4] in install_tools
   loop: "{{ lookup('fileglob', 'tasks/repository/*.yml', wantlist=True) }}"
