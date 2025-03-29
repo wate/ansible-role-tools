@@ -1,0 +1,19 @@
+---
+- name: Check diff-pdf command
+  ansible.builtin.stat:
+    path: /usr/local/bin/diff-pdf
+  register: diff_pdf_command_result
+- name: Assert installed diff-pdf
+  ansible.builtin.assert:
+    that:
+      - diff_pdf_command_result.stat.exists
+      - diff_pdf_command_result.stat.executable
+- name: Execute diff-pdf command
+  ansible.builtin.command:
+    cmd: xvfb-run diff-pdf --help
+  register: diff_pdf_command_help_result
+  changed_when: false
+- name: Assert diff-pdf command exit code
+  ansible.builtin.assert:
+    that:
+      - diff_pdf_command_help_result.rc == 0

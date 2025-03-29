@@ -75,6 +75,8 @@ install_tools:
   # - fnt
   ## https://github.com/jgraph/drawio-desktop
   # - drawio
+  ## https://vslavik.github.io/diff-pdf/
+  # - diff-pdf
   ## PDF 向けユーティリティ
   # - poppler-utils
   # https://github.com/gohugoio/hugo
