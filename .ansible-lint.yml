@@ -9,11 +9,11 @@
 use_default_rules: true
 
 ## 除外するディレクトリ/ファイル
-exclude_paths:
-  - .cache/
-  - .github/
-  - .devcontainer/
-  - tasks//package/osv-scanner.yml
+# exclude_paths:
+#   - .cache/
+#   - .github/
+#   - .devcontainer/
+#   - tests/
 
 ## @see https://ansible-lint.readthedocs.io/rules/
 
