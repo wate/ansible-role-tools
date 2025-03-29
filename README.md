@@ -205,6 +205,8 @@ mecabの設定
 
 #### `tools_gitleaks_repo`
 
+#### `tools_tools_diff_pdf_repo`
+
 Example Playbook
 --------------
 
