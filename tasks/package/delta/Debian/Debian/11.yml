@@ -1,5 +1,5 @@
 ---
-- name: Set pckage file variable
+- name: Set package file variable
   ansible.builtin.set_fact:
     delta_package_file: git-delta-musl_{{ delta_version }}_{{ arch_type_maps[ansible_facts['architecture']] }}.deb
   vars:
