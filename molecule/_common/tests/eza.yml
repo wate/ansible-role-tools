@@ -3,10 +3,10 @@
   ansible.builtin.stat:
     path: /etc/apt/keyrings/eza.gpg.asc
   register: eza_src_gpg_key_result
-- name: Assert eza sorce gpg key
+- name: Assert eza source gpg key
   ansible.builtin.assert:
     that: eza_src_gpg_key_result.stat.exists
-- name: Check eza sorce gpg key
+- name: Check eza source gpg key
   ansible.builtin.stat:
     path: /etc/apt/keyrings/eza.gpg
   register: eza_gpg_key_result

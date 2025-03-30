@@ -1,10 +1,15 @@
 assh
+direnv
+dotenv
 duckdb
 gitleaks
 goaccess
 graphviz
+hogo
 hugo
 lazygit
+lnav
+maxmind
 mecab
 pandoc
 pict
@@ -13,6 +18,7 @@ poppler
 rclone
 restic
 runn
+silversearcher
 tbls
 tesseract
 tldr

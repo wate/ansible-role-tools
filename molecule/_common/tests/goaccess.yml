@@ -5,7 +5,7 @@
       ansible.builtin.stat:
         path: /etc/apt/keyrings/goaccess.gpg.key
       register: goaccess_src_gpg_key_result
-    - name: Assert goaccess sorce gpg key
+    - name: Assert goaccess source gpg key
       ansible.builtin.assert:
         that: goaccess_src_gpg_key_result.stat.exists
     - name: Check goaccess gpg key
