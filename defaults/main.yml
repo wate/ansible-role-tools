@@ -195,6 +195,11 @@ zx_latest_install: true
 ## --------------------------
 ni_latest_install: true
 
+## --------------------------
+## mermaid-cliを最新版に更新するか否か
+## --------------------------
+mermaid_cli__latest_install: true
+
 ## -----------------
 ## MaxMindのアカウントIDとライセンスキー
 ## @see https://dev.maxmind.com/geoip/geolite2-free-geolocation-data
