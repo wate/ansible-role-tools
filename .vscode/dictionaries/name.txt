@@ -2,7 +2,9 @@ assh
 direnv
 dotenv
 duckdb
+geoip
 gitleaks
+gnupg
 goaccess
 graphviz
 hogo
@@ -11,6 +13,7 @@ lazygit
 lnav
 maxmind
 mecab
+nodesource
 pandoc
 pict
 plantuml

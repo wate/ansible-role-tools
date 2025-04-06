@@ -67,6 +67,8 @@ install_tools:
   # - zx
   ## https://github.com/antfu-collective/ni
   # - ni
+  ## https://github.com/mermaid-js/mermaid-cli
+  # - mermaid-cli
   ## https://wp-cli.org/ja/
   # - wp-cli
   ## https://github.com/s3fs-fuse/s3fs-fuse
@@ -192,6 +194,11 @@ zx_latest_install: true
 ## niを最新版に更新するか否か
 ## --------------------------
 ni_latest_install: true
+
+## --------------------------
+## mermaid-cliを最新版に更新するか否か
+## --------------------------
+mermaid_cli__latest_install: true
 
 ## -----------------
 ## MaxMindのアカウントIDとライセンスキー

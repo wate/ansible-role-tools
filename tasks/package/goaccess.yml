@@ -12,7 +12,7 @@
         name: cron
     - name: Get latest version
       ansible.builtin.include_tasks:
-        file: package/common/get_latest_version.yml
+        file: common/get_latest_version.yml
       vars:
         github_repo: maxmind/geoipupdate
     - name: Set package version
