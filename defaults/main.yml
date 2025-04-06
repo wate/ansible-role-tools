@@ -67,6 +67,8 @@ install_tools:
   # - zx
   ## https://github.com/antfu-collective/ni
   # - ni
+  ## https://github.com/mermaid-js/mermaid-cli
+  # - mermaid-cli
   ## https://wp-cli.org/ja/
   # - wp-cli
   ## https://github.com/s3fs-fuse/s3fs-fuse
