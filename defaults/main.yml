@@ -71,6 +71,8 @@ install_tools:
   # - mermaid-cli
   ## https://wp-cli.org/ja/
   # - wp-cli
+  ## https://phpdoc.org/
+  # - phpDocumentor
   ## https://github.com/s3fs-fuse/s3fs-fuse
   # - s3fs
   ## https://github.com/alexmyczko/fnt

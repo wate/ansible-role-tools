@@ -1,0 +1,6 @@
+---
+- name: Install phpDocumentor
+  ansible.builtin.get_url:
+    url: https://phpdoc.org/phpDocumentor.phar
+    dest: /usr/local/bin/phpdoc
+    mode: "0755"
