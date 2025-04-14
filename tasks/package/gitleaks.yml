@@ -7,6 +7,7 @@
         file: common/get_latest_version.yml
       vars:
         github_repo: "{{ tools_gitleaks_repo }}"
+        target_name: gitleaks
     - name: Set package version
       ansible.builtin.set_fact:
         gitleaks_version: "{{ latest_version }}"

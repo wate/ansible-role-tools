@@ -12,6 +12,7 @@
             file: common/get_latest_version.yml
           vars:
             github_repo: "{{ tools_tldr_repo }}"
+            target_name: tldr
         - name: Set package version
           ansible.builtin.set_fact:
             tldr_version: "{{ latest_version }}"

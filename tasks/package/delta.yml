@@ -7,6 +7,7 @@
         file: common/get_latest_version.yml
       vars:
         github_repo: "{{ tools_delta_repo }}"
+        target_name: delta
     - name: Set package version
       ansible.builtin.set_fact:
         delta_version: "{{ latest_version }}"
@@ -24,8 +25,3 @@
 - name: Execute delta task
   ansible.builtin.include_tasks:
     file: "{{ delta_package_task_file }}"
-  when: delta_package_task_file | length > 0
-- name: Install delta
-  ansible.builtin.apt:
-    deb: https://github.com/{{ tools_delta_repo }}/releases/download/{{ delta_version }}/{{ delta_package_file }}
-  when: delta_package_file is defined

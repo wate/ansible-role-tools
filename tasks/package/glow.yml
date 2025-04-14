@@ -7,6 +7,7 @@
         file: common/get_latest_version.yml
       vars:
         github_repo: "{{ tools_glow_repo }}"
+        target_name: glow
     - name: Set package version
       ansible.builtin.set_fact:
         glow_version: "{{ latest_version }}"

@@ -7,6 +7,7 @@
         file: common/get_latest_version.yml
       vars:
         github_repo: "{{ tools_lazygit_repo }}"
+        target_name: lazygit
     - name: Set package version
       ansible.builtin.set_fact:
         lazygit_version: "{{ latest_version }}"

@@ -6,3 +6,6 @@
     arch_type_maps:
       x86_64: amd64
       aarch64: arm64
+- name: Install delta
+  ansible.builtin.apt:
+    deb: https://github.com/{{ tools_delta_repo }}/releases/download/{{ delta_version }}/{{ delta_package_file }}

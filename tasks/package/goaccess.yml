@@ -15,6 +15,7 @@
         file: common/get_latest_version.yml
       vars:
         github_repo: maxmind/geoipupdate
+        target_name: geoipupdate
     - name: Set package version
       ansible.builtin.set_fact:
         geoipupdate_version: "{{ latest_version }}"

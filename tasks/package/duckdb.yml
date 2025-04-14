@@ -7,6 +7,7 @@
         file: common/get_latest_version.yml
       vars:
         github_repo: "{{ tools_duckdb_repo }}"
+        target_name: duckdb
     - name: Set package version
       ansible.builtin.set_fact:
         duckdb_version: "{{ latest_version }}"
