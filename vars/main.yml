@@ -31,6 +31,7 @@ tools_assh_repo: moul/assh
 tools_zns_repo: znscli/zns
 tools_task_repo: go-task/task
 tools_lazygit_repo: jesseduffield/lazygit
+tools_lazydocker_repo: jesseduffield/lazydocker
 tools_delta_repo: dandavison/delta
 tools_duckdb_repo: duckdb/duckdb
 tools_pict_repo: microsoft/pict

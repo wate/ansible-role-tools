@@ -58,6 +58,10 @@ Role Variables
 
 インストールするlazygitのバージョン
 
+#### `lazydocker_version`
+
+インストールするlazydockerのバージョン
+
 #### `task_version`
 
 インストールするtaskのバージョン
@@ -190,6 +194,8 @@ mecabの設定
 #### `tools_task_repo`
 
 #### `tools_lazygit_repo`
+
+#### `tools_lazydocker_repo`
 
 #### `tools_delta_repo`
 

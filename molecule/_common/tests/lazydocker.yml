@@ -1,0 +1,10 @@
+---
+- name: Check lazydocker
+  ansible.builtin.stat:
+    path: /usr/local/bin/lazydocker
+  register: lazydocker_command_result
+- name: Assert installed lazydocker
+  ansible.builtin.assert:
+    that:
+      - lazydocker_command_result.stat.exists
+      - lazydocker_command_result.stat.executable

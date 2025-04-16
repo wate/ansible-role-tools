@@ -17,6 +17,8 @@ install_tools:
   - the_silver_searcher
   ## https://github.com/jesseduffield/lazygit
   # - lazygit
+  ## https://github.com/jesseduffield/lazydocker
+  # - lazydocker
   ## https://github.com/dandavison/delta
   # - delta
   ## https://goaccess.io/
@@ -136,6 +138,11 @@ bat_version: latest
 ## インストールするlazygitのバージョン
 ## --------------------------
 lazygit_version: latest
+
+## --------------------------
+## インストールするlazydockerのバージョン
+## --------------------------
+lazydocker_version: latest
 
 ## --------------------------
 ## インストールするtaskのバージョン
