@@ -1,0 +1,30 @@
+---
+- name: Set Install version variable
+  when: lazydocker_version == 'latest'
+  block:
+    - name: Get latest version
+      ansible.builtin.include_tasks:
+        file: common/get_latest_version.yml
+      vars:
+        github_repo: "{{ tools_lazydocker_repo }}"
+        target_name: lazydocker
+    - name: Set package version
+      ansible.builtin.set_fact:
+        lazydocker_version: "{{ latest_version }}"
+- name: Set download file variable
+  ansible.builtin.set_fact:
+    lazydocker_arch_type: "{{ arch_type_maps[ansible_facts['architecture']] }}"
+  vars:
+    arch_type_maps:
+      x86_64: x86_64
+      aarch64: arm64
+- name: Set asset file name
+  ansible.builtin.set_fact:
+    asset_file: lazydocker_{{ lazydocker_version[1:] }}_{{ ansible_facts['system'] }}_{{ lazydocker_arch_type }}.tar.gz
+- name: Install lazydocker
+  ansible.builtin.unarchive:
+    src: https://github.com/{{ tools_lazydocker_repo }}/releases/download/{{ lazydocker_version }}/{{ asset_file }}
+    dest: /usr/local/bin
+    include:
+      - lazydocker
+    remote_src: true

@@ -4,9 +4,10 @@
   block:
     - name: Get latest version
       ansible.builtin.include_tasks:
-        file: package/common/get_latest_version.yml
+        file: common/get_latest_version.yml
       vars:
         github_repo: "{{ tools_d2_repo }}"
+        target_name: d2
     - name: Set package version
       ansible.builtin.set_fact:
         d2_version: "{{ latest_version }}"

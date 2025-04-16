@@ -1,0 +1,6 @@
+---
+- name: Install mermaid-cli
+  community.general.npm:
+    name: "@mermaid-js/mermaid-cli"
+    global: true
+    state: "{{ zx_latest_install | default(false) | ternary('latest', 'present') }}"

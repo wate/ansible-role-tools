@@ -58,6 +58,10 @@ Role Variables
 
 インストールするlazygitのバージョン
 
+#### `lazydocker_version`
+
+インストールするlazydockerのバージョン
+
 #### `task_version`
 
 インストールするtaskのバージョン
@@ -105,6 +109,10 @@ zxを最新版に更新するか否か
 #### `ni_latest_install`
 
 niを最新版に更新するか否か
+
+#### `mermaid_cli__latest_install`
+
+mermaid-cliを最新版に更新するか否か
 
 #### `goaccess_maxmind_account`
 
@@ -186,6 +194,8 @@ mecabの設定
 #### `tools_task_repo`
 
 #### `tools_lazygit_repo`
+
+#### `tools_lazydocker_repo`
 
 #### `tools_delta_repo`
 

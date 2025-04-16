@@ -17,6 +17,8 @@ install_tools:
   - the_silver_searcher
   ## https://github.com/jesseduffield/lazygit
   # - lazygit
+  ## https://github.com/jesseduffield/lazydocker
+  # - lazydocker
   ## https://github.com/dandavison/delta
   # - delta
   ## https://goaccess.io/
@@ -67,8 +69,12 @@ install_tools:
   # - zx
   ## https://github.com/antfu-collective/ni
   # - ni
+  ## https://github.com/mermaid-js/mermaid-cli
+  # - mermaid-cli
   ## https://wp-cli.org/ja/
   # - wp-cli
+  ## https://phpdoc.org/
+  # - phpDocumentor
   ## https://github.com/s3fs-fuse/s3fs-fuse
   # - s3fs
   ## https://github.com/alexmyczko/fnt
@@ -134,6 +140,11 @@ bat_version: latest
 lazygit_version: latest
 
 ## --------------------------
+## インストールするlazydockerのバージョン
+## --------------------------
+lazydocker_version: latest
+
+## --------------------------
 ## インストールするtaskのバージョン
 ## --------------------------
 task_version: latest
@@ -192,6 +203,11 @@ zx_latest_install: true
 ## niを最新版に更新するか否か
 ## --------------------------
 ni_latest_install: true
+
+## --------------------------
+## mermaid-cliを最新版に更新するか否か
+## --------------------------
+mermaid_cli__latest_install: true
 
 ## -----------------
 ## MaxMindのアカウントIDとライセンスキー

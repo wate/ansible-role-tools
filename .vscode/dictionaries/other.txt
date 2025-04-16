@@ -3,6 +3,8 @@ behaviour
 cgroupns
 cpus
 dearmor
+Documentor
+dpkg
 envrc
 geoipupdate
 gierens
@@ -13,6 +15,10 @@ libnotify
 libpoppler
 libsecret
 libwxgtk
+mmdc
+nodistro
 notesalexp
+phpdoc
 selfupdate
+skel
 tlrc
