@@ -1,0 +1,6 @@
+---
+- name: Install codex
+  community.general.npm:
+    name: "@openai/codex"
+    global: true
+    state: "{{ codex_latest_install | default(false) | ternary('latest', 'present') }}"

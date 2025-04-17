@@ -15,6 +15,7 @@ lnav
 maxmind
 mecab
 nodesource
+openai
 pandoc
 pict
 plantuml

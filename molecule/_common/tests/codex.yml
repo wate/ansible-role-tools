@@ -1,0 +1,10 @@
+---
+- name: Check codex command
+  ansible.builtin.stat:
+    path: /usr/bin/codex
+  register: codex_command_result
+- name: Assert installed codex
+  ansible.builtin.assert:
+    that:
+      - codex_command_result.stat.exists
+      - codex_command_result.stat.executable
