@@ -207,7 +207,7 @@ ni_latest_install: true
 ## --------------------------
 ## mermaid-cliを最新版に更新するか否か
 ## --------------------------
-mermaid_cli__latest_install: true
+mermaid_cli_latest_install: true
 
 ## -----------------
 ## MaxMindのアカウントIDとライセンスキー
