@@ -1,0 +1,37 @@
+---
+- name: Create GPG key directory
+  ansible.builtin.file:
+    path: "{{ tools_githubcli_apt_key_download_dest | dirname }}"
+    state: directory
+    mode: "0755"
+- name: Download GPG key
+  ansible.builtin.get_url:
+    url: "{{ tools_githubcli_apt_key_url }}"
+    dest: "{{ tools_githubcli_apt_key_download_dest }}"
+    mode: "0644"
+  register: gpg_key_download_result
+- name: Convert GPG key
+  ansible.builtin.command:
+    cmd: gpg --dearmor -o {{ tools_githubcli_apt_key_dest }} {{ tools_githubcli_apt_key_download_dest }}
+  when:
+    - gpg_key_download_result is changed
+    - tools_githubcli_apt_key_download_dest != tools_githubcli_apt_key_dest
+- name: Add github-cli repository
+  ansible.builtin.deb822_repository:
+    name: github-cli
+    uris: https://cli.github.com/packages
+    suites: stable
+    components: main
+    architectures: "{{ arch_type_maps[ansible_facts.architecture] }}"
+    signed_by: "{{ tools_githubcli_apt_key_dest }}"
+    enabled: true
+    state: present
+  vars:
+    arch_type_maps:
+      x86_64: amd64
+      aarch64: arm64
+  register: apt_repository_result
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: true
+  when: apt_repository_result is changed

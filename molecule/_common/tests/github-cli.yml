@@ -1,0 +1,4 @@
+---
+- name: Assert installed github-cli
+  ansible.builtin.assert:
+    that: ansible_facts.packages['gh']

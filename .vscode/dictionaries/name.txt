@@ -3,6 +3,7 @@ direnv
 dotenv
 duckdb
 geoip
+githubcli
 gitleaks
 gnupg
 goaccess

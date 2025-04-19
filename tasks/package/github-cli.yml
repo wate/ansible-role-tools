@@ -1,0 +1,13 @@
+---
+- name: Install github cli
+  ansible.builtin.apt:
+    name: gh
+- name: Install extension
+  environment:
+    GH_TOKEN: "{{ lookup('env', 'GITHUB_TOKEN') }}"
+  ansible.builtin.command:
+    cmd: gh extension install {{ extension_name }}
+  loop: "{{ github_cli_extensions }}"
+  loop_control:
+    loop_var: extension_name
+    label: "{{ extension_name }}"
