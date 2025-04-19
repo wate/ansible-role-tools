@@ -75,6 +75,8 @@ install_tools:
   # - mermaid-cli
   ## https://wp-cli.org/ja/
   # - wp-cli
+  ## https://github.com/cli/cli
+  # - github-cli
   ## https://phpdoc.org/
   # - phpDocumentor
   ## https://github.com/s3fs-fuse/s3fs-fuse
@@ -185,6 +187,12 @@ drawio_version: latest
 ## インストールするgitleaksのバージョン
 ## --------------------------
 gitleaks_version: latest
+
+## --------------------------
+## Github CLIにインストールする拡張機能
+## --------------------------
+github_cli_extensions: []
+  # - github/gh-copilot
 
 ## --------------------------
 ## インストールするHugoのバージョン
