@@ -94,6 +94,10 @@ Role Variables
 
 インストールするgitleaksのバージョン
 
+#### `github_cli_extensions`
+
+Github CLIにインストールする拡張機能
+
 #### `hugo_version`
 
 インストールするHugoのバージョン
@@ -166,6 +170,12 @@ mecabの設定
 #### `tools_goaccess_apt_key_download_dest`
 
 #### `tools_goaccess_apt_key_dest`
+
+#### `tools_githubcli_apt_key_url`
+
+#### `tools_githubcli_apt_key_download_dest`
+
+#### `tools_githubcli_apt_key_dest`
 
 #### `tools_tesseract_ocr_apt_key_url`
 
