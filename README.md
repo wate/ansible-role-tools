@@ -94,10 +94,6 @@ Role Variables
 
 インストールするgitleaksのバージョン
 
-#### `github_cli_extensions`
-
-Github CLIにインストールする拡張機能
-
 #### `hugo_version`
 
 インストールするHugoのバージョン
