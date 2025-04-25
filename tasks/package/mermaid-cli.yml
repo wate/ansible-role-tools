@@ -3,4 +3,4 @@
   community.general.npm:
     name: "@mermaid-js/mermaid-cli"
     global: true
-    state: "{{ zx_latest_install | default(false) | ternary('latest', 'present') }}"
+    state: "{{ mermaid_cli_latest_install | default(false) | ternary('latest', 'present') }}"

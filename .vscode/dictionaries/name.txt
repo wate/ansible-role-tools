@@ -3,6 +3,7 @@ direnv
 dotenv
 duckdb
 geoip
+githubcli
 gitleaks
 gnupg
 goaccess
@@ -15,6 +16,7 @@ lnav
 maxmind
 mecab
 nodesource
+openai
 pandoc
 pict
 plantuml

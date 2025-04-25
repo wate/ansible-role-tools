@@ -110,9 +110,13 @@ zxを最新版に更新するか否か
 
 niを最新版に更新するか否か
 
-#### `mermaid_cli__latest_install`
+#### `mermaid_cli_latest_install`
 
 mermaid-cliを最新版に更新するか否か
+
+#### `codex_latest_install`
+
+codexを最新版に更新するか否か
 
 #### `goaccess_maxmind_account`
 
@@ -162,6 +166,12 @@ mecabの設定
 #### `tools_goaccess_apt_key_download_dest`
 
 #### `tools_goaccess_apt_key_dest`
+
+#### `tools_githubcli_apt_key_url`
+
+#### `tools_githubcli_apt_key_download_dest`
+
+#### `tools_githubcli_apt_key_dest`
 
 #### `tools_tesseract_ocr_apt_key_url`
 
