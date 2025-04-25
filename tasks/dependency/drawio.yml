@@ -3,6 +3,7 @@
   ansible.builtin.apt:
     name:
       - xvfb
+      - xauth
       - libgbm1
       - libasound2
       - libnotify4
