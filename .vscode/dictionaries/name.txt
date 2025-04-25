@@ -28,3 +28,4 @@ silversearcher
 tbls
 tesseract
 tldr
+xauth
