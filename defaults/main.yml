@@ -11,6 +11,8 @@ install_tools:
   - bat
   ## https://jonas.github.io/tig/
   - tig
+  ## https://oldmanprogrammer.net/source.php?dir=projects/tree
+  - tree
   ## https://lnav.org/
   - lnav
   ## https://github.com/ggreer/the_silver_searcher
