@@ -1,0 +1,4 @@
+---
+- name: Install tree
+  ansible.builtin.apt:
+    name: tree

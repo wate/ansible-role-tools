@@ -1,0 +1,4 @@
+---
+- name: Assert installed tree
+  ansible.builtin.assert:
+    that: ansible_facts.packages['tree']
