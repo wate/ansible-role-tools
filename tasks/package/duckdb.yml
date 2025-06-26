@@ -13,14 +13,14 @@
         duckdb_version: "{{ latest_version }}"
 - name: Set package file variable
   ansible.builtin.set_fact:
-    dockdb_asset_file: duckdb_cli-linux-{{ arch_type_maps[ansible_facts['architecture']] }}.zip
+    duckdb_asset_file: duckdb_cli-linux-{{ arch_type_maps[ansible_facts['architecture']] }}.zip
   vars:
     arch_type_maps:
       x86_64: amd64
-      aarch64: aarch64
+      aarch64: arm64
 - name: Install duckdb
   ansible.builtin.unarchive:
-    src: https://github.com/{{ tools_duckdb_repo }}/releases/download/{{ duckdb_version }}/{{ dockdb_asset_file }}
+    src: https://github.com/{{ tools_duckdb_repo }}/releases/download/{{ duckdb_version }}/{{ duckdb_asset_file }}
     dest: /usr/local/bin
     include:
       - duckdb
