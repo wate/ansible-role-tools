@@ -4,7 +4,9 @@
     that:
       - ansible_facts.packages['git-delta-musl']
       - ansible_facts.packages['git-delta-musl'][0]['origin'] != 'Debian'
-  when: ansible_facts.distribution_major_version is version('11', '<=')
+  when:
+    - ansible_facts.distribution_major_version is version('11', '<=')
+    - ansible_facts.architecture == 'x86_64'
 - name: Assert installed delta
   ansible.builtin.assert:
     that:
