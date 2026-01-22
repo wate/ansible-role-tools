@@ -1,4 +1,6 @@
 ---
 - name: Assert installed git-flow
   ansible.builtin.assert:
-    that: ansible_facts.packages['git-flow']
+    that: ansible_facts.packages['git-flow'] is defined
+    fail_msg: "git-flow package is not installed"
+    success_msg: "git-flow package is installed"

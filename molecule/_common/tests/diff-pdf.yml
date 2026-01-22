@@ -8,6 +8,8 @@
     that:
       - diff_pdf_command_result.stat.exists
       - diff_pdf_command_result.stat.executable
+    fail_msg: "diff-pdf command is not installed or not executable"
+    success_msg: "diff-pdf command is installed and executable"
 - name: Execute diff-pdf command
   ansible.builtin.command:
     cmd: xvfb-run diff-pdf --help
@@ -17,3 +19,5 @@
   ansible.builtin.assert:
     that:
       - diff_pdf_command_help_result.rc == 0
+    fail_msg: "diff-pdf command execution failed"
+    success_msg: "diff-pdf command executed successfully"

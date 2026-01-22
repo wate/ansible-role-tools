@@ -8,8 +8,8 @@ OS Platform
 
 ### Debian
 
+- trixie
 - bookworm
-- bullseye
 
 Role Variables
 --------------
@@ -33,6 +33,10 @@ Role Variables
 #### `zns_version`
 
 インストールするznsのバージョン
+
+#### `bottom_version`
+
+インストールするbottomのバージョン
 
 #### `osv_scanner_version`
 
@@ -93,14 +97,6 @@ Role Variables
 #### `gitleaks_version`
 
 インストールするgitleaksのバージョン
-
-#### `hugo_version`
-
-インストールするHugoのバージョン
-
-#### `hugo_extended`
-
-インストールするHugoのタイプ
 
 #### `zx_latest_install`
 
@@ -219,13 +215,13 @@ mecabの設定
 
 #### `tools_pandoc_repo`
 
-#### `tools_hugo_repo`
-
 #### `tools_drawio_repo`
 
 #### `tools_gitleaks_repo`
 
-#### `tools_tools_diff_pdf_repo`
+#### `tools_diff_pdf_repo`
+
+#### `tools_bottom_repo`
 
 Example Playbook
 --------------
@@ -233,7 +229,7 @@ Example Playbook
 ```yaml
 - hosts: servers
   roles:
-    - role: tool
+    - role: tools
 ```
 
 License

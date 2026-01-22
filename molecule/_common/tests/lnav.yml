@@ -1,4 +1,6 @@
 ---
 - name: Assert installed lnav
   ansible.builtin.assert:
-    that: ansible_facts.packages['lnav']
+    that: ansible_facts.packages['lnav'] is defined
+    fail_msg: "lnav package is not installed"
+    success_msg: "lnav package is installed"

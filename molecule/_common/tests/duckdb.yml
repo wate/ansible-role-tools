@@ -8,3 +8,5 @@
     that:
       - duckdb_command_result.stat.exists
       - duckdb_command_result.stat.executable
+    fail_msg: "duckdb command is not installed or not executable"
+    success_msg: "duckdb command is installed and executable"

@@ -2,5 +2,7 @@
 - name: Assert installed jc
   ansible.builtin.assert:
     that:
-      - ansible_facts.packages['jc']
+      - ansible_facts.packages['jc'] is defined
       - ansible_facts.packages['jc'][0]['origin'] != 'Debian'
+    fail_msg: "jc package is not installed"
+    success_msg: "jc package is installed"

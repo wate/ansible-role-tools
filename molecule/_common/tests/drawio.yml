@@ -1,7 +1,9 @@
 ---
 - name: Assert installed draw.io
   ansible.builtin.assert:
-    that: ansible_facts.packages['draw.io']
+    that: ansible_facts.packages['draw.io'] is defined
+    fail_msg: "draw.io package is not installed"
+    success_msg: "draw.io package is installed"
 - name: Execute drawio command
   ansible.builtin.command:
     cmd: xvfb-run drawio --help --no-sandbox
@@ -11,3 +13,5 @@
   ansible.builtin.assert:
     that:
       - drawio_command_help_result.rc == 0
+    fail_msg: "drawio command execution failed"
+    success_msg: "drawio command executed successfully"

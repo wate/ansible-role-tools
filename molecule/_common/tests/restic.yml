@@ -1,4 +1,6 @@
 ---
 - name: Assert installed restic
   ansible.builtin.assert:
-    that: ansible_facts.packages['restic']
+    that: ansible_facts.packages['restic'] is defined
+    fail_msg: "restic package is not installed"
+    success_msg: "restic package is installed"

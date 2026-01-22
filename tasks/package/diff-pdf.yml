@@ -1,7 +1,7 @@
 ---
 - name: Checkout diff-pdf source
   ansible.builtin.git:
-    repo: https://github.com/{{ tools_tools_diff_pdf_repo }}.git
+    repo: https://github.com/{{ tools_diff_pdf_repo }}.git
     dest: /usr/local/src/diff-pdf
     version: master
   register: checkout_result

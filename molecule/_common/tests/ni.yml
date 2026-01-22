@@ -8,3 +8,5 @@
     that:
       - ni_command_result.stat.exists
       - ni_command_result.stat.executable
+    fail_msg: "ni command is not installed or not executable"
+    success_msg: "ni command is installed and executable"

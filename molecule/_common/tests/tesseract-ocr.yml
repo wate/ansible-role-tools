@@ -6,6 +6,8 @@
 - name: Assert tesseract-ocr source gpg key
   ansible.builtin.assert:
     that: tesseract_ocr_src_gpg_key_result.stat.exists
+    fail_msg: "tesseract-ocr source gpg key does not exist"
+    success_msg: "tesseract-ocr source gpg key exists"
 - name: Check tesseract-ocr gpg key
   ansible.builtin.stat:
     path: /etc/apt/keyrings/tesseract-ocr.gpg
@@ -13,6 +15,8 @@
 - name: Assert tesseract-ocr gpg key
   ansible.builtin.assert:
     that: tesseract_ocr_gpg_key_result.stat.exists
+    fail_msg: "tesseract-ocr gpg key does not exist"
+    success_msg: "tesseract-ocr gpg key exists"
 - name: Check tesseract-ocr apt repository
   ansible.builtin.stat:
     path: /etc/apt/sources.list.d/notesalexp.sources
@@ -20,6 +24,10 @@
 - name: Assert tesseract-ocr apt repository
   ansible.builtin.assert:
     that: tesseract_ocr_repository_result.stat.exists
+    fail_msg: "tesseract-ocr apt repository does not exist"
+    success_msg: "tesseract-ocr apt repository exists"
 - name: Assert installed tesseract-ocr
   ansible.builtin.assert:
-    that: ansible_facts.packages['tesseract-ocr']
+    that: ansible_facts.packages['tesseract-ocr'] is defined
+    fail_msg: "tesseract-ocr package is not installed"
+    success_msg: "tesseract-ocr package is installed"

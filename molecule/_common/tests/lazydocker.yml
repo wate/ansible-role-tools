@@ -8,3 +8,5 @@
     that:
       - lazydocker_command_result.stat.exists
       - lazydocker_command_result.stat.executable
+    fail_msg: "lazydocker command is not installed or not executable"
+    success_msg: "lazydocker command is installed and executable"

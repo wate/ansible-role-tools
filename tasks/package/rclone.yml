@@ -1,20 +1,20 @@
 ---
-- name: Find platform task file
-  ansible.builtin.set_fact:
-    include_task_file: "{{ lookup('first_found', params, errors='ignore') }}"
+- name: Get latest version
+  ansible.builtin.include_tasks:
+    file: common/get_latest_version.yml
   vars:
-    params:
-      files:
-        - "{{ ansible_facts.os_family }}/{{ ansible_facts.distribution }}/{{ ansible_facts.distribution_major_version }}.yml"
-        - "{{ ansible_facts.os_family }}/{{ ansible_facts.distribution }}.yml"
-        - "{{ ansible_facts.os_family }}.yml"
-      paths:
-        - tasks/package/rclone
+    github_repo: "{{ tools_rclone_repo }}"
+    target_name: rclone
+- name: Set package version
+  ansible.builtin.set_fact:
+    rclone_version: "{{ latest_version }}"
+- name: Set package file variable
+  ansible.builtin.set_fact:
+    package_file: rclone-{{ rclone_version }}-{{ ansible_facts['system'] | lower }}-{{ arch_type_maps[ansible_facts['architecture']] }}.deb
+  vars:
+    arch_type_maps:
+      x86_64: amd64
+      aarch64: arm64
 - name: Install rclone
-  ansible.builtin.include_tasks: "{{ include_task_file }}"
-  when: include_task_file | length > 0
-- name: Execute self update
-  ansible.builtin.command:
-    cmd: rclone selfupdate
-    removes: /usr/bin/rclone
-  changed_when: false
+  ansible.builtin.apt:
+    deb: https://github.com/{{ tools_rclone_repo }}/releases/download/{{ rclone_version }}/{{ package_file }}

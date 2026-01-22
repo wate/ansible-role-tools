@@ -36,7 +36,7 @@ install_tools:
   ## https://rclone.org/
   - rclone
   ## https://github.com/tldr-pages/tlrc
-  - tldr
+  # - tldr
   ## https://github.com/znscli/zns
   # - zns
   ## https://github.com/kellyjonbrazil/jc
@@ -49,6 +49,8 @@ install_tools:
   # - assh
   ## https://github.com/charmbracelet/glow
   # - glow
+  ## https://github.com/ClementTsang/bottom
+  - bottom
   ## https://github.com/jgm/pandoc
   - pandoc
   ## https://graphviz.org/
@@ -75,12 +77,8 @@ install_tools:
   # - codex
   ## https://github.com/mermaid-js/mermaid-cli
   # - mermaid-cli
-  ## https://wp-cli.org/ja/
-  # - wp-cli
   ## https://github.com/cli/cli
   # - github-cli
-  ## https://phpdoc.org/
-  # - phpDocumentor
   ## https://github.com/s3fs-fuse/s3fs-fuse
   # - s3fs
   ## https://github.com/alexmyczko/fnt
@@ -91,8 +89,6 @@ install_tools:
   # - diff-pdf
   ## PDF 向けユーティリティ
   # - poppler-utils
-  # https://github.com/gohugoio/hugo
-  # - hugo
   ## https://github.com/tesseract-ocr/tesseract
   # - tesseract-ocr
   ## https://taku910.github.io/mecab/
@@ -114,6 +110,11 @@ tldr_version: latest
 ## インストールするznsのバージョン
 ## --------------------------
 zns_version: latest
+
+## --------------------------
+## インストールするbottomのバージョン
+## --------------------------
+bottom_version: latest
 
 ## --------------------------
 ## インストールするosv-scannerのバージョン
@@ -189,16 +190,6 @@ drawio_version: latest
 ## インストールするgitleaksのバージョン
 ## --------------------------
 gitleaks_version: latest
-
-## --------------------------
-## インストールするHugoのバージョン
-## --------------------------
-hugo_version: latest
-
-## --------------------------
-## インストールするHugoのタイプ
-## --------------------------
-hugo_extended: false
 
 ## --------------------------
 ## zxを最新版に更新するか否か

@@ -8,3 +8,5 @@
     that:
       - gitleaks_command_result.stat.exists
       - gitleaks_command_result.stat.executable
+    fail_msg: "gitleaks command is not installed or not executable"
+    success_msg: "gitleaks command is installed and executable"

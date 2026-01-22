@@ -8,3 +8,5 @@
     that:
       - lazygit_command_result.stat.exists
       - lazygit_command_result.stat.executable
+    fail_msg: "lazygit command is not installed or not executable"
+    success_msg: "lazygit command is installed and executable"

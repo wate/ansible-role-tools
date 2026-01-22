@@ -8,3 +8,5 @@
     that:
       - pict_command_result.stat.exists
       - pict_command_result.stat.executable
+    fail_msg: "pict command is not installed or not executable"
+    success_msg: "pict command is installed and executable"

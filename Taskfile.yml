@@ -1,0 +1,198 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: '3'
+tasks:
+  default:
+    desc: Run Molecule tests for default scenario
+    cmd: molecule test
+  all:
+    desc: Run Molecule tests for all scenario
+    cmd: molecule test -s all
+  assh:
+    desc: Run Molecule tests for assh scenario
+    cmd: molecule test -s assh
+  bat:
+    desc: Run Molecule tests for bat scenario
+    cmd: molecule test -s bat
+  bottom:
+    desc: Run Molecule tests for bat scenario
+    cmd: molecule test -s bottom
+  codex:
+    desc: Run Molecule tests for codex scenario
+    cmd: molecule test -s codex
+  d2:
+    desc: Run Molecule tests for d2 scenario
+    cmd: molecule test -s d2
+  delta:
+    desc: Run Molecule tests for delta scenario
+    cmd: molecule test -s delta
+  diff-pdf:
+    desc: Run Molecule tests for diff-pdf scenario
+    cmd: molecule test -s diff-pdf
+  direnv:
+    desc: Run Molecule tests for direnv scenario
+    cmd: molecule test -s direnv
+  drawio:
+    desc: Run Molecule tests for drawio scenario
+    cmd: molecule test -s drawio
+  duckdb:
+    desc: Run Molecule tests for duckdb scenario
+    cmd: molecule test -s duckdb
+  eza:
+    desc: Run Molecule tests for eza scenario
+    cmd: molecule test -s eza
+  fd:
+    desc: Run Molecule tests for fd scenario
+    cmd: molecule test -s fd
+  fnt:
+    desc: Run Molecule tests for fnt scenario
+    cmd: molecule test -s fnt
+  gitleaks:
+    desc: Run Molecule tests for gitleaks scenario
+    cmd: molecule test -s gitleaks
+  github-cli:
+    desc: Run Molecule tests for github-cli scenario
+    cmd: molecule test -s github-cli
+  git-flow:
+    desc: Run Molecule tests for git-flow scenario
+    cmd: molecule test -s git-flow
+  glow:
+    desc: Run Molecule tests for glow scenario
+    cmd: molecule test -s glow
+  goaccess:
+    desc: Run Molecule tests for goaccess scenario
+    cmd: molecule test -s goaccess
+  graphviz:
+    desc: Run Molecule tests for graphviz scenario
+    cmd: molecule test -s graphviz
+  httpie:
+    desc: Run Molecule tests for httpie scenario
+    cmd: molecule test -s httpie
+  jc:
+    desc: Run Molecule tests for jc scenario
+    cmd: molecule test -s jc
+  lazydocker:
+    desc: Run Molecule tests for lazydocker scenario
+    cmd: molecule test -s lazydocker
+  lazygit:
+    desc: Run Molecule tests for lazygit scenario
+    cmd: molecule test -s lazygit
+  lnav:
+    desc: Run Molecule tests for lnav scenario
+    cmd: molecule test -s lnav
+  mecab:
+    desc: Run Molecule tests for mecab scenario
+    cmd: molecule test -s mecab
+  mermaid-cli:
+    desc: Run Molecule tests for mermaid-cli scenario
+    cmd: molecule test -s mermaid-cli
+  nkf:
+    desc: Run Molecule tests for nkf scenario
+    cmd: molecule test -s nkf
+  ni:
+    desc: Run Molecule tests for ni scenario
+    cmd: molecule test -s ni
+  osv-scanner:
+    desc: Run Molecule tests for osv-scanner scenario
+    cmd: molecule test -s osv-scanner
+  pandoc:
+    desc: Run Molecule tests for pandoc scenario
+    cmd: molecule test -s pandoc
+  pict:
+    desc: Run Molecule tests for pict scenario
+    cmd: molecule test -s pict
+  plantuml:
+    desc: Run Molecule tests for plantuml scenario
+    cmd: molecule test -s plantuml
+  poppler-utils:
+    desc: Run Molecule tests for poppler-utils scenario
+    cmd: molecule test -s poppler-utils
+  rclone:
+    desc: Run Molecule tests for rclone scenario
+    cmd: molecule test -s rclone
+  restic:
+    desc: Run Molecule tests for restic scenario
+    cmd: molecule test -s restic
+  runn:
+    desc: Run Molecule tests for runn scenario
+    cmd: molecule test -s runn
+  s3fs:
+    desc: Run Molecule tests for s3fs scenario
+    cmd: molecule test -s s3fs
+  task:
+    desc: Run Molecule tests for task scenario
+    cmd: molecule test -s task
+  tbls:
+    desc: Run Molecule tests for tbls scenario
+    cmd: molecule test -s tbls
+  tesseract-ocr:
+    desc: Run Molecule tests for tesseract-ocr scenario
+    cmd: molecule test -s tesseract-ocr
+  the_silver_searcher:
+    desc: Run Molecule tests for the_silver_searcher scenario
+    cmd: molecule test -s the_silver_searcher
+  tig:
+    desc: Run Molecule tests for tig scenario
+    cmd: molecule test -s tig
+  tldr:
+    desc: Run Molecule tests for tldr scenario
+    cmd: molecule test -s tldr
+  tree:
+    desc: Run Molecule tests for tree scenario
+    cmd: molecule test -s tree
+  zns:
+    desc: Run Molecule tests for zns scenario
+    cmd: molecule test -s zns
+  zx:
+    desc: Run Molecule tests for zx scenario
+    cmd: molecule test -s zx
+  all-scenarios:
+    desc: Run Molecule tests for all scenarios (sequential)
+    cmds:
+      - task: assh
+      - task: bat
+      - task: bottom
+      - task: codex
+      - task: d2
+      - task: delta
+      - task: diff-pdf
+      - task: direnv
+      - task: drawio
+      - task: duckdb
+      - task: eza
+      - task: fd
+      - task: fnt
+      - task: gitleaks
+      - task: github-cli
+      - task: git-flow
+      - task: glow
+      - task: goaccess
+      - task: graphviz
+      - task: httpie
+      - task: jc
+      - task: lazydocker
+      - task: lazygit
+      - task: lnav
+      - task: mecab
+      - task: mermaid-cli
+      - task: nkf
+      - task: ni
+      - task: osv-scanner
+      - task: pandoc
+      - task: pict
+      - task: plantuml
+      - task: poppler-utils
+      - task: rclone
+      - task: restic
+      - task: runn
+      - task: s3fs
+      - task: task
+      - task: tbls
+      - task: tesseract-ocr
+      - task: the_silver_searcher
+      - task: tig
+      - task: tldr
+      - task: tree
+      - task: zns
+      - task: zx
+      - task: default
+      - task: all
