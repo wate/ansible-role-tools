@@ -8,3 +8,5 @@
     that:
       - mmdc_command_result.stat.exists
       - mmdc_command_result.stat.executable
+    fail_msg: "mermaid-cli command is not installed or not executable"
+    success_msg: "mermaid-cli command is installed and executable"

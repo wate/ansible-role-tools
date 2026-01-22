@@ -2,3 +2,5 @@
 - name: Assert installed glow
   ansible.builtin.assert:
     that: ansible_facts.packages['glow'] is defined
+    fail_msg: "glow package is not installed"
+    success_msg: "glow package is installed"

@@ -8,3 +8,5 @@
     that:
       - tldr_command_result.stat.exists
       - tldr_command_result.stat.executable
+    fail_msg: "tldr command is not installed or not executable"
+    success_msg: "tldr command is installed and executable"

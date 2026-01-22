@@ -2,3 +2,5 @@
 - name: Assert installed s3fs
   ansible.builtin.assert:
     that: ansible_facts.packages['s3fs'] is defined
+    fail_msg: "s3fs package is not installed"
+    success_msg: "s3fs package is installed"

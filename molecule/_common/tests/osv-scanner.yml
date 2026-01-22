@@ -8,3 +8,5 @@
     that:
       - osv_scanner_command_result.stat.exists
       - osv_scanner_command_result.stat.executable
+    fail_msg: "osv-scanner command is not installed or not executable"
+    success_msg: "osv-scanner command is installed and executable"

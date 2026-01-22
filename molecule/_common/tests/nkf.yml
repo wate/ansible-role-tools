@@ -2,3 +2,5 @@
 - name: Assert installed nkf
   ansible.builtin.assert:
     that: ansible_facts.packages['nkf'] is defined
+    fail_msg: "nkf package is not installed"
+    success_msg: "nkf package is installed"

@@ -3,3 +3,5 @@
   ansible.builtin.assert:
     that:
       - ansible_facts.packages['httpie'] is defined
+    fail_msg: "httpie package is not installed"
+    success_msg: "httpie package is installed"

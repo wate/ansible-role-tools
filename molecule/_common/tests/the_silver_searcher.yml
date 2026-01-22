@@ -2,3 +2,5 @@
 - name: Assert installed the silver searcher
   ansible.builtin.assert:
     that: ansible_facts.packages['silversearcher-ag'] is defined
+    fail_msg: "the silver searcher package is not installed"
+    success_msg: "the silver searcher package is installed"

@@ -4,3 +4,5 @@
     that:
       - ansible_facts.packages['pandoc'] is defined
       - ansible_facts.packages['pandoc'][0]['origin'] != 'Debian'
+    fail_msg: "pandoc package is not installed"
+    success_msg: "pandoc package is installed"

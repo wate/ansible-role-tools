@@ -2,3 +2,5 @@
 - name: Assert installed task
   ansible.builtin.assert:
     that: ansible_facts.packages['task'] is defined
+    fail_msg: "task package is not installed"
+    success_msg: "task package is installed"
