@@ -25,7 +25,9 @@
     - name: Include variable file
       ansible.builtin.include_vars:
         file: "{{ variable_file }}"
-      when: variable_file | length > 0
+      when:
+        - variable_file is not none
+        - variable_file | length > 0
     - name: Include role
       ansible.builtin.include_role:
         name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
