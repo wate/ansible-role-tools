@@ -2,3 +2,5 @@
 - name: Assert installed graphviz
   ansible.builtin.assert:
     that: ansible_facts.packages['graphviz'] is defined
+    fail_msg: "graphviz package is not installed"
+    success_msg: "graphviz package is installed"

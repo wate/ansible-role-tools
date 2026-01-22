@@ -64,9 +64,6 @@ tasks:
   httpie:
     desc: Run Molecule tests for httpie scenario
     cmd: molecule test -s httpie
-  hugo:
-    desc: Run Molecule tests for hugo scenario
-    cmd: molecule test -s hugo
   jc:
     desc: Run Molecule tests for jc scenario
     cmd: molecule test -s jc
@@ -97,9 +94,6 @@ tasks:
   pandoc:
     desc: Run Molecule tests for pandoc scenario
     cmd: molecule test -s pandoc
-  phpDocumentor:
-    desc: Run Molecule tests for phpDocumentor scenario
-    cmd: molecule test -s phpDocumentor
   pict:
     desc: Run Molecule tests for pict scenario
     cmd: molecule test -s pict
@@ -142,9 +136,6 @@ tasks:
   tree:
     desc: Run Molecule tests for tree scenario
     cmd: molecule test -s tree
-  wp-cli:
-    desc: Run Molecule tests for wp-cli scenario
-    cmd: molecule test -s wp-cli
   zns:
     desc: Run Molecule tests for zns scenario
     cmd: molecule test -s zns
@@ -175,7 +166,6 @@ tasks:
       - task: goaccess
       - task: graphviz
       - task: httpie
-      - task: hugo
       - task: jc
       - task: lazydocker
       - task: lazygit
@@ -186,7 +176,6 @@ tasks:
       - task: ni
       - task: osv-scanner
       - task: pandoc
-      - task: phpDocumentor
       - task: pict
       - task: plantuml
       - task: poppler-utils
@@ -201,6 +190,5 @@ tasks:
       - task: tig
       - task: tldr
       - task: tree
-      - task: wp-cli
       - task: zns
       - task: zx

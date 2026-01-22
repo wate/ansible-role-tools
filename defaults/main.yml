@@ -75,12 +75,8 @@ install_tools:
   # - codex
   ## https://github.com/mermaid-js/mermaid-cli
   # - mermaid-cli
-  ## https://wp-cli.org/ja/
-  # - wp-cli
   ## https://github.com/cli/cli
   # - github-cli
-  ## https://phpdoc.org/
-  # - phpDocumentor
   ## https://github.com/s3fs-fuse/s3fs-fuse
   # - s3fs
   ## https://github.com/alexmyczko/fnt
@@ -91,8 +87,6 @@ install_tools:
   # - diff-pdf
   ## PDF 向けユーティリティ
   # - poppler-utils
-  # https://github.com/gohugoio/hugo
-  # - hugo
   ## https://github.com/tesseract-ocr/tesseract
   # - tesseract-ocr
   ## https://taku910.github.io/mecab/
@@ -189,21 +183,6 @@ drawio_version: latest
 ## インストールするgitleaksのバージョン
 ## --------------------------
 gitleaks_version: latest
-
-## --------------------------
-## インストールするbottomのバージョン
-## --------------------------
-bottom_version: latest
-
-## --------------------------
-## インストールするHugoのバージョン
-## --------------------------
-hugo_version: latest
-
-## --------------------------
-## インストールするHugoのタイプ
-## --------------------------
-hugo_extended: false
 
 ## --------------------------
 ## zxを最新版に更新するか否か
