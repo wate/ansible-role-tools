@@ -21,7 +21,9 @@
     - name: Include variable file
       ansible.builtin.include_vars:
         file: "{{ variable_file }}"
-      when: variable_file | length > 0
+      when:
+        - variable_file is not none
+        - variable_file | length > 0
     - name: Execute tool test
       ansible.builtin.include_tasks:
         file: ../_common/tests/{{ lookup('env', 'MOLECULE_SCENARIO_DIRECTORY') | basename }}.yml
