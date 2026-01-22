@@ -1,4 +1,4 @@
 ---
 - name: Assert installed s3fs
   ansible.builtin.assert:
-    that: ansible_facts.packages['s3fs']
+    that: ansible_facts.packages['s3fs'] is defined

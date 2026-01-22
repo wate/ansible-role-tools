@@ -8,8 +8,8 @@ OS Platform
 
 ### Debian
 
+- trixie
 - bookworm
-- bullseye
 
 Role Variables
 --------------
@@ -93,6 +93,10 @@ Role Variables
 #### `gitleaks_version`
 
 インストールするgitleaksのバージョン
+
+#### `bottom_version`
+
+インストールするbottomのバージョン
 
 #### `hugo_version`
 
@@ -226,6 +230,8 @@ mecabの設定
 #### `tools_gitleaks_repo`
 
 #### `tools_tools_diff_pdf_repo`
+
+#### `tools_bottom_repo`
 
 Example Playbook
 --------------

@@ -23,5 +23,5 @@
 - name: Assert installed eza
   ansible.builtin.assert:
     that:
-      - ansible_facts.packages['eza']
+      - ansible_facts.packages['eza'] is defined
       - ansible_facts.packages['eza'][0]['origin'] != 'Debian'

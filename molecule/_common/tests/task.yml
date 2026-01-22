@@ -1,4 +1,4 @@
 ---
 - name: Assert installed task
   ansible.builtin.assert:
-    that: ansible_facts.packages['task']
+    that: ansible_facts.packages['task'] is defined

@@ -2,12 +2,12 @@
 - name: Assert installed fd
   ansible.builtin.assert:
     that:
-      - ansible_facts.packages['fd-find']
+      - ansible_facts.packages['fd-find'] is defined
       - ansible_facts.packages['fd-find'][0]['origin'] == 'Debian'
   when: ansible_facts.distribution_major_version is version(12, '<')
 - name: Assert installed fd
   ansible.builtin.assert:
     that:
-      - ansible_facts.packages['fd']
+      - ansible_facts.packages['fd'] is defined
       - ansible_facts.packages['fd'][0]['origin'] != 'Debian'
   when: ansible_facts.distribution_major_version is version(12, '>=')

@@ -8,3 +8,5 @@
     that:
       - assh_command_result.stat.exists
       - assh_command_result.stat.executable
+    fail_msg: "assh command is not installed or not executable"
+    success_msg: "assh command is installed and executable"

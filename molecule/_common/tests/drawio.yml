@@ -1,7 +1,7 @@
 ---
 - name: Assert installed draw.io
   ansible.builtin.assert:
-    that: ansible_facts.packages['draw.io']
+    that: ansible_facts.packages['draw.io'] is defined
 - name: Execute drawio command
   ansible.builtin.command:
     cmd: xvfb-run drawio --help --no-sandbox

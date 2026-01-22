@@ -1,4 +1,4 @@
 ---
 - name: Assert installed mecab
   ansible.builtin.assert:
-    that: ansible_facts.packages['mecab']
+    that: ansible_facts.packages['mecab'] is defined

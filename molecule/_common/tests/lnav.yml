@@ -1,4 +1,4 @@
 ---
 - name: Assert installed lnav
   ansible.builtin.assert:
-    that: ansible_facts.packages['lnav']
+    that: ansible_facts.packages['lnav'] is defined

@@ -1,4 +1,4 @@
 ---
 - name: Assert installed runn
   ansible.builtin.assert:
-    that: ansible_facts.packages['runn']
+    that: ansible_facts.packages['runn'] is defined

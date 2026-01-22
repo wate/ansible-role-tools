@@ -191,6 +191,11 @@ drawio_version: latest
 gitleaks_version: latest
 
 ## --------------------------
+## インストールするbottomのバージョン
+## --------------------------
+bottom_version: latest
+
+## --------------------------
 ## インストールするHugoのバージョン
 ## --------------------------
 hugo_version: latest

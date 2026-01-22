@@ -8,3 +8,5 @@
     that:
       - zx_command_result.stat.exists
       - zx_command_result.stat.executable
+    fail_msg: "zx command is not installed or not executable"
+    success_msg: "zx command is installed and executable"

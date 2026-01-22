@@ -2,5 +2,5 @@
 - name: Assert installed pandoc
   ansible.builtin.assert:
     that:
-      - ansible_facts.packages['pandoc']
+      - ansible_facts.packages['pandoc'] is defined
       - ansible_facts.packages['pandoc'][0]['origin'] != 'Debian'

@@ -1,4 +1,4 @@
 ---
 - name: Assert installed glow
   ansible.builtin.assert:
-    that: ansible_facts.packages['glow']
+    that: ansible_facts.packages['glow'] is defined

@@ -2,4 +2,4 @@
 - name: Assert installed httpie
   ansible.builtin.assert:
     that:
-      - ansible_facts.packages['httpie']
+      - ansible_facts.packages['httpie'] is defined

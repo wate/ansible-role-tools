@@ -1,4 +1,4 @@
 ---
 - name: Assert installed rclone
   ansible.builtin.assert:
-    that: ansible_facts.packages['rclone']
+    that: ansible_facts.packages['rclone'] is defined
