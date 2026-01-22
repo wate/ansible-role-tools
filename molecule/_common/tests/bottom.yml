@@ -1,0 +1,13 @@
+---
+- name: Set variable
+  ansible.builtin.set_fact:
+    package_suffix: "{{ arch_type_maps[ansible_facts['architecture']] }}"
+  vars:
+    arch_type_maps:
+      x86_64: ""
+      aarch64: arm64
+- name: Assert installed bottom
+  ansible.builtin.assert:
+    that: ansible_facts.packages['bottom-' + package_suffix] is defined
+    fail_msg: "bottom package is not installed"
+    success_msg: "bottom package is installed"

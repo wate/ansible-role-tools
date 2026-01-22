@@ -1,0 +1,23 @@
+---
+- name: Get latest release
+  when: bottom_version | default('latest') == 'latest'
+  block:
+    - name: Get latest version
+      ansible.builtin.include_tasks:
+        file: common/get_latest_version.yml
+      vars:
+        github_repo: "{{ tools_bottom_repo }}"
+        target_name: bottom
+    - name: Set package version
+      ansible.builtin.set_fact:
+        bottom_version: "{{ latest_version }}"
+- name: Set variable
+  ansible.builtin.set_fact:
+    package_file: bottom_{{ bottom_version }}-1_{{ arch_type_maps[ansible_facts['architecture']] }}.deb
+  vars:
+    arch_type_maps:
+      x86_64: amd64
+      aarch64: arm64
+- name: Install bottom
+  ansible.builtin.apt:
+    deb: https://github.com/{{ tools_bottom_repo }}/releases/download/{{ bottom_version }}/{{ package_file }}

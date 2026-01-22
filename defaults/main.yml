@@ -49,6 +49,8 @@ install_tools:
   # - assh
   ## https://github.com/charmbracelet/glow
   # - glow
+  ## https://github.com/ClementTsang/bottom
+  - bottom
   ## https://github.com/jgm/pandoc
   - pandoc
   ## https://graphviz.org/
@@ -108,6 +110,11 @@ tldr_version: latest
 ## インストールするznsのバージョン
 ## --------------------------
 zns_version: latest
+
+## --------------------------
+## インストールするbottomのバージョン
+## --------------------------
+bottom_version: latest
 
 ## --------------------------
 ## インストールするosv-scannerのバージョン

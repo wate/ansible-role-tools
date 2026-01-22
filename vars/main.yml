@@ -46,3 +46,4 @@ tools_pandoc_repo: jgm/pandoc
 tools_drawio_repo: jgraph/drawio-desktop
 tools_gitleaks_repo: gitleaks/gitleaks
 tools_diff_pdf_repo: vslavik/diff-pdf
+tools_bottom_repo: ClementTsang/bottom

@@ -13,6 +13,9 @@ tasks:
   bat:
     desc: Run Molecule tests for bat scenario
     cmd: molecule test -s bat
+  bottom:
+    desc: Run Molecule tests for bat scenario
+    cmd: molecule test -s bottom
   codex:
     desc: Run Molecule tests for codex scenario
     cmd: molecule test -s codex
@@ -147,6 +150,7 @@ tasks:
     cmds:
       - task: assh
       - task: bat
+      - task: bottom
       - task: codex
       - task: d2
       - task: delta
