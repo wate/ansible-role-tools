@@ -4,6 +4,8 @@
     that:
       - ansible_facts.packages['git-delta-musl'] is defined
       - ansible_facts.packages['git-delta-musl'][0]['origin'] != 'Debian'
+    fail_msg: "git-delta-musl package is not installed"
+    success_msg: "git-delta-musl package is installed"
   when:
     - ansible_facts.distribution_major_version is version('11', '<=')
     - ansible_facts.architecture == 'x86_64'
@@ -12,4 +14,6 @@
     that:
       - ansible_facts.packages['git-delta'] is defined
       - ansible_facts.packages['git-delta'][0]['origin'] != 'Debian'
+    fail_msg: "git-delta package is not installed"
+    success_msg: "git-delta package is installed"
   when: ansible_facts.distribution_major_version is version('11', '>')

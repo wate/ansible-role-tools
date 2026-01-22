@@ -2,3 +2,5 @@
 - name: Assert installed fnt
   ansible.builtin.assert:
     that: ansible_facts.packages['fnt'] is defined
+    fail_msg: "fnt package is not installed"
+    success_msg: "fnt package is installed"

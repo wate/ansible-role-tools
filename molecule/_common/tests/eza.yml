@@ -6,6 +6,8 @@
 - name: Assert eza source gpg key
   ansible.builtin.assert:
     that: eza_src_gpg_key_result.stat.exists
+    fail_msg: "eza source gpg key does not exist"
+    success_msg: "eza source gpg key exists"
 - name: Check eza source gpg key
   ansible.builtin.stat:
     path: /etc/apt/keyrings/eza.gpg
@@ -13,6 +15,8 @@
 - name: Assert eza gpg key
   ansible.builtin.assert:
     that: eza_gpg_key_result.stat.exists
+    fail_msg: "eza gpg key does not exist"
+    success_msg: "eza gpg key exists"
 - name: Check eza apt repository
   ansible.builtin.stat:
     path: /etc/apt/sources.list.d/gierens.sources
@@ -20,8 +24,12 @@
 - name: Assert eza apt repository
   ansible.builtin.assert:
     that: eza_repository_result.stat.exists
+    fail_msg: "eza apt repository does not exist"
+    success_msg: "eza apt repository exists"
 - name: Assert installed eza
   ansible.builtin.assert:
     that:
       - ansible_facts.packages['eza'] is defined
       - ansible_facts.packages['eza'][0]['origin'] != 'Debian'
+    fail_msg: "eza package is not installed"
+    success_msg: "eza package is installed"

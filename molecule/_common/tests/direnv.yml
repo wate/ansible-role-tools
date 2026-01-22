@@ -2,3 +2,5 @@
 - name: Assert installed direnv
   ansible.builtin.assert:
     that: ansible_facts.packages['direnv'] is defined
+    fail_msg: "direnv package is not installed"
+    success_msg: "direnv package is installed"

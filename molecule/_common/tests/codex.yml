@@ -8,3 +8,5 @@
     that:
       - codex_command_result.stat.exists
       - codex_command_result.stat.executable
+    fail_msg: "codex command is not installed or not executable"
+    success_msg: "codex command is installed and executable"

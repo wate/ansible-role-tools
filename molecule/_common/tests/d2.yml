@@ -8,3 +8,5 @@
     that:
       - d2_command_result.stat.exists
       - d2_command_result.stat.executable
+    fail_msg: "d2 command is not installed or not executable"
+    success_msg: "d2 command is installed and executable"

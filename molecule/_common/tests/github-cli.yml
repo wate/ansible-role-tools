@@ -2,3 +2,5 @@
 - name: Assert installed github-cli
   ansible.builtin.assert:
     that: ansible_facts.packages['gh'] is defined
+    fail_msg: "github-cli package is not installed"
+    success_msg: "github-cli package is installed"

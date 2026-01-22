@@ -4,3 +4,5 @@
     that:
       - ansible_facts.packages['bat'] is defined
       - ansible_facts.packages['bat'][0]['origin'] != 'Debian'
+    fail_msg: "bat package is not installed"
+    success_msg: "bat package is installed"
