@@ -36,7 +36,7 @@ install_tools:
   ## https://rclone.org/
   - rclone
   ## https://github.com/tldr-pages/tlrc
-  - tldr
+  # - tldr
   ## https://github.com/znscli/zns
   # - zns
   ## https://github.com/kellyjonbrazil/jc

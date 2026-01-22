@@ -145,8 +145,6 @@ tasks:
   all-scenarios:
     desc: Run Molecule tests for all scenarios (sequential)
     cmds:
-      - task: default
-      - task: all
       - task: assh
       - task: bat
       - task: codex
@@ -192,3 +190,5 @@ tasks:
       - task: tree
       - task: zns
       - task: zx
+      - task: default
+      - task: all

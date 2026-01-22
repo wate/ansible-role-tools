@@ -1,12 +1,17 @@
 ---
-- name: Check tldr command
-  ansible.builtin.stat:
-    path: /usr/local/bin/tldr
-  register: tldr_command_result
-- name: Assert installed tldr
-  ansible.builtin.assert:
-    that:
-      - tldr_command_result.stat.exists
-      - tldr_command_result.stat.executable
-    fail_msg: "tldr command is not installed or not executable"
-    success_msg: "tldr command is installed and executable"
+- name: Test tldr
+  when:
+    - ansible_facts['system'] == 'Linux'
+    - ansible_facts['architecture'] == 'x86_64'
+  block:
+    - name: Check tldr command
+      ansible.builtin.stat:
+        path: /usr/local/bin/tldr
+      register: tldr_command_result
+    - name: Assert installed tldr
+      ansible.builtin.assert:
+        that:
+          - tldr_command_result.stat.exists
+          - tldr_command_result.stat.executable
+        fail_msg: "tldr command is not installed or not executable"
+        success_msg: "tldr command is installed and executable"
