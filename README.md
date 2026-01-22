@@ -34,6 +34,10 @@ Role Variables
 
 インストールするznsのバージョン
 
+#### `bottom_version`
+
+インストールするbottomのバージョン
+
 #### `osv_scanner_version`
 
 インストールするosv-scannerのバージョン
@@ -93,18 +97,6 @@ Role Variables
 #### `gitleaks_version`
 
 インストールするgitleaksのバージョン
-
-#### `bottom_version`
-
-インストールするbottomのバージョン
-
-#### `hugo_version`
-
-インストールするHugoのバージョン
-
-#### `hugo_extended`
-
-インストールするHugoのタイプ
 
 #### `zx_latest_install`
 
@@ -223,13 +215,11 @@ mecabの設定
 
 #### `tools_pandoc_repo`
 
-#### `tools_hugo_repo`
-
 #### `tools_drawio_repo`
 
 #### `tools_gitleaks_repo`
 
-#### `tools_tools_diff_pdf_repo`
+#### `tools_diff_pdf_repo`
 
 #### `tools_bottom_repo`
 
@@ -239,7 +229,7 @@ Example Playbook
 ```yaml
 - hosts: servers
   roles:
-    - role: tool
+    - role: tools
 ```
 
 License
