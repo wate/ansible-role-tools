@@ -158,6 +158,7 @@ task_version: latest
 
 ## --------------------------
 ## インストールするdeltaのバージョン
+## ※この変数はDebian 12(Bookworm)以下の場合のみ評価されます
 ## --------------------------
 delta_version: latest
 

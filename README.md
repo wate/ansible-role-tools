@@ -72,7 +72,8 @@ Role Variables
 
 #### `delta_version`
 
-インストールするdeltaのバージョン
+インストールするdeltaのバージョン  
+※この変数はDebian 12(Bookworm)以下の場合のみ評価されます
 
 #### `duckdb_version`
 
