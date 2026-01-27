@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: tool
+  role_name: tools
   author: yoshiaki tanaka
   description: setup tool
   license: Apache

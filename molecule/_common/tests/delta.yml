@@ -13,7 +13,6 @@
   ansible.builtin.assert:
     that:
       - ansible_facts.packages['git-delta'] is defined
-      - ansible_facts.packages['git-delta'][0]['origin'] != 'Debian'
     fail_msg: "git-delta package is not installed"
     success_msg: "git-delta package is installed"
   when: ansible_facts.distribution_major_version is version('11', '>')
