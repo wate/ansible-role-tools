@@ -1,0 +1,11 @@
+---
+- name: Set package file variable
+  ansible.builtin.set_fact:
+    delta_package_file: git-delta_{{ delta_version }}_{{ arch_type_maps[ansible_facts['architecture']] }}.deb
+  vars:
+    arch_type_maps:
+      x86_64: amd64
+      aarch64: arm64
+- name: Install delta
+  ansible.builtin.apt:
+    deb: https://github.com/{{ tools_delta_repo }}/releases/download/{{ delta_version }}/{{ delta_package_file }}
