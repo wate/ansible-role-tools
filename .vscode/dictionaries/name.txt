@@ -26,6 +26,5 @@ restic
 runn
 silversearcher
 tbls
-tesseract
 tldr
 xauth

@@ -89,8 +89,6 @@ install_tools:
   # - diff-pdf
   ## PDF 向けユーティリティ
   # - poppler-utils
-  ## https://github.com/tesseract-ocr/tesseract
-  # - tesseract-ocr
   ## https://taku910.github.io/mecab/
   # - mecab
   ## https://osdn.net/projects/nkf/
@@ -236,17 +234,6 @@ goaccess_maxmind_database_path: /usr/share/GeoIP/GeoLite2-City.mmdb
 ## GeoIPデータベースの自動更新頻度
 ## -----------------
 goaccess_geoipupdate_interval: weekly
-
-## --------------------------
-## Tesseract OCRの言語ファイル
-## --------------------------
-tesseract_ocr_languages:
-  # tesseract-ocr language files for English
-  - tesseract-ocr-eng
-  # tesseract-ocr language files for Japanese
-  - tesseract-ocr-jpn
-  # Tesseract OCR with all language and script packages
-  # - tesseract-ocr-all
 
 ## --------------------------
 ## インストールするmecab関連のパッケージ

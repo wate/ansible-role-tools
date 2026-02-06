@@ -1,150 +1,256 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
 version: '3'
 tasks:
+  notify:
+    internal: true
+    silent: true
+    cmds:
+      - afplay /System/Library/Sounds/Glass.aiff
+  notify:all:
+    internal: true
+    silent: true
+    cmds:
+      - afplay /System/Library/Sounds/Hero.aiff
   default:
     desc: Run Molecule tests for default scenario
-    cmd: molecule test
+    cmds:
+      - molecule test
+      - task: notify
   all:
     desc: Run Molecule tests for all scenario
-    cmd: molecule test -s all
+    cmds:
+      - molecule test -s all
+      - task: notify
   assh:
     desc: Run Molecule tests for assh scenario
-    cmd: molecule test -s assh
+    cmds:
+      - molecule test -s assh
+      - task: notify
   bat:
     desc: Run Molecule tests for bat scenario
-    cmd: molecule test -s bat
+    cmds:
+      - molecule test -s bat
+      - task: notify
   bottom:
     desc: Run Molecule tests for bat scenario
-    cmd: molecule test -s bottom
+    cmds:
+      - molecule test -s bottom
+      - task: notify
   codex:
     desc: Run Molecule tests for codex scenario
-    cmd: molecule test -s codex
+    cmds:
+      - molecule test -s codex
+      - task: notify
   d2:
     desc: Run Molecule tests for d2 scenario
-    cmd: molecule test -s d2
+    cmds:
+      - molecule test -s d2
+      - task: notify
   delta:
     desc: Run Molecule tests for delta scenario
-    cmd: molecule test -s delta
+    cmds:
+      - molecule test -s delta
+      - task: notify
   diff-pdf:
     desc: Run Molecule tests for diff-pdf scenario
-    cmd: molecule test -s diff-pdf
+    cmds:
+      - molecule test -s diff-pdf
+      - task: notify
   direnv:
     desc: Run Molecule tests for direnv scenario
-    cmd: molecule test -s direnv
+    cmds:
+      - molecule test -s direnv
+      - task: notify
   drawio:
     desc: Run Molecule tests for drawio scenario
-    cmd: molecule test -s drawio
+    cmds:
+      - molecule test -s drawio
+      - task: notify
   duckdb:
     desc: Run Molecule tests for duckdb scenario
-    cmd: molecule test -s duckdb
+    cmds:
+      - molecule test -s duckdb
+      - task: notify
   eza:
     desc: Run Molecule tests for eza scenario
-    cmd: molecule test -s eza
+    cmds:
+      - molecule test -s eza
+      - task: notify
   fd:
     desc: Run Molecule tests for fd scenario
-    cmd: molecule test -s fd
+    cmds:
+      - molecule test -s fd
+      - task: notify
   fnt:
     desc: Run Molecule tests for fnt scenario
-    cmd: molecule test -s fnt
+    cmds:
+      - molecule test -s fnt
+      - task: notify
   gitleaks:
     desc: Run Molecule tests for gitleaks scenario
-    cmd: molecule test -s gitleaks
+    cmds:
+      - molecule test -s gitleaks
+      - task: notify
   github-cli:
     desc: Run Molecule tests for github-cli scenario
-    cmd: molecule test -s github-cli
+    cmds:
+      - molecule test -s github-cli
+      - task: notify
   git-flow:
     desc: Run Molecule tests for git-flow scenario
-    cmd: molecule test -s git-flow
+    cmds:
+      - molecule test -s git-flow
+      - task: notify
   glow:
     desc: Run Molecule tests for glow scenario
-    cmd: molecule test -s glow
+    cmds:
+      - molecule test -s glow
+      - task: notify
   goaccess:
     desc: Run Molecule tests for goaccess scenario
-    cmd: molecule test -s goaccess
+    cmds:
+      - molecule test -s goaccess
+      - task: notify
   graphviz:
     desc: Run Molecule tests for graphviz scenario
-    cmd: molecule test -s graphviz
+    cmds:
+      - molecule test -s graphviz
+      - task: notify
   httpie:
     desc: Run Molecule tests for httpie scenario
-    cmd: molecule test -s httpie
+    cmds:
+      - molecule test -s httpie
+      - task: notify
   jc:
     desc: Run Molecule tests for jc scenario
-    cmd: molecule test -s jc
+    cmds:
+      - molecule test -s jc
+      - task: notify
   lazydocker:
     desc: Run Molecule tests for lazydocker scenario
-    cmd: molecule test -s lazydocker
+    cmds:
+      - molecule test -s lazydocker
+      - task: notify
   lazygit:
     desc: Run Molecule tests for lazygit scenario
-    cmd: molecule test -s lazygit
+    cmds:
+      - molecule test -s lazygit
+      - task: notify
   lnav:
     desc: Run Molecule tests for lnav scenario
-    cmd: molecule test -s lnav
+    cmds:
+      - molecule test -s lnav
+      - task: notify
   mecab:
     desc: Run Molecule tests for mecab scenario
-    cmd: molecule test -s mecab
+    cmds:
+      - molecule test -s mecab
+      - task: notify
   mermaid-cli:
     desc: Run Molecule tests for mermaid-cli scenario
-    cmd: molecule test -s mermaid-cli
+    cmds:
+      - molecule test -s mermaid-cli
+      - task: notify
   nkf:
     desc: Run Molecule tests for nkf scenario
-    cmd: molecule test -s nkf
+    cmds:
+      - molecule test -s nkf
+      - task: notify
   ni:
     desc: Run Molecule tests for ni scenario
-    cmd: molecule test -s ni
+    cmds:
+      - molecule test -s ni
+      - task: notify
   osv-scanner:
     desc: Run Molecule tests for osv-scanner scenario
-    cmd: molecule test -s osv-scanner
+    cmds:
+      - molecule test -s osv-scanner
+      - task: notify
   pandoc:
     desc: Run Molecule tests for pandoc scenario
-    cmd: molecule test -s pandoc
+    cmds:
+      - molecule test -s pandoc
+      - task: notify
   pict:
     desc: Run Molecule tests for pict scenario
-    cmd: molecule test -s pict
+    cmds:
+      - molecule test -s pict
+      - task: notify
   plantuml:
     desc: Run Molecule tests for plantuml scenario
-    cmd: molecule test -s plantuml
+    cmds:
+      - molecule test -s plantuml
+      - task: notify
   poppler-utils:
     desc: Run Molecule tests for poppler-utils scenario
-    cmd: molecule test -s poppler-utils
+    cmds:
+      - molecule test -s poppler-utils
+      - task: notify
   rclone:
     desc: Run Molecule tests for rclone scenario
-    cmd: molecule test -s rclone
+    cmds:
+      - molecule test -s rclone
+      - task: notify
   restic:
     desc: Run Molecule tests for restic scenario
-    cmd: molecule test -s restic
+    cmds:
+      - molecule test -s restic
+      - task: notify
   runn:
     desc: Run Molecule tests for runn scenario
-    cmd: molecule test -s runn
+    cmds:
+      - molecule test -s runn
+      - task: notify
   s3fs:
     desc: Run Molecule tests for s3fs scenario
-    cmd: molecule test -s s3fs
+    cmds:
+      - molecule test -s s3fs
+      - task: notify
   task:
     desc: Run Molecule tests for task scenario
-    cmd: molecule test -s task
+    cmds:
+      - molecule test -s task
+      - task: notify
   tbls:
     desc: Run Molecule tests for tbls scenario
-    cmd: molecule test -s tbls
-  tesseract-ocr:
-    desc: Run Molecule tests for tesseract-ocr scenario
-    cmd: molecule test -s tesseract-ocr
+    cmds:
+      - molecule test -s tbls
+      - task: notify
   the_silver_searcher:
     desc: Run Molecule tests for the_silver_searcher scenario
-    cmd: molecule test -s the_silver_searcher
+    cmds:
+      - molecule test -s the_silver_searcher
+      - task: notify
   tig:
     desc: Run Molecule tests for tig scenario
-    cmd: molecule test -s tig
+    cmds:
+      - molecule test -s tig
+      - task: notify
   tldr:
     desc: Run Molecule tests for tldr scenario
-    cmd: molecule test -s tldr
+    cmds:
+      - molecule test -s tldr
+      - task: notify
   tree:
     desc: Run Molecule tests for tree scenario
-    cmd: molecule test -s tree
+    cmds:
+      - molecule test -s tree
+      - task: notify
+  xmllint:
+    desc: Run Molecule tests for tree scenario
+    cmds:
+      - molecule test -s xmllint
+      - task: notify
   zns:
     desc: Run Molecule tests for zns scenario
-    cmd: molecule test -s zns
+    cmds:
+      - molecule test -s zns
+      - task: notify
   zx:
     desc: Run Molecule tests for zx scenario
-    cmd: molecule test -s zx
+    cmds:
+      - molecule test -s zx
+      - task: notify
   all-scenarios:
     desc: Run Molecule tests for all scenarios (sequential)
     cmds:
@@ -187,12 +293,13 @@ tasks:
       - task: s3fs
       - task: task
       - task: tbls
-      - task: tesseract-ocr
       - task: the_silver_searcher
       - task: tig
       - task: tldr
       - task: tree
+      - task: xmllint
       - task: zns
       - task: zx
       - task: default
       - task: all
+      - task: notify:all

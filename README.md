@@ -132,10 +132,6 @@ GoAccessに設定するGeoIPデータベースのパス
 
 GeoIPデータベースの自動更新頻度
 
-#### `tesseract_ocr_languages`
-
-Tesseract OCRの言語ファイル
-
 #### `mecab_packages`
 
 インストールするmecab関連のパッケージ
@@ -169,12 +165,6 @@ mecabの設定
 #### `tools_githubcli_apt_key_download_dest`
 
 #### `tools_githubcli_apt_key_dest`
-
-#### `tools_tesseract_ocr_apt_key_url`
-
-#### `tools_tesseract_ocr_apt_key_download_dest`
-
-#### `tools_tesseract_ocr_apt_key_dest`
 
 #### `tools_tbls_repo`
 
