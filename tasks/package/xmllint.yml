@@ -1,0 +1,4 @@
+---
+- name: Install libxml2-utils
+  ansible.builtin.apt:
+    name: libxml2-utils

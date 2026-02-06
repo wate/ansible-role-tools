@@ -17,11 +17,6 @@ tools_githubcli_apt_key_url: https://cli.github.com/packages/githubcli-archive-k
 tools_githubcli_apt_key_download_dest: /etc/apt/keyrings/githubcli-archive-keyring.gpg
 tools_githubcli_apt_key_dest: /etc/apt/keyrings/githubcli-archive-keyring.gpg
 
-## Tesseract OCR
-tools_tesseract_ocr_apt_key_url: https://notesalexp.org/debian/alexp_key.asc
-tools_tesseract_ocr_apt_key_download_dest: /etc/apt/keyrings/tesseract-ocr.gpg.asc
-tools_tesseract_ocr_apt_key_dest: /etc/apt/keyrings/tesseract-ocr.gpg
-
 ## repos
 tools_tbls_repo: k1LoW/tbls
 tools_runn_repo: k1LoW/runn
