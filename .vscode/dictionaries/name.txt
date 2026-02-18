@@ -13,6 +13,7 @@ hugo
 lazydocker
 lazygit
 lnav
+logdy
 maxmind
 mecab
 nodesource

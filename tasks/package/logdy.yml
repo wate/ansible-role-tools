@@ -1,0 +1,25 @@
+---
+- name: Set Install version variable
+  when: logdy_version == 'latest'
+  block:
+    - name: Get latest version
+      ansible.builtin.include_tasks:
+        file: common/get_latest_version.yml
+      vars:
+        github_repo: "{{ tools_logdy_repo }}"
+        target_name: logdy
+    - name: Set package version
+      ansible.builtin.set_fact:
+        logdy_version: "{{ latest_version }}"
+- name: Set asset file name
+  ansible.builtin.set_fact:
+    logdy_asset_file: logdy_{{ ansible_facts['system'] }}_{{ arch_type_maps[ansible_facts['architecture']] }}
+  vars:
+    arch_type_maps:
+      x86_64: amd63
+      aarch64: arm64
+- name: Install logdy
+  ansible.builtin.get_url:
+    url: https://github.com/{{ tools_logdy_repo }}/releases/download/{{ logdy_version }}/{{ logdy_asset_file }}
+    dest: /usr/local/bin/logdy
+    mode: "0755"

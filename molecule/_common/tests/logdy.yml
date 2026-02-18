@@ -1,0 +1,12 @@
+---
+- name: Check logdy command
+  ansible.builtin.stat:
+    path: /usr/local/bin/logdy
+  register: logdy_command_result
+- name: Assert installed logdy
+  ansible.builtin.assert:
+    that:
+      - logdy_command_result.stat.exists
+      - logdy_command_result.stat.executable
+    fail_msg: "logdy command is not installed or not executable"
+    success_msg: "logdy command is installed and executable"
