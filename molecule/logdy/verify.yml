@@ -1,0 +1,29 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: true
+  become: true
+  tasks:
+    ## テストの前処理
+    - name: Gather facts
+      block:
+        - name: Gather package fact
+          ansible.builtin.package_facts:
+            manager: auto
+          when: ansible_facts.packages is undefined
+    - name: Find variable file
+      ansible.builtin.set_fact:
+        variable_file: "{{ lookup('first_found', params, errors='ignore') }}"
+      vars:
+        params:
+          files:
+            - "{{ lookup('env', 'MOLECULE_SCENARIO_DIRECTORY') }}/group_vars/all.yml"
+    - name: Include variable file
+      ansible.builtin.include_vars:
+        file: "{{ variable_file }}"
+      when:
+        - variable_file is not none
+        - variable_file | length > 0
+    - name: Execute tool test
+      ansible.builtin.include_tasks:
+        file: ../_common/tests/{{ lookup('env', 'MOLECULE_SCENARIO_DIRECTORY') | basename }}.yml

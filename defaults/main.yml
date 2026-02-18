@@ -15,6 +15,8 @@ install_tools:
   - tree
   ## https://lnav.org/
   - lnav
+  ## https://logdy.dev/
+  # - logdy
   ## https://github.com/ggreer/the_silver_searcher
   - the_silver_searcher
   ## https://github.com/jesseduffield/lazygit
@@ -179,6 +181,11 @@ glow_version: latest
 ## インストールするpandocのバージョン
 ## --------------------------
 pandoc_version: latest
+
+## --------------------------
+## インストールするlogdyのバージョン
+## --------------------------
+logdy_version: latest
 
 ## --------------------------
 ## インストールするdraw.ioのバージョン

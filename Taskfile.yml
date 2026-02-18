@@ -141,6 +141,11 @@ tasks:
     cmds:
       - molecule test -s lnav
       - task: notify
+  logdy:
+    desc: Run Molecule tests for logdy scenario
+    cmds:
+      - molecule test -s logdy
+      - task: notify
   mecab:
     desc: Run Molecule tests for mecab scenario
     cmds:

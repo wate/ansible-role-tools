@@ -42,3 +42,4 @@ tools_drawio_repo: jgraph/drawio-desktop
 tools_gitleaks_repo: gitleaks/gitleaks
 tools_diff_pdf_repo: vslavik/diff-pdf
 tools_bottom_repo: ClementTsang/bottom
+tools_logdy_repo: logdyhq/logdy-core
