@@ -19,6 +19,8 @@ install_tools:
   # - logdy
   ## https://github.com/ggreer/the_silver_searcher
   - the_silver_searcher
+  ## https://github.com/BurntSushi/ripgrep
+  - ripgrep
   ## https://github.com/jesseduffield/lazygit
   # - lazygit
   ## https://github.com/jesseduffield/lazydocker
