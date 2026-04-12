@@ -214,6 +214,8 @@ mecabの設定
 
 #### `tools_bottom_repo`
 
+#### `tools_logdy_repo`
+
 Example Playbook
 --------------
 
