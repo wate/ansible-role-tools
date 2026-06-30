@@ -95,6 +95,8 @@ install_tools:
   # - mecab
   ## https://osdn.net/projects/nkf/
   # - nkf
+  ## https://github.com/rtk-ai/rtk
+  # - rtk
 
 ## --------------------------
 ## インストールするd2のバージョン
@@ -191,6 +193,11 @@ drawio_version: latest
 ## インストールするgitleaksのバージョン
 ## --------------------------
 gitleaks_version: latest
+
+## --------------------------
+## インストールするrtkのバージョン
+## --------------------------
+rtk_version: latest
 
 ## --------------------------
 ## zxを最新版に更新するか否か

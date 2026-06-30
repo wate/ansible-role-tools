@@ -99,6 +99,10 @@ Role Variables
 
 インストールするgitleaksのバージョン
 
+#### `rtk_version`
+
+インストールするrtkのバージョン
+
 #### `zx_latest_install`
 
 zxを最新版に更新するか否か

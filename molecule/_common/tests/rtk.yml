@@ -1,0 +1,12 @@
+---
+- name: Check rtk
+  ansible.builtin.stat:
+    path: /usr/local/bin/rtk
+  register: rtk_command_result
+- name: Assert installed rtk
+  ansible.builtin.assert:
+    that:
+      - rtk_command_result.stat.exists
+      - rtk_command_result.stat.executable
+    fail_msg: "rtk command is not installed or not executable"
+    success_msg: "rtk command is installed and executable"
