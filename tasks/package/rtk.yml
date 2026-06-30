@@ -1,0 +1,30 @@
+---
+- name: Set Install version variable
+  when: rtk_version == 'latest'
+  block:
+    - name: Get latest version
+      ansible.builtin.include_tasks:
+        file: common/get_latest_version.yml
+      vars:
+        github_repo: "{{ tools_rtk_repo }}"
+        target_name: rtk
+    - name: Set package version
+      ansible.builtin.set_fact:
+        rtk_version: "{{ latest_version }}"
+- name: Set download file variable
+  ansible.builtin.set_fact:
+    rtk_arch_type: "{{ arch_type_maps[ansible_facts['architecture']] }}"
+  vars:
+    arch_type_maps:
+      x86_64: x86_64-unknown-linux-musl
+      aarch64: aarch64-unknown-linux-gnu
+- name: Set asset file name
+  ansible.builtin.set_fact:
+    rtk_asset_file: "rtk-{{ rtk_arch_type }}.tar.gz"
+- name: Install rtk
+  ansible.builtin.unarchive:
+    src: "https://github.com/{{ tools_rtk_repo }}/releases/download/{{ rtk_version }}/{{ rtk_asset_file }}"
+    dest: /usr/local/bin
+    include:
+      - rtk
+    remote_src: true

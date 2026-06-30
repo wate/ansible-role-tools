@@ -99,6 +99,10 @@ Role Variables
 
 インストールするgitleaksのバージョン
 
+#### `rtk_version`
+
+インストールするrtkのバージョン
+
 #### `zx_latest_install`
 
 zxを最新版に更新するか否か
@@ -213,6 +217,8 @@ mecabの設定
 #### `tools_diff_pdf_repo`
 
 #### `tools_bottom_repo`
+
+#### `tools_logdy_repo`
 
 Example Playbook
 --------------

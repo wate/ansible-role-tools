@@ -196,6 +196,11 @@ tasks:
     cmds:
       - molecule test -s restic
       - task: notify
+  rtk:
+    desc: Run Molecule tests for rtk scenario
+    cmds:
+      - molecule test -s rtk
+      - task: notify
   ripgrep:
     desc: Run Molecule tests for ripgrep scenario
     cmds:
@@ -294,6 +299,7 @@ tasks:
       - task: poppler-utils
       - task: rclone
       - task: restic
+      - task: rtk
       - task: ripgrep
       - task: runn
       - task: s3fs
