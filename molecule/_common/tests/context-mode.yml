@@ -1,0 +1,12 @@
+---
+- name: Check context-mode command
+  ansible.builtin.stat:
+    path: /usr/bin/context-mode
+  register: context_mode_command_result
+- name: Assert installed context-mode
+  ansible.builtin.assert:
+    that:
+      - context_mode_command_result.stat.exists
+      - context_mode_command_result.stat.executable
+    fail_msg: "context-mode command is not installed or not executable"
+    success_msg: "context-mode command is installed and executable"

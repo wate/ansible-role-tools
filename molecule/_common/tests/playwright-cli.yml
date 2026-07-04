@@ -1,0 +1,12 @@
+---
+- name: Check playwright-cli command
+  ansible.builtin.stat:
+    path: /usr/bin/playwright-cli
+  register: playwright_cli_command_result
+- name: Assert installed playwright-cli
+  ansible.builtin.assert:
+    that:
+      - playwright_cli_command_result.stat.exists
+      - playwright_cli_command_result.stat.executable
+    fail_msg: "playwright-cli command is not installed or not executable"
+    success_msg: "playwright-cli command is installed and executable"

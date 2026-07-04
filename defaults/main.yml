@@ -75,8 +75,6 @@ install_tools:
   # - zx
   ## https://github.com/antfu-collective/ni
   # - ni
-  ## https://github.com/openai/codex
-  # - codex
   ## https://github.com/mermaid-js/mermaid-cli
   # - mermaid-cli
   ## https://github.com/cli/cli
@@ -97,6 +95,10 @@ install_tools:
   # - nkf
   ## https://github.com/rtk-ai/rtk
   # - rtk
+  ## https://github.com/mksglu/context-mode
+  # - context-mode
+  ## https://playwright.dev/agent-cli/installation
+  # - playwright-cli
 
 ## --------------------------
 ## インストールするd2のバージョン
@@ -210,14 +212,19 @@ zx_latest_install: true
 ni_latest_install: true
 
 ## --------------------------
+## playwright-cliを最新版に更新するか否か
+## --------------------------
+playwright_cli_latest_install: true
+
+## --------------------------
+## context-modeを最新版に更新するか否か
+## --------------------------
+context_mode_latest_install: true
+
+## --------------------------
 ## mermaid-cliを最新版に更新するか否か
 ## --------------------------
 mermaid_cli_latest_install: true
-
-## --------------------------
-## codexを最新版に更新するか否か
-## --------------------------
-codex_latest_install: true
 
 ## -----------------
 ## MaxMindのアカウントIDとライセンスキー
