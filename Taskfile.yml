@@ -36,10 +36,10 @@ tasks:
     cmds:
       - molecule test -s bottom
       - task: notify
-  codex:
-    desc: Run Molecule tests for codex scenario
+  context-mode:
+    desc: Run Molecule tests for context-mode scenario
     cmds:
-      - molecule test -s codex
+      - molecule test -s context-mode
       - task: notify
   d2:
     desc: Run Molecule tests for d2 scenario
@@ -181,6 +181,11 @@ tasks:
     cmds:
       - molecule test -s plantuml
       - task: notify
+  playwright-cli:
+    desc: Run Molecule tests for playwright-cli scenario
+    cmds:
+      - molecule test -s playwright-cli
+      - task: notify
   poppler-utils:
     desc: Run Molecule tests for poppler-utils scenario
     cmds:
@@ -261,13 +266,13 @@ tasks:
     cmds:
       - molecule test -s zx
       - task: notify
-  all-scenarios:
+  all-test:
     desc: Run Molecule tests for all scenarios (sequential)
     cmds:
       - task: assh
       - task: bat
       - task: bottom
-      - task: codex
+      - task: context-mode
       - task: d2
       - task: delta
       - task: diff-pdf
@@ -296,6 +301,7 @@ tasks:
       - task: pandoc
       - task: pict
       - task: plantuml
+      - task: playwright-cli
       - task: poppler-utils
       - task: rclone
       - task: restic

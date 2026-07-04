@@ -52,7 +52,7 @@ provisioner:
     ssh_connection:
       pipelining: true
   playbooks:
-    converge: ${MOLECULE_PLAYBOOK:-converge.yml}
+    converge: ${MOLECULE_PLAYBOOK:-../_common/playbooks/converge.yml}
 # verifier:
 #   name: ansible
 scenario:

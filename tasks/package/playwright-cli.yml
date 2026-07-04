@@ -1,0 +1,11 @@
+---
+- name: Install playwright-cli
+  community.general.npm:
+    name: "@playwright/cli@latest"
+    global: true
+    state: "{{ playwright_cli_latest_install | default(false) | ternary('latest', 'present') }}"
+  register: playwright_cli_latest_install
+- name: Install browser with system dependencies
+  ansible.builtin.command:
+    cmd: playwright-cli install-browser --with-deps
+  when: playwright_cli_latest_install.changed

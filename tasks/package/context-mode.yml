@@ -1,0 +1,6 @@
+---
+- name: Install context-mode
+  community.general.npm:
+    name: context-mode
+    global: true
+    state: "{{ context_mode_latest_install | default(false) | ternary('latest', 'present') }}"
