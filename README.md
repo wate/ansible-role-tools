@@ -224,6 +224,8 @@ mecabの設定
 
 #### `tools_logdy_repo`
 
+#### `tools_rtk_repo`
+
 Example Playbook
 --------------
 
