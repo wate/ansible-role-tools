@@ -95,10 +95,12 @@ install_tools:
   # - lindera
   ## https://osdn.net/projects/nkf/
   # - nkf
+  ## https://docs.astral.sh/uv/
+  - uv
   # https://github.com/rtk-ai/rtk
   - rtk
   ## https://github.com/mksglu/context-mode
-  # - context-mode
+  - context-mode
   ## https://playwright.dev/agent-cli/installation
   # - playwright-cli
 
@@ -202,6 +204,11 @@ gitleaks_version: latest
 ## インストールするrtkのバージョン
 ## --------------------------
 rtk_version: latest
+
+## --------------------------
+## インストールするuvのバージョン
+## --------------------------
+uv_version: latest
 
 ## --------------------------
 ## インストールするtgrepのバージョン

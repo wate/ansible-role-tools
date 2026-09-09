@@ -45,3 +45,4 @@ tools_logdy_repo: logdyhq/logdy-core
 tools_rtk_repo: rtk-ai/rtk
 tools_tgrep_repo: microsoft/tgrep
 tools_lindera_repo: lindera/lindera
+tools_uv_repo: astral-sh/uv

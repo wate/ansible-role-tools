@@ -256,6 +256,11 @@ tasks:
     cmds:
       - molecule test -s tree
       - task: notify
+  uv:
+    desc: Run Molecule tests for uv scenario
+    cmds:
+      - molecule test -s uv
+      - task: notify
   xmllint:
     desc: Run Molecule tests for tree scenario
     cmds:
@@ -321,6 +326,7 @@ tasks:
       - task: tig
       - task: tldr
       - task: tree
+      - task: uv
       - task: xmllint
       - task: zns
       - task: zx
