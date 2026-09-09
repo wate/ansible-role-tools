@@ -39,8 +39,6 @@ install_tools:
   - restic
   ## https://rclone.org/
   - rclone
-  ## https://github.com/tldr-pages/tlrc
-  # - tldr
   ## https://github.com/znscli/zns
   # - zns
   ## https://github.com/kellyjonbrazil/jc

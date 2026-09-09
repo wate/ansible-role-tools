@@ -246,11 +246,6 @@ tasks:
     cmds:
       - molecule test -s tig
       - task: notify
-  tldr:
-    desc: Run Molecule tests for tldr scenario
-    cmds:
-      - molecule test -s tldr
-      - task: notify
   tree:
     desc: Run Molecule tests for tree scenario
     cmds:
