@@ -316,6 +316,7 @@ tasks:
       - task: s3fs
       - task: task
       - task: tbls
+      - task: tgrep
       - task: the_silver_searcher
       - task: tig
       - task: tldr

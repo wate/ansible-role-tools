@@ -54,7 +54,7 @@ install_tools:
   ## https://github.com/charmbracelet/glow
   # - glow
   ## https://github.com/ClementTsang/bottom
-  - bottom
+  # - bottom
   ## https://github.com/jgm/pandoc
   - pandoc
   ## https://graphviz.org/
@@ -95,8 +95,8 @@ install_tools:
   # - mecab
   ## https://osdn.net/projects/nkf/
   # - nkf
-  ## https://github.com/rtk-ai/rtk
-  # - rtk
+  # https://github.com/rtk-ai/rtk
+  - rtk
   ## https://github.com/mksglu/context-mode
   # - context-mode
   ## https://playwright.dev/agent-cli/installation
