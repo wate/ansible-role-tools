@@ -1,0 +1,23 @@
+---
+- name: Check uv command
+  ansible.builtin.stat:
+    path: /usr/local/bin/uv
+  register: uv_command_result
+- name: Assert installed uv
+  ansible.builtin.assert:
+    that:
+      - uv_command_result.stat.exists
+      - uv_command_result.stat.executable
+    fail_msg: "uv command is not installed or not executable"
+    success_msg: "uv command is installed and executable"
+- name: Check uvx command
+  ansible.builtin.stat:
+    path: /usr/local/bin/uvx
+  register: uvx_command_result
+- name: Assert installed uvx
+  ansible.builtin.assert:
+    that:
+      - uvx_command_result.stat.exists
+      - uvx_command_result.stat.executable
+    fail_msg: "uvx command is not installed or not executable"
+    success_msg: "uvx command is installed and executable"

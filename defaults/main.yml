@@ -19,6 +19,8 @@ install_tools:
   - the_silver_searcher
   ## https://github.com/BurntSushi/ripgrep
   - ripgrep
+  ## https://github.com/microsoft/tgrep
+  - tgrep
   ## https://github.com/jesseduffield/lazygit
   # - lazygit
   ## https://github.com/jesseduffield/lazydocker
@@ -37,8 +39,6 @@ install_tools:
   - restic
   ## https://rclone.org/
   - rclone
-  ## https://github.com/tldr-pages/tlrc
-  # - tldr
   ## https://github.com/znscli/zns
   # - zns
   ## https://github.com/kellyjonbrazil/jc
@@ -52,7 +52,7 @@ install_tools:
   ## https://github.com/charmbracelet/glow
   # - glow
   ## https://github.com/ClementTsang/bottom
-  - bottom
+  # - bottom
   ## https://github.com/jgm/pandoc
   - pandoc
   ## https://graphviz.org/
@@ -91,12 +91,16 @@ install_tools:
   # - poppler-utils
   ## https://taku910.github.io/mecab/
   # - mecab
+  ## https://lindera.github.io/lindera/
+  # - lindera
   ## https://osdn.net/projects/nkf/
   # - nkf
-  ## https://github.com/rtk-ai/rtk
-  # - rtk
+  ## https://docs.astral.sh/uv/
+  - uv
+  # https://github.com/rtk-ai/rtk
+  - rtk
   ## https://github.com/mksglu/context-mode
-  # - context-mode
+  - context-mode
   ## https://playwright.dev/agent-cli/installation
   # - playwright-cli
 
@@ -200,6 +204,26 @@ gitleaks_version: latest
 ## インストールするrtkのバージョン
 ## --------------------------
 rtk_version: latest
+
+## --------------------------
+## インストールするuvのバージョン
+## --------------------------
+uv_version: latest
+
+## --------------------------
+## インストールするtgrepのバージョン
+## --------------------------
+tgrep_version: latest
+
+## --------------------------
+## インストールするlinderaのバージョン
+## --------------------------
+lindera_version: latest
+
+## --------------------------
+## インストールするlinderaの辞書名
+## --------------------------
+lindera_dictionary: ipadic-neologd
 
 ## --------------------------
 ## zxを最新版に更新するか否か

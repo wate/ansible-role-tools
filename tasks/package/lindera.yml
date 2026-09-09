@@ -1,0 +1,36 @@
+---
+- name: Get latest release
+  when: lindera_version | default('latest') == 'latest'
+  block:
+    - name: Get latest version
+      ansible.builtin.include_tasks:
+        file: common/get_latest_version.yml
+      vars:
+        github_repo: "{{ tools_lindera_repo }}"
+        target_name: lindera
+    - name: Set package version
+      ansible.builtin.set_fact:
+        lindera_version: "{{ latest_version }}"
+- name: Set variable
+  ansible.builtin.set_fact:
+    asset_file: lindera-{{ ansible_facts['architecture'] }}-unknown-linux-gnu-{{ lindera_version[1:] }}.zip
+- name: Install lindera
+  ansible.builtin.unarchive:
+    src: https://github.com/{{ tools_lindera_repo }}/releases/download/{{ lindera_version }}/{{ asset_file }}
+    dest: /usr/local/bin
+    remote_src: true
+- name: Check lindera list dictionaries
+  ansible.builtin.shell:
+    cmd: |
+      set -o pipefail
+      /usr/local/bin/lindera list | jc --asciitable
+    executable: /bin/bash
+  register: install_lindera_dictionaries
+  changed_when: false
+- name: Set lindera dictionaries fact
+  ansible.builtin.set_fact:
+    lindera_dictionaries: "{{ install_lindera_dictionaries.stdout | from_json }}"
+- name: Download lindera dictionary
+  ansible.builtin.command:
+    cmd: /usr/local/bin/lindera download {{ lindera_dictionary }}
+  when: lindera_dictionaries | selectattr('name', 'eq', lindera_dictionary) | selectattr('downloaded', 'eq', 'yes') | list | length == 0

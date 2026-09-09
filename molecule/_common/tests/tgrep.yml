@@ -1,0 +1,12 @@
+---
+- name: Check tgrep command
+  ansible.builtin.stat:
+    path: /usr/local/bin/tgrep
+  register: tgrep_command_result
+- name: Assert installed tgrep
+  ansible.builtin.assert:
+    that:
+      - tgrep_command_result.stat.exists
+      - tgrep_command_result.stat.executable
+    fail_msg: "tgrep command is not installed or not executable"
+    success_msg: "tgrep command is installed and executable"

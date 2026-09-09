@@ -26,7 +26,6 @@ tools_fd_repo: sharkdp/fd
 tools_bat_repo: sharkdp/bat
 tools_rclone_repo: rclone/rclone
 tools_restic_repo: restic/restic
-tools_tldr_repo: tldr-pages/tlrc
 tools_assh_repo: moul/assh
 tools_zns_repo: znscli/zns
 tools_task_repo: go-task/task
@@ -44,3 +43,6 @@ tools_diff_pdf_repo: vslavik/diff-pdf
 tools_bottom_repo: ClementTsang/bottom
 tools_logdy_repo: logdyhq/logdy-core
 tools_rtk_repo: rtk-ai/rtk
+tools_tgrep_repo: microsoft/tgrep
+tools_lindera_repo: lindera/lindera
+tools_uv_repo: astral-sh/uv
