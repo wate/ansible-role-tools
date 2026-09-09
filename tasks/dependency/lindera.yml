@@ -6,4 +6,4 @@
 - name: Install jc dependency for lindera
   ansible.builtin.include_tasks:
     file: package/jc.yml
-  when: "'jc' not in ansible_facts.packages"
+  when: ansible_facts.packages['jc'] is undefined
