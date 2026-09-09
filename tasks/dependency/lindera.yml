@@ -1,0 +1,9 @@
+---
+- name: Gather package facts
+  ansible.builtin.package_facts:
+    manager: auto
+  when: ansible_facts.packages is undefined
+- name: Install jc dependency for lindera
+  ansible.builtin.include_tasks:
+    file: package/jc.yml
+  when: "'jc' not in ansible_facts.packages"

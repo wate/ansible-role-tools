@@ -1,0 +1,12 @@
+---
+- name: Check lindera command
+  ansible.builtin.stat:
+    path: /usr/local/bin/lindera
+  register: lindera_command_result
+- name: Assert installed lindera
+  ansible.builtin.assert:
+    that:
+      - lindera_command_result.stat.exists
+      - lindera_command_result.stat.executable
+    fail_msg: "lindera command is not installed or not executable"
+    success_msg: "lindera command is installed and executable"

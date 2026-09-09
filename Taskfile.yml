@@ -141,6 +141,11 @@ tasks:
     cmds:
       - molecule test -s lnav
       - task: notify
+  lindera:
+    desc: Run Molecule tests for lindera scenario
+    cmds:
+      - molecule test -s lindera
+      - task: notify
   mecab:
     desc: Run Molecule tests for mecab scenario
     cmds:

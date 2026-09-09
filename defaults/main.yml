@@ -91,6 +91,8 @@ install_tools:
   # - poppler-utils
   ## https://taku910.github.io/mecab/
   # - mecab
+  ## https://lindera.github.io/lindera/
+  # - lindera
   ## https://osdn.net/projects/nkf/
   # - nkf
   # https://github.com/rtk-ai/rtk
@@ -205,6 +207,16 @@ rtk_version: latest
 ## インストールするtgrepのバージョン
 ## --------------------------
 tgrep_version: latest
+
+## --------------------------
+## インストールするlinderaのバージョン
+## --------------------------
+lindera_version: latest
+
+## --------------------------
+## インストールするlinderaの辞書名
+## --------------------------
+lindera_dictionary: ipadic-neologd
 
 ## --------------------------
 ## zxを最新版に更新するか否か
