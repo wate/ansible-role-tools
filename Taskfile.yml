@@ -211,6 +211,11 @@ tasks:
     cmds:
       - molecule test -s ripgrep
       - task: notify
+  tgrep:
+    desc: Run Molecule tests for tgrep scenario
+    cmds:
+      - molecule test -s tgrep
+      - task: notify
   runn:
     desc: Run Molecule tests for runn scenario
     cmds:

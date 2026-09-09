@@ -19,6 +19,8 @@ install_tools:
   - the_silver_searcher
   ## https://github.com/BurntSushi/ripgrep
   - ripgrep
+  ## https://github.com/microsoft/tgrep
+  - tgrep
   ## https://github.com/jesseduffield/lazygit
   # - lazygit
   ## https://github.com/jesseduffield/lazydocker
@@ -200,6 +202,11 @@ gitleaks_version: latest
 ## インストールするrtkのバージョン
 ## --------------------------
 rtk_version: latest
+
+## --------------------------
+## インストールするtgrepのバージョン
+## --------------------------
+tgrep_version: latest
 
 ## --------------------------
 ## zxを最新版に更新するか否か

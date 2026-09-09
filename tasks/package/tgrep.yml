@@ -1,0 +1,23 @@
+---
+- name: Get latest release
+  when: tgrep_version | default('latest') == 'latest'
+  block:
+    - name: Get latest version
+      ansible.builtin.include_tasks:
+        file: common/get_latest_version.yml
+      vars:
+        github_repo: "{{ tools_tgrep_repo }}"
+        target_name: tgrep
+    - name: Set package version
+      ansible.builtin.set_fact:
+        tgrep_version: "{{ latest_version }}"
+- name: Set variable
+  ansible.builtin.set_fact:
+    asset_file: tgrep-{{ tgrep_version }}-{{ ansible_facts['architecture'] }}-unknown-linux-musl.tar.gz
+- name: Install tgrep
+  ansible.builtin.unarchive:
+    src: https://github.com/{{ tools_tgrep_repo }}/releases/download/{{ tgrep_version }}/{{ asset_file }}
+    dest: /usr/local/bin
+    include:
+      - ./tgrep
+    remote_src: true
