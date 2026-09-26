@@ -16,7 +16,7 @@ install_tools:
   ## https://lnav.org/
   - lnav
   ## https://github.com/ggreer/the_silver_searcher
-  - the_silver_searcher
+  # - the_silver_searcher
   ## https://github.com/BurntSushi/ripgrep
   - ripgrep
   ## https://github.com/microsoft/tgrep
