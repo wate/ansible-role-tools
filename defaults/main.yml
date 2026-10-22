@@ -61,7 +61,7 @@ install_tools:
   # - plantuml
   ## https://github.com/terrastruct/d2
   # - d2
-  ## https://github.com/petervanderdoes/gitflow-avh
+  ## https://git-flow.sh/
   # - git-flow
   ## https://github.com/k1LoW/tbls
   # - tbls
@@ -174,6 +174,11 @@ delta_version: latest
 ## インストールするDuckDBのバージョン
 ## --------------------------
 duckdb_version: latest
+
+## --------------------------
+## インストールするgit-flow(git-flow-next)のバージョン
+## --------------------------
+git_flow_version: latest
 
 ## --------------------------
 ## インストールするasshのバージョン

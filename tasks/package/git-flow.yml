@@ -1,4 +1,27 @@
 ---
+- name: Set Install version variable
+  when: git_flow_version == 'latest'
+  block:
+    - name: Get latest version
+      ansible.builtin.include_tasks:
+        file: common/get_latest_version.yml
+      vars:
+        github_repo: "{{ tools_git_flow_repo }}"
+        target_name: git-flow
+    - name: Set package version
+      ansible.builtin.set_fact:
+        git_flow_version: "{{ latest_version }}"
+- name: Set package file variable
+  ansible.builtin.set_fact:
+    git_flow_asset_file: git-flow-next-{{ git_flow_version }}-{{ ansible_facts['system'] | lower }}-{{ arch_type_maps[ansible_facts['architecture']] }}.tar.gz
+  vars:
+    arch_type_maps:
+      x86_64: amd64
+      aarch64: arm64
 - name: Install git-flow
-  ansible.builtin.apt:
-    name: git-flow
+  ansible.builtin.unarchive:
+    src: https://github.com/{{ tools_git_flow_repo }}/releases/download/{{ git_flow_version }}/{{ git_flow_asset_file }}
+    dest: /usr/local/bin
+    include:
+      - git-flow
+    remote_src: true
