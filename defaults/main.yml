@@ -31,6 +31,8 @@ install_tools:
   # - goaccess
   ## https://github.com/google/osv-scanner
   - osv-scanner
+  ## https://trivy.dev/
+  - trivy
   # https://direnv.net/
   - direnv
   ## https://taskfile.dev/
@@ -61,7 +63,7 @@ install_tools:
   # - plantuml
   ## https://github.com/terrastruct/d2
   # - d2
-  ## https://github.com/petervanderdoes/gitflow-avh
+  ## https://git-flow.sh/
   # - git-flow
   ## https://github.com/k1LoW/tbls
   # - tbls
@@ -130,6 +132,11 @@ bottom_version: latest
 osv_scanner_version: latest
 
 ## --------------------------
+## インストールするTrivyのバージョン
+## --------------------------
+trivy_version: latest
+
+## --------------------------
 ## インストールするtblsのバージョン
 ## --------------------------
 tbls_version: latest
@@ -174,6 +181,11 @@ delta_version: latest
 ## インストールするDuckDBのバージョン
 ## --------------------------
 duckdb_version: latest
+
+## --------------------------
+## インストールするgit-flow(git-flow-next)のバージョン
+## --------------------------
+git_flow_version: latest
 
 ## --------------------------
 ## インストールするasshのバージョン

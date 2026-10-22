@@ -256,6 +256,11 @@ tasks:
     cmds:
       - molecule test -s tree
       - task: notify
+  trivy:
+    desc: Run Molecule tests for trivy scenario
+    cmds:
+      - molecule test -s trivy
+      - task: notify
   uv:
     desc: Run Molecule tests for uv scenario
     cmds:
@@ -324,8 +329,8 @@ tasks:
       - task: tgrep
       - task: the_silver_searcher
       - task: tig
-      - task: tldr
       - task: tree
+      - task: trivy
       - task: uv
       - task: xmllint
       - task: zns

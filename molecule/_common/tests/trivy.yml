@@ -1,0 +1,12 @@
+---
+- name: Check trivy command
+  ansible.builtin.stat:
+    path: /usr/local/bin/trivy
+  register: trivy_command_result
+- name: Assert installed trivy
+  ansible.builtin.assert:
+    that:
+      - trivy_command_result.stat.exists
+      - trivy_command_result.stat.executable
+    fail_msg: "trivy command is not installed or not executable"
+    success_msg: "trivy command is installed and executable"

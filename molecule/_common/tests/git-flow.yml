@@ -1,6 +1,23 @@
 ---
+- name: Check git-flow command
+  ansible.builtin.stat:
+    path: /usr/local/bin/git-flow
+  register: git_flow_command_result
 - name: Assert installed git-flow
   ansible.builtin.assert:
-    that: ansible_facts.packages['git-flow'] is defined
-    fail_msg: "git-flow package is not installed"
-    success_msg: "git-flow package is installed"
+    that:
+      - git_flow_command_result.stat.exists
+      - git_flow_command_result.stat.executable
+    fail_msg: "git-flow command is not installed or not executable"
+    success_msg: "git-flow command is installed and executable"
+- name: Execute git flow version
+  ansible.builtin.command:
+    cmd: git flow version
+  register: git_flow_version_result
+  changed_when: false
+- name: Assert installed git-flow-next
+  ansible.builtin.assert:
+    that:
+      - "'git-flow-next' in git_flow_version_result.stdout"
+    fail_msg: "git-flow-next is not installed"
+    success_msg: "git-flow-next is installed"

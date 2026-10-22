@@ -1,0 +1,31 @@
+---
+- name: Set Install version variable
+  when: trivy_version == 'latest'
+  block:
+    - name: Get latest version
+      ansible.builtin.include_tasks:
+        file: common/get_latest_version.yml
+      vars:
+        github_repo: "{{ tools_trivy_repo }}"
+        target_name: trivy
+    - name: Set package version
+      ansible.builtin.set_fact:
+        trivy_version: "{{ latest_version }}"
+- name: Set download file variable
+  ansible.builtin.set_fact:
+    trivy_arch_type: "{{ arch_type_maps[ansible_facts['architecture']] }}"
+  vars:
+    ## アセット名のアーキテクチャ表記は`64bit`/`ARM64`形式
+    arch_type_maps:
+      x86_64: 64bit
+      aarch64: ARM64
+- name: Set asset file name
+  ansible.builtin.set_fact:
+    trivy_asset_file: trivy_{{ trivy_version | regex_replace('^v', '') }}_{{ ansible_facts['system'] }}-{{ trivy_arch_type }}.tar.gz
+- name: Install trivy
+  ansible.builtin.unarchive:
+    src: https://github.com/{{ tools_trivy_repo }}/releases/download/{{ trivy_version }}/{{ trivy_asset_file }}
+    dest: /usr/local/bin
+    include:
+      - trivy
+    remote_src: true

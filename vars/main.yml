@@ -21,6 +21,7 @@ tools_githubcli_apt_key_dest: /etc/apt/keyrings/githubcli-archive-keyring.gpg
 tools_tbls_repo: k1LoW/tbls
 tools_runn_repo: k1LoW/runn
 tools_osv_scanner_repo: google/osv-scanner
+tools_trivy_repo: aquasecurity/trivy
 tools_jc_repo: kellyjonbrazil/jc
 tools_fd_repo: sharkdp/fd
 tools_bat_repo: sharkdp/bat
@@ -46,3 +47,4 @@ tools_rtk_repo: rtk-ai/rtk
 tools_tgrep_repo: microsoft/tgrep
 tools_lindera_repo: lindera/lindera
 tools_uv_repo: astral-sh/uv
+tools_git_flow_repo: gittower/git-flow-next
