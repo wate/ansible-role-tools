@@ -31,6 +31,8 @@ install_tools:
   # - goaccess
   ## https://github.com/google/osv-scanner
   - osv-scanner
+  ## https://trivy.dev/
+  - trivy
   # https://direnv.net/
   - direnv
   ## https://taskfile.dev/
@@ -128,6 +130,11 @@ bottom_version: latest
 ## インストールするosv-scannerのバージョン
 ## --------------------------
 osv_scanner_version: latest
+
+## --------------------------
+## インストールするTrivyのバージョン
+## --------------------------
+trivy_version: latest
 
 ## --------------------------
 ## インストールするtblsのバージョン
