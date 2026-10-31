@@ -21,3 +21,13 @@
       - "'git-flow-next' in git_flow_version_result.stdout"
     fail_msg: "git-flow-next is not installed"
     success_msg: "git-flow-next is installed"
+- name: Check bash completion file
+  ansible.builtin.stat:
+    path: /etc/bash_completion.d/git-flow
+  register: git_flow_bash_completion_result
+- name: Assert installed bash completion file
+  ansible.builtin.assert:
+    that:
+      - git_flow_bash_completion_result.stat.exists
+    fail_msg: "git-flow bash completion file is not installed"
+    success_msg: "git-flow bash completion file is installed"

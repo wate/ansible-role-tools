@@ -25,3 +25,14 @@
     include:
       - git-flow
     remote_src: true
+- name: Get bash completion script
+  ansible.builtin.command:
+    cmd: /usr/local/bin/git-flow completion bash
+  register: git_flow_completion_script
+  changed_when: false
+  check_mode: false
+- name: Install bash completion file
+  ansible.builtin.copy:
+    content: "{{ git_flow_completion_script.stdout }}"
+    dest: /etc/bash_completion.d/git-flow
+    mode: "0644"
