@@ -99,10 +99,6 @@ Role Variables
 
 インストールするgitleaksのバージョン
 
-#### `trivy_version`
-
-インストールするTrivyのバージョン
-
 #### `rtk_version`
 
 インストールするrtkのバージョン

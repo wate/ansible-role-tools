@@ -14,14 +14,18 @@ tools_goaccess_apt_key_dest: /etc/apt/keyrings/goaccess.gpg
 
 ## Github cli
 tools_githubcli_apt_key_url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
-tools_githubcli_apt_key_download_dest: /etc/apt/keyrings/githubcli-archive-keyring.gpg
+tools_githubcli_apt_key_download_dest: /etc/apt/keyrings/githubcli-archive-keyring.gpg.key
 tools_githubcli_apt_key_dest: /etc/apt/keyrings/githubcli-archive-keyring.gpg
+
+## Trivy
+tools_trivy_apt_key_url: https://aquasecurity.github.io/trivy-repo/deb/public.key
+tools_trivy_apt_key_download_dest: /etc/apt/keyrings/trivy.gpg.key
+tools_trivy_apt_key_dest: /etc/apt/keyrings/trivy.gpg
 
 ## repos
 tools_tbls_repo: k1LoW/tbls
 tools_runn_repo: k1LoW/runn
 tools_osv_scanner_repo: google/osv-scanner
-tools_trivy_repo: aquasecurity/trivy
 tools_jc_repo: kellyjonbrazil/jc
 tools_fd_repo: sharkdp/fd
 tools_bat_repo: sharkdp/bat

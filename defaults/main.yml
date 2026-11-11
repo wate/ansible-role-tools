@@ -132,11 +132,6 @@ bottom_version: latest
 osv_scanner_version: latest
 
 ## --------------------------
-## インストールするTrivyのバージョン
-## --------------------------
-trivy_version: latest
-
-## --------------------------
 ## インストールするtblsのバージョン
 ## --------------------------
 tbls_version: latest
