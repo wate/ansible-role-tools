@@ -1,12 +1,35 @@
 ---
-- name: Check trivy command
+- name: Check trivy source gpg key
   ansible.builtin.stat:
-    path: /usr/local/bin/trivy
-  register: trivy_command_result
+    path: /etc/apt/keyrings/trivy.gpg.key
+  register: trivy_src_gpg_key_result
+- name: Assert trivy source gpg key
+  ansible.builtin.assert:
+    that: trivy_src_gpg_key_result.stat.exists
+    fail_msg: "trivy source gpg key does not exist"
+    success_msg: "trivy source gpg key exists"
+- name: Check trivy gpg key
+  ansible.builtin.stat:
+    path: /etc/apt/keyrings/trivy.gpg
+  register: trivy_gpg_key_result
+- name: Assert trivy gpg key
+  ansible.builtin.assert:
+    that: trivy_gpg_key_result.stat.exists
+    fail_msg: "trivy gpg key does not exist"
+    success_msg: "trivy gpg key exists"
+- name: Check trivy apt repository
+  ansible.builtin.stat:
+    path: /etc/apt/sources.list.d/trivy.sources
+  register: trivy_repository_result
+- name: Assert trivy apt repository
+  ansible.builtin.assert:
+    that: trivy_repository_result.stat.exists
+    fail_msg: "trivy apt repository does not exist"
+    success_msg: "trivy apt repository exists"
 - name: Assert installed trivy
   ansible.builtin.assert:
     that:
-      - trivy_command_result.stat.exists
-      - trivy_command_result.stat.executable
-    fail_msg: "trivy command is not installed or not executable"
-    success_msg: "trivy command is installed and executable"
+      - ansible_facts.packages['trivy'] is defined
+      - ansible_facts.packages['trivy'][0]['origin'] != 'Debian'
+    fail_msg: "trivy package is not installed"
+    success_msg: "trivy package is installed"
