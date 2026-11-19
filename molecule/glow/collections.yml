@@ -1,0 +1,6 @@
+---
+collections:
+  ## moleculeのdockerドライバで使用
+  - name: community.docker
+  ## ロール内で使用
+  - name: community.general
