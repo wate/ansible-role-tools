@@ -13,6 +13,7 @@
 - name: List lindera dictionaries
   ansible.builtin.command:
     cmd: /usr/local/bin/lindera list
+  environment: "{{ {'LINDERA_DICTIONARIES_DIR': lindera_dictionaries_dir} if (lindera_dictionaries_dir | default('')) | length > 0 else {} }}"
   register: lindera_list_result
   changed_when: false
 - name: Assert lindera dictionary is downloaded
@@ -21,3 +22,10 @@
       - "'/' in lindera_list_result.stdout"
     fail_msg: "lindera dictionary is not downloaded"
     success_msg: "lindera dictionary is downloaded"
+- name: Assert lindera dictionary is under the configured directory
+  ansible.builtin.assert:
+    that:
+      - lindera_list_result.stdout is search(lindera_dictionaries_dir)
+    fail_msg: "lindera dictionary is not under {{ lindera_dictionaries_dir }}"
+    success_msg: "lindera dictionary is under {{ lindera_dictionaries_dir }}"
+  when: (lindera_dictionaries_dir | default('')) | length > 0

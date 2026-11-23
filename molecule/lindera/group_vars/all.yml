@@ -1,0 +1,3 @@
+---
+## 全ユーザーから参照できる共有の場所へ辞書を入れることを確かめる
+lindera_dictionaries_dir: /usr/local/share/lindera/dictionaries

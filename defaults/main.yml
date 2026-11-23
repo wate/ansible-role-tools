@@ -233,6 +233,13 @@ lindera_version: latest
 lindera_dictionary: ipadic-neologd
 
 ## --------------------------
+## linderaの辞書の置き場所
+## 空なら、実行ユーザーの既定の場所(LINDERA_DICTIONARIES_DIRを未設定にしたときの既定)
+## 全ユーザーから参照させるときは、0755の共有ディレクトリを指定する
+## --------------------------
+lindera_dictionaries_dir: ""
+
+## --------------------------
 ## zxを最新版に更新するか否か
 ## --------------------------
 zx_latest_install: true
