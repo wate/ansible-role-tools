@@ -1,6 +1,7 @@
 ---
 galaxy_info:
   role_name: tools
+  namespace: wate
   author: yoshiaki tanaka
   description: setup tool
   license: Apache

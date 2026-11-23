@@ -30,7 +30,7 @@
         - variable_file | length > 0
     - name: Include role
       ansible.builtin.include_role:
-        name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
+        name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') }}"
       vars:
         install_tools:
           - "{{ lookup('env', 'MOLECULE_SCENARIO_DIRECTORY') | basename }}"
