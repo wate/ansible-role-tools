@@ -148,6 +148,20 @@ GeoIPデータベースの自動更新頻度
 
 mecabの設定
 
+#### `lindera_version`
+
+インストールするlinderaのバージョン
+
+#### `lindera_dictionary`
+
+インストールするlinderaの辞書名
+
+#### `lindera_dictionaries_dir`
+
+linderaの辞書の置き場所  
+空の場合は実行ユーザーの既定の場所  
+全ユーザーから参照させるときは、0755の共有ディレクトリを指定する
+
 ### [vars/main.yml](vars/main.yml)
 
 設定値については[vars/main.yml](vars/main.yml)を参照してください。
