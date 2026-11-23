@@ -10,3 +10,14 @@
       - lindera_command_result.stat.executable
     fail_msg: "lindera command is not installed or not executable"
     success_msg: "lindera command is installed and executable"
+- name: List lindera dictionaries
+  ansible.builtin.command:
+    cmd: /usr/local/bin/lindera list
+  register: lindera_list_result
+  changed_when: false
+- name: Assert lindera dictionary is downloaded
+  ansible.builtin.assert:
+    that:
+      - "'/' in lindera_list_result.stdout"
+    fail_msg: "lindera dictionary is not downloaded"
+    success_msg: "lindera dictionary is downloaded"
